@@ -1,5 +1,5 @@
 import { useState } from 'preact/hooks'
-import './app.css'
+import './app.scss'
 
 export function App() {
   const [count, setCount] = useState(0)
