@@ -1,0 +1,24 @@
+{
+  "name": "vitepreactfigmatest",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build && npm run build:figma",
+    "build:figma": "esbuild lib/code.ts --bundle --outfile=dist/code.js",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "preact": "^10.26.2"
+  },
+  "devDependencies": {
+    "@figma/eslint-plugin-figma-plugins": "^0.16.1",
+    "@figma/plugin-typings": "^1.108.0",
+    "@preact/preset-vite": "^2.10.1",
+    "prettier": "^3.5.2",
+    "typescript": "~5.7.2",
+    "vite": "^5.1.4",
+    "vite-plugin-singlefile": "^2.1.0"
+  }
+}
