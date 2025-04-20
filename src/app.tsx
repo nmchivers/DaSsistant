@@ -4,6 +4,7 @@ import './app.scss';
 import OpenAI from 'openai';
 import { ChatMessage } from './models/ChatMessage';
 import { v4 as uuidv4 } from "uuid";
+import Button from './components/button/button';
 
 export function App() {
   //keep track of the designer's question input
@@ -38,6 +39,9 @@ export function App() {
     //add the user's message from the form to the set of chats.
     setConvo(prev => [...prev, newUserMessage]);
 
+    //clear the input
+    setDesQuestion("undefined");
+
     //make the request to opanai
     const response = await openai.responses.create({
       //model: "o4-mini",
@@ -56,6 +60,9 @@ export function App() {
     setConvo(prev => [...prev, {id: uuidv4(), role:"assistant", content:response.output_text, responseId:response.id, timestamp:  new Date().toLocaleString()}]);
 
     setLastResponseID(response.id);
+
+    //test the response from openai
+    console.log(response);
   }
     
   return (
@@ -73,7 +80,7 @@ export function App() {
         ))}
       </div>
       <p><label for="question">Question</label>: <textarea id="question" value={desQuestion !== "undefined" ? desQuestion : undefined} onChange={handleOnChange} placeholder={"What's on your mind?"} /></p>
-      <p><button id="GPT" onClick={handleRequest}>Get response</button></p>
+      <Button id={'NewGPTButton'} text='Get response' variant='filled' onClick={handleRequest} />
       <p>There are {convo.length.toString()} chats in this convo.</p>
     </>
   )
