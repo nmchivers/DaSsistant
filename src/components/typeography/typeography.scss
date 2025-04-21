@@ -12,3 +12,10 @@
 .body-xsmall{
     @include body-xsmall;
 }
+
+.color-default {
+    color: var(--semantic-color-text-default);
+}
+.color-supplementary {
+    color: var(--semantic-color-text-supplementary);
+}

@@ -6,11 +6,13 @@ interface Props {
     tagType?: "span" | "p" | "h1"| "h2" | "h3" | "h4" | "h5" | "h6" | "a";
     href?: String;
     style?: "headline.large" | "body.medium" | "body.small" | "body.xsmall";
+    color?: "default" | "supplementary"
 }
 
 function Typeography({
     tagType = "span",
     style = "body.medium",
+    color = "default",
     ...props
 }:Props){
     if (style == "headline.large") {
@@ -23,6 +25,8 @@ function Typeography({
         props.classes !== undefined ? props.classes = props.classes + " body-medium" : props.classes = "body-medium"
     }
 
+    props.classes !== undefined ? props.classes = props.classes + " color-" + color : props.classes = "color-" + color;
+    
     if (tagType == "p") {
         return(
             <p className={props.classes !== undefined ? props.classes.toString() : ""}>{props.copy}</p>
