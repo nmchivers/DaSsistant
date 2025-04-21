@@ -1,0 +1,7 @@
+@use '../../variables' as *;
+
+.conversation {
+    display: flex;
+    flex-flow: column;
+    gap: 24px;
+}

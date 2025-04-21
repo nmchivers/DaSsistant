@@ -6,6 +6,8 @@ import { ChatMessage } from './models/ChatMessage';
 import { v4 as uuidv4 } from "uuid";
 import Button from './components/button/button';
 import Typeography from './components/typeography/typography';
+import Message from './components/message/message';
+import Conversation from './components/conversation/conversastion';
 
 export function App() {
   //keep track of the designer's question input
@@ -82,17 +84,7 @@ export function App() {
   return (
     <>
       <Typeography copy='MechaNick v0.1' style='headline.large' tagType='h1' />
-      <div className="convo_container">
-        {convo.map ( message => (
-          <div key={message.id} className={ message.role=="user" ? "chat_container_user" : "chat_container_assistant"}>
-            <div className={"message"}>
-              <p>{message.content}</p>
-            </div>
-            <p className={"who"}>{message.role}</p>
-            <p className={"when"}>{message.timestamp}</p>
-          </div>
-        ))}
-      </div>
+      <Conversation convo={convo} isLoading={isLoading} />
       <p><label for="question">Question</label>: <textarea id="question" value={desQuestion} onChange={handleOnChange} placeholder={"What's on your mind?"} /></p>
       <Button id={'NewGPTButton'} text='Get response' variant='filled' onClick={handleRequest} disabled={isLoading}/>
       <p>There are {convo.length.toString()} chats in this convo.</p>

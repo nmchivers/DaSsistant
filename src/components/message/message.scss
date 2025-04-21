@@ -1,0 +1,45 @@
+@use '../../variables' as *;
+
+:root {
+    --compSpec-message-spacing-padding-vertical: var(--mn-baseSize-0100);
+    --compSpec-message-spacing-padding-horizontal: var(--mn-baseSize-0200);
+    --compSpec-message-size-maxWidth: var(--mn-baseSize-6500);
+    --compSpec-message-radius-default: var(--mn-baseSize-0250);
+    --compSpec-message-user-color-bg: var(--mn-baseColor-neutral-200);
+    --compSpec-message-assistant-color-bg: var(--mn-baseColor-teal-100);
+    --compSpec-message-user-color-text: var(--semantic-color-text-default);
+    --compSpec-message-assistant-color-text: var(--semantic-color-text-default);
+    --compSpec-message-assistant-image-size-width: var(--mn-baseSize-0400);
+    --compSpec-message-assistant-image-size-height: var(--mn-baseSize-0400);
+}
+
+body.dark-mode{
+    --compSpec-message-user-color-bg: var(--mn-baseColor-neutral-200);
+    --compSpec-message-assistant-color-bg: var(--mn-baseColor-teal-800);
+}
+
+.messageRow{
+    display: flex;
+    flex-flow: column;
+    flex-wrap: nowrap;
+}
+
+@mixin messageContainerBase {
+    padding: var(--compSpec-message-spacing-padding-vertical) var(--compSpec-message-spacing-padding-horizontal);
+    border-radius: var(--compSpec-message-radius-default);
+    max-width: var(--compSpec-message-size-maxWidth);
+}
+
+.message_container_user {
+    align-self: flex-end;
+    background-color: var(--compSpec-message-user-color-bg);
+    color: var(--compSpec-message-user-color-text);
+    @include messageContainerBase;
+}
+
+.message_container_assistant {
+    align-self: flex-start;
+    background-color: var(--compSpec-message-assistant-color-bg);
+    color: var(--compSpec-message-assistant-color-text);
+    @include messageContainerBase;
+}
