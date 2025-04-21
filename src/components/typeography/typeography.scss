@@ -1,0 +1,14 @@
+@use '../../variables' as *;
+
+.headline-large{
+    @include headline-large;
+}
+.body-medium{
+    @include body-medium;
+}
+.body-small{
+    @include body-small;
+}
+.body-xsmall{
+    @include body-xsmall;
+}

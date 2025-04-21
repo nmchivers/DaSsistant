@@ -5,6 +5,7 @@ import OpenAI from 'openai';
 import { ChatMessage } from './models/ChatMessage';
 import { v4 as uuidv4 } from "uuid";
 import Button from './components/button/button';
+import Typeography from './components/typeography/typography';
 
 export function App() {
   //keep track of the designer's question input
@@ -67,7 +68,7 @@ export function App() {
     
   return (
     <>
-      <h2>AI Accessibility Convo</h2>
+      <Typeography copy={"MechaNick v0.1"} style='headline.large' tagType='h1' />
       <div className="convo_container">
         {convo.map ( message => (
           <div key={message.id} className={ message.role=="user" ? "chat_container_user" : "chat_container_assistant"}>
