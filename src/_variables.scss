@@ -108,7 +108,9 @@
     --mn-baseSize-1100: 88px;
     --mn-baseSize-1150: 92px;
     --mn-baseSize-1200: 96px;
+    --mn-baseSize-6100: 488px;
     --mn-baseSize-6500: 520px;
+    --mn-baseSize-8000: 640px;
 
     --mn-baseType-fontFamily-default: Barlow;
     --mn-baseType-weight-default: regular;
@@ -121,6 +123,10 @@
     --mn-baseType-lineHeight-body-medium: var(--mn-baseSize-0300);
     --mn-baseType-lineHeight-body-small: var(--mn-baseSize-0250);
     --mn-baseType-lineHeight-body-xsmall: var(--mn-baseSize-0225);
+
+    --semantic-size-app-maxWidth: var(--mn-baseSize-8000);
+    --semantic-spacing-app-padding-vertical-top: var(--mn-baseSize-0300);
+    --semantic-spacing-app-padding-horizontal: var(--mn-baseSize-0200);
 
     --semantic-spacing-vertical-zero: var(--mn-baseSize-0000);
     --semantic-spacing-vertical-xsmall: var(--mn-baseSize-0050);
@@ -148,22 +154,26 @@ body.dark-mode {
     font-size: var(--mn-baseType-size-headline-large);
     line-height: var(--mn-baseType-lineHeight-headline-large);
     font-weight: var(--mn-baseType-weight-default);
+    margin: unset;
 }
 @mixin body-medium{
     font-family: var(--mn-baseType-fontFamily-default), sans-serif;
     font-size: var(--mn-baseType-size-body-medium);
     line-height: var(--mn-baseType-lineHeight-body-medium);
     font-weight: var(--mn-baseType-weight-default);
+    margin: unset;
 }
 @mixin body-small{
     font-family: var(--mn-baseType-fontFamily-default), sans-serif;
     font-size: var(--mn-baseType-size-body-small);
     line-height: var(--mn-baseType-lineHeight-body-small);
     font-weight: var(--mn-baseType-weight-default);
+    margin: unset;
 }
 @mixin body-xsmall{
     font-family: var(--mn-baseType-fontFamily-default), sans-serif;
     font-size: var(--mn-baseType-size-body-xsmall);
     line-height: var(--mn-baseType-lineHeight-body-xsmall);
     font-weight: var(--mn-baseType-weight-default);
+    margin: unset;
 }

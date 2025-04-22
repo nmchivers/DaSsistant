@@ -11,7 +11,7 @@ export default function Message ({message}: Props){
         <div className="messageRow">
             <div className={  message.role=="user" ? "message_container_user" : "message_container_assistant"}>
                 <div className={"message"}>
-                    <Typeography copy={message.content} style="body.medium" color="default"/>
+                    <Typeography copy={message.content} style="body.medium" color="unset"/>
                 </div>
             </div>
         </div>
