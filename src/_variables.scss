@@ -112,7 +112,7 @@
     --mn-baseSize-6500: 520px;
     --mn-baseSize-8000: 640px;
 
-    --mn-baseType-fontFamily-default: Barlow;
+    --mn-baseType-fontFamily-default: 'Barlow';
     --mn-baseType-weight-default: regular;
     --mn-baseType-weight-highImp: medium;
     --mn-baseType-size-headline-large: var(--mn-baseSize-0600);
@@ -140,6 +140,8 @@
 
     --semantic-color-text-default: var(--mn-baseColor-neutral-900);
     --semantic-color-text-supplementary: var(--mn-baseColor-neutral-700);
+    --semantic-color-text-default-inverse: var(--mn-baseColor-neutral-100);
+    --semantic-color-text-supplementary-inverse: var(--mn-baseColor-neutral-300);
 }
 
 body.dark-mode {
@@ -147,7 +149,10 @@ body.dark-mode {
 
     --semantic-color-text-default: var(--mn-baseColor-neutral-100);
     --semantic-color-text-supplementary: var(--mn-baseColor-neutral-300);
+    --semantic-color-text-default-inverse: var(--mn-baseColor-neutral-900);
+    --semantic-color-text-supplementary-inverse: var(--mn-baseColor-neutral-700);
 }
+  
 
 @mixin headline-large{
     font-family: var(--mn-baseType-fontFamily-default), sans-serif;

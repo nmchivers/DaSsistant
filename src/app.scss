@@ -29,8 +29,22 @@
     color: #4f4A4a;
   }
 
-.convo_container{
+.starting-header{
   display: flex;
   flex-flow: column;
-  gap: 24px;
+  gap: var(--semantic-spacing-vertical-medium);
+  margin-bottom: var(--semantic-spacing-vertical-xxlarge);
+}
+
+.footer{
+  position: fixed;
+  bottom: var(--mn-baseSize-0000);
+  left: var(--mn-baseSize-0000);
+  width: 100vw;
+  background-color: var(--semantic-color-bg-page-primary);
+  
+
+  & .footer-content{
+    padding: var(--mn-baseSize-0200) var(--mn-baseSize-0200) var(--mn-baseSize-0100);
+  }
 }
