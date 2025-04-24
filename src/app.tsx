@@ -1,11 +1,11 @@
 import { useState } from 'preact/hooks';
 import React from 'preact/compat';
 import './app.scss';
-//import OpenAI from 'openai';
 import { ChatMessage } from './models/ChatMessage';
 import { v4 as uuidv4 } from "uuid";
 import Button from './components/button/button';
 import Typeography from './components/typeography/typography';
+import BotIntro from './components/botIntro/botIntro';
 import Conversation from './components/conversation/conversastion';
 import Tag from './components/tag/tag';
 import { getAccessibilityResponses } from './openai';
@@ -74,7 +74,8 @@ export function App() {
           tagType="h1"
         />
       </div>
-      <Conversation convo={convo} isLoading={isLoading} />
+      {convo.length < 1 ? <BotIntro /> : <Conversation convo={convo} isLoading={isLoading} />}
+      {/* <Conversation convo={convo} isLoading={isLoading} /> */}
       <div className={"footer"}>
         <div className={"footer-content"}>
           <p>

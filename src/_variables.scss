@@ -113,8 +113,8 @@
     --mn-baseSize-8000: 640px;
 
     --mn-baseType-fontFamily-default: 'Barlow';
-    --mn-baseType-weight-default: regular;
-    --mn-baseType-weight-highImp: medium;
+    --mn-baseType-weight-default: 400;
+    --mn-baseType-weight-highImp: 500;
     --mn-baseType-size-headline-large: var(--mn-baseSize-0600);
     --mn-baseType-size-body-medium: var(--mn-baseSize-0225);
     --mn-baseType-size-body-small: var(--mn-baseSize-0200);
@@ -166,6 +166,13 @@ body.dark-mode {
     font-size: var(--mn-baseType-size-body-medium);
     line-height: var(--mn-baseType-lineHeight-body-medium);
     font-weight: var(--mn-baseType-weight-default);
+    margin: unset;
+}
+@mixin body-medium-highImp{
+    font-family: var(--mn-baseType-fontFamily-default), sans-serif;
+    font-size: var(--mn-baseType-size-body-medium);
+    line-height: var(--mn-baseType-lineHeight-body-medium);
+    font-weight: var(--mn-baseType-weight-highImp);
     margin: unset;
 }
 @mixin body-small{

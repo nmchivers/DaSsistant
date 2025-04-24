@@ -1,0 +1,48 @@
+@use '../../variables' as *;
+
+:root{
+    --compSpec-botIntro-container-color-bg: var(--mn-baseColor-teal-100);
+    --compSpec-botIntro-container-color-text: var(--semantic-color-text-default);
+    --compSpec-botIntro-container-radius-left: var(--mn-baseSize-0600);
+    --compSpec-botIntro-container-radius-right: var(--mn-baseSize-0250);
+    --compSpec-botIntro-textGroup-padding-vertical: var(--mn-baseSize-0100);
+    --compSpec-botIntro-textGroup-padding-horizontal-left: var(--mn-baseSize-0150);
+    --compSpec-botIntro-textGroup-padding-horizontal-right: var(--mn-baseSize-0250);
+    --compSpec-botIntro-textGroup-gap: var(--mn-baseSize-0050);
+    --compSpec-botIntro-image-radius: var(--mn-baseSize-0600);
+    --compSpec-botIntro-image-size-width: var(--mn-baseSize-1150);
+    --compSpec-botIntro-image-size-height: var(--mn-baseSize-1150);
+}
+
+body.dark-mode{
+    --compSpec-botIntro-container-color-bg: var(--mn-baseColor-teal-800);
+    --compSpec-botIntro-container-color-text: var(--semantic-color-text-default);
+}
+
+.bot-intro{
+    background-color: var(--compSpec-botIntro-container-color-bg);
+    border-top-left-radius: var(--compSpec-botIntro-container-radius-left);
+    border-bottom-left-radius: var(--compSpec-botIntro-container-radius-left);
+    border-top-right-radius: var(--compSpec-botIntro-container-radius-right);
+    border-bottom-right-radius: var(--compSpec-botIntro-container-radius-right);
+    display: flex;
+    flex-flow: row;
+    flex-wrap: nowrap;
+
+    & .text-group{
+        color: var(--compSpec-botIntro-container-color-text);
+        padding-top: var(--compSpec-botIntro-textGroup-padding-vertical);
+        padding-bottom: var(--compSpec-botIntro-textGroup-padding-vertical);
+        padding-left: var(--compSpec-botIntro-textGroup-padding-horizontal-left);
+        padding-right: var(--compSpec-botIntro-textGroup-padding-horizontal-right);
+        display: flex;
+        flex-flow: column;
+        gap: var(--compSpec-botIntro-textGroup-gap);
+    }
+
+    & .image{
+        height: var(--compSpec-botIntro-image-size-height);
+        width: var(--compSpec-botIntro-image-size-width);
+        border-radius: var(--compSpec-botIntro-image-radius);
+    }
+}

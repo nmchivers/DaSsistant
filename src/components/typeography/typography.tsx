@@ -5,7 +5,7 @@ interface Props {
     classes?: String;
     tagType?: "span" | "p" | "h1"| "h2" | "h3" | "h4" | "h5" | "h6" | "a";
     href?: String;
-    style?: "headline.large" | "body.medium" | "body.small" | "body.xsmall";
+    style?: "headline.large" | "body.medium" | "body.small" | "body.xsmall" | "body.medium.highImp";
     color?: "default" | "supplementary" | "unset";
 }
 
@@ -21,6 +21,8 @@ function Typeography({
         props.classes !== undefined ? props.classes = props.classes + " body-small" : props.classes = "body-small"
     } else if (style == "body.xsmall") {
         props.classes !== undefined ? props.classes = props.classes + " body-xsmall" : props.classes = "body-xsmall"
+    } else if (style == "body.medium.highImp") {
+        props.classes !== undefined ? props.classes = props.classes + " body-medium-highImp" : props.classes = "body-medium-highImp"
     } else {
         props.classes !== undefined ? props.classes = props.classes + " body-medium" : props.classes = "body-medium"
     }
