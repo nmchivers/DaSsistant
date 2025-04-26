@@ -1,0 +1,122 @@
+@use '../../variables' as *;
+
+:root {
+    --compSpec-question-container-color-bg-resting: var(--mn-baseColor-neutral-100);
+    --compSpec-question-container-color-bg-hover: var(--mn-baseColor-teal-100);
+    --compSpec-question-container-color-bg-focus: var(--mn-baseColor-teal-100);
+    --compSpec-question-container-color-bg-active: var(--mn-baseColor-neutral-100);
+    --compSpec-question-container-color-bg-disabled: var(--mn-baseColor-neutral-200);
+    --compSpec-question-container-color-border-resting: var(--mn-baseColor-neutral-600);
+    --compSpec-question-container-color-border-hover: var(--mn-baseColor-teal-800);
+    --compSpec-question-container-color-border-focus: var(--mn-baseColor-teal-800);
+    --compSpec-question-container-color-border-active: var(--mn-baseColor-teal-800);
+    --compSpec-question-container-color-border-disabled: var(--mn-baseColor-neutral-400);
+    --compSpec-question-container-size-border-resting: var(--mn-baseSize-0013);
+    --compSpec-question-container-size-border-hover: var(--mn-baseSize-0013);
+    --compSpec-question-container-size-border-focus: var(--mn-baseSize-0013);
+    --compSpec-question-container-size-border-active: var(--mn-baseSize-0013);
+    --compSpec-question-container-size-border-disabled: var(--mn-baseSize-0013);
+    --compSpec-question-container-radius: var(--mn-baseSize-0250);
+
+    --compSpec-question-container-shadow-resting: 0px 6px 16px 0px rgba(0, 0, 0, 0.08);
+    --compSpec-question-container-shadow-hover: 0px 2px 2px 0px rgba(55, 113, 109, 0.12), 0px 4px 12px 0px rgba(55, 113, 109, 0.28);
+    --compSpec-question-container-shadow-focus: 0px 2px 2px 0px rgba(55, 113, 109, 0.12), 0px 4px 12px 0px rgba(55, 113, 109, 0.28);
+    --compSpec-question-container-shadow-active: 0px 2px 2px 0px rgba(0, 0, 0, 0.04), 0px 4px 12px 0px rgba(0, 0, 0, 0.12);
+    --compSpec-question-container-shadow-disabled: none;
+
+    --compSpec-question-controls-container-spacing-vertical-bottom: var(--mn-baseSize-0100);
+    --compSpec-question-controls-container-spacing-horizontal: var(--mn-baseSize-0100);
+}
+
+body.dark-mode {
+    --compSpec-question-container-color-bg-resting: var(--mn-baseColor-neutral-900);
+    --compSpec-question-container-color-bg-hover: var(--mn-baseColor-teal-900);
+    --compSpec-question-container-color-bg-focus: var(--mn-baseColor-teal-900);
+    --compSpec-question-container-color-bg-active: var(--mn-baseColor-neutral-900);
+    --compSpec-question-container-color-bg-disabled: var(--mn-baseColor-neutral-800);
+    --compSpec-question-container-color-border-resting: var(--mn-baseColor-neutral-200);
+    --compSpec-question-container-color-border-hover: var(--mn-baseColor-teal-200);
+    --compSpec-question-container-color-border-focus: var(--mn-baseColor-teal-200);
+    --compSpec-question-container-color-border-active: var(--mn-baseColor-teal-200);
+    --compSpec-question-container-color-border-disabled: var(--mn-baseColor-neutral-600);
+}
+
+.question-container {
+    display: flex;
+    flex-flow: column;
+    background-color: var(--compSpec-question-container-color-bg-resting);
+    box-shadow: var(--compSpec-question-container-shadow-resting);
+    border-color: var(--compSpec-question-container-color-border-resting);
+    border-width: var(--compSpec-question-container-size-border-resting);
+    border-style: solid;
+    border-radius: var(--compSpec-question-container-radius);
+    transition: all .25s ease-out;
+
+    &:has(.question-input:hover) {
+        background-color: var(--compSpec-question-container-color-bg-hover);
+        box-shadow: var(--compSpec-question-container-shadow-hover);
+        border-color: var(--compSpec-question-container-color-border-hover);
+        border-width: var(--compSpec-question-container-size-border-hover);
+    }
+
+    // &:has(.question-input:focus-within) {
+    //     background-color: var(--compSpec-question-container-color-bg-focus);
+    //     box-shadow: var(--compSpec-question-container-shadow-focus);
+    //     border-color: var(--compSpec-question-container-color-border-focus);
+    //     border-width: var(--compSpec-question-container-size-border-focus);
+    // }
+
+    &:has(.question-input:focus-within) {
+        background-color: var(--compSpec-question-container-color-bg-active);
+        box-shadow: var(--compSpec-question-container-shadow-active);
+        border-color: var(--compSpec-question-container-color-border-active);
+        border-width: var(--compSpec-question-container-size-border-active);
+    }
+
+    &:has(.question-input:disabled) {
+        background-color: var(--compSpec-question-container-color-bg-disabled);
+        box-shadow: var(--compSpec-question-container-shadow-disabled);
+        border-color: var(--compSpec-question-container-color-border-disabled);
+        border-width: var(--compSpec-question-container-size-border-disabled);
+    }
+
+    & .question-controls-container {
+        display: flex;
+        flex-flow: row;
+        flex-wrap: nowrap;
+        justify-content: space-between;
+        align-items: center;
+        //need tokens for these spacing values
+        padding-left: var(--compSpec-question-controls-container-spacing-horizontal);
+        padding-right: var(--compSpec-question-controls-container-spacing-horizontal);
+        padding-bottom:  var(--compSpec-question-controls-container-spacing-vertical-bottom);
+    }
+
+    & .question-input{
+        resize: none;
+        transition: all .35s ease-out;
+
+        background-color: transparent;
+        border: none;
+        outline: none;
+        padding: 0px 12px;
+        height: 48px;
+        caret-color: var(--mn-baseColor-teal-700);
+        
+        @include body-medium;
+
+        &:focus-within {
+            height: 96px;
+        }
+
+        &-label {
+            display: none;
+        }
+
+        &-container{
+            padding: 16px 8px 4px;
+            display: flex;
+            flex-flow: column;
+        }
+    }
+}

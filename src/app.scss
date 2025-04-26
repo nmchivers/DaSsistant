@@ -43,8 +43,28 @@
   width: 100vw;
   background-color: var(--semantic-color-bg-page-primary);
   
+  & .bot-intro-container{
+    padding: 0px 16px;
+  }
 
   & .footer-content{
-    padding: var(--mn-baseSize-0200) var(--mn-baseSize-0200) var(--mn-baseSize-0100);
+    padding: var(--mn-baseSize-0200) var(--mn-baseSize-0250) var(--mn-baseSize-0100);
+    display: flex;
+    flex-flow: column;
+    gap: var(--mn-baseSize-0150)
   }
+
+  & .footnote-centered {
+    text-align: center;
+  }
+
+  //Remove this when ready
+  & .hide-me{
+    display: none;
+  }
+
+  // //for testing only. remove this
+  // &:has(textarea:hover){
+  //   background-color: var(--mn-baseColor-teal-100);
+  // }
 }

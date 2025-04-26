@@ -9,6 +9,7 @@ import BotIntro from './components/botIntro/botIntro';
 import Conversation from './components/conversation/conversastion';
 import Tag from './components/tag/tag';
 import { getAccessibilityResponses } from './openai';
+import QuestionInput from './components/questionInput/questionInput';
 
 export function App() {
   //keep track of the designer's question input
@@ -74,10 +75,26 @@ export function App() {
           tagType="h1"
         />
       </div>
-      {convo.length < 1 ? <BotIntro /> : <Conversation convo={convo} isLoading={isLoading} />}
-      {/* <Conversation convo={convo} isLoading={isLoading} /> */}
+      {/* {convo.length < 1 ? <BotIntro /> : <Conversation convo={convo} isLoading={isLoading} />} */}
+      <Conversation convo={convo} isLoading={isLoading} />
       <div className={"footer"}>
-        <div className={"footer-content"}>
+        
+        {convo.length < 1 ? <div className="bot-intro-container"><BotIntro /></div> : <></>}
+        
+        <div className="footer-content">
+          <QuestionInput />
+          <Typeography
+            copy={
+              "MechaNick can make mistakes. Always double check information."
+            }
+            style="body.small"
+            color="supplementary"
+            classes={'footnote-centered'}
+          />
+        </div>
+        
+
+        <div className={"hide-me" }>
           <p>
             <label for="question">Question</label>:{" "}
             <textarea
