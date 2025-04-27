@@ -1,19 +1,41 @@
 @use '../../variables' as *;
 
+.headline-xlarge{
+    @include headline-xlarge;
+    margin: unset;
+}
 .headline-large{
     @include headline-large;
+    margin: unset;
 }
+.headline-medium{
+    @include headline-medium;
+    margin: unset;
+}
+.headline-small{
+    @include headline-small;
+    margin: unset;
+}
+.headline-xsmall{
+    @include headline-xsmall;
+    margin: unset;
+}
+
 .body-medium{
     @include body-medium;
+    margin: unset;
 }
 .body-medium-highImp{
     @include body-medium-highImp;
+    margin: unset;
 }
 .body-small{
     @include body-small;
+    margin: unset;
 }
 .body-xsmall{
     @include body-xsmall;
+    margin: unset;
 }
 
 .color-default {

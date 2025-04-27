@@ -20,7 +20,7 @@ export function App() {
         <Tag copy={"Powered by Open.AI"} />
         <Typeography
           copy="MechaNick v0.1"
-          style="headline.large"
+          style="headline.xlarge"
           tagType="h1"
         />
       </div>

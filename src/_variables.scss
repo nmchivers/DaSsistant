@@ -97,12 +97,17 @@
     --mn-baseSize-0250: 20px;
     --mn-baseSize-0300: 24px;
     --mn-baseSize-0350: 28px;
+    --mn-baseSize-0375: 30px;
     --mn-baseSize-0400: 32px;
+    --mn-baseSize-0425: 34px;
+    --mn-baseSize-0450: 36px;
     --mn-baseSize-0500: 40px;
+    --mn-baseSize-0550: 44px;
     --mn-baseSize-0600: 48px;
     --mn-baseSize-0700: 56px;
     --mn-baseSize-0725: 58px;
     --mn-baseSize-0800: 64px;
+    --mn-baseSize-0850: 68px;
     --mn-baseSize-0900: 72px;
     --mn-baseSize-1000: 80px;
     --mn-baseSize-1100: 88px;
@@ -112,14 +117,22 @@
     --mn-baseSize-6500: 520px;
     --mn-baseSize-8000: 640px;
 
-    --mn-baseType-fontFamily-default: 'Barlow';
+    --mn-baseType-fontFamily-default: Barlow;
     --mn-baseType-weight-default: 400;
     --mn-baseType-weight-highImp: 500;
+    --mn-baseType-size-headline-xlarge: var(--mn-baseSize-0700);
     --mn-baseType-size-headline-large: var(--mn-baseSize-0600);
+    --mn-baseType-size-headline-medium: var(--mn-baseSize-0450);
+    --mn-baseType-size-headline-small: var(--mn-baseSize-0350);
+    --mn-baseType-size-headline-xsmall: var(--mn-baseSize-0300);
     --mn-baseType-size-body-medium: var(--mn-baseSize-0225);
     --mn-baseType-size-body-small: var(--mn-baseSize-0200);
     --mn-baseType-size-body-xsmall: var(--mn-baseSize-0175);
+    --mn-baseType-lineHeight-headline-xlarge: var(--mn-baseSize-0850);
     --mn-baseType-lineHeight-headline-large: var(--mn-baseSize-0725);
+    --mn-baseType-lineHeight-headline-medium: var(--mn-baseSize-0550);
+    --mn-baseType-lineHeight-headline-small: var(--mn-baseSize-0425);
+    --mn-baseType-lineHeight-headline-xsmall: var(--mn-baseSize-0375);
     --mn-baseType-lineHeight-body-medium: var(--mn-baseSize-0300);
     --mn-baseType-lineHeight-body-small: var(--mn-baseSize-0250);
     --mn-baseType-lineHeight-body-xsmall: var(--mn-baseSize-0225);
@@ -154,38 +167,58 @@ body.dark-mode {
 }
   
 
+@mixin headline-xlarge{
+    font-family: var(--mn-baseType-fontFamily-default), sans-serif;
+    font-size: var(--mn-baseType-size-headling-xlarge);
+    line-height: var(--mn-baseType-lineHeight-headline-xlarge);
+    font-weight: var(--mn-baseType-weight-highImp);
+}
 @mixin headline-large{
     font-family: var(--mn-baseType-fontFamily-default), sans-serif;
     font-size: var(--mn-baseType-size-headline-large);
     line-height: var(--mn-baseType-lineHeight-headline-large);
     font-weight: var(--mn-baseType-weight-default);
-    margin: unset;
 }
+@mixin headline-medium{
+    font-family: var(--mn-baseType-fontFamily-default), sans-serif;
+    font-size: var(--mn-baseType-size-headline-medium);
+    line-height: var(--mn-baseType-lineHeight-headline-medium);
+    font-weight: var(--mn-baseType-weight-default);
+}
+@mixin headline-small{
+    font-family: var(--mn-baseType-fontFamily-default), sans-serif;
+    font-size: var(--mn-baseType-size-headline-small);
+    line-height: var(--mn-baseType-lineHeight-headline-small);
+    font-weight: var(--mn-baseType-weight-highImp);
+}
+@mixin headline-xsmall{
+    font-family: var(--mn-baseType-fontFamily-default), sans-serif;
+    font-size: var(--mn-baseType-size-headline-xsmall);
+    line-height: var(--mn-baseType-lineHeight-headline-xsmall);
+    font-weight: var(--mn-baseType-weight-default);
+}
+
 @mixin body-medium{
     font-family: var(--mn-baseType-fontFamily-default), sans-serif;
     font-size: var(--mn-baseType-size-body-medium);
     line-height: var(--mn-baseType-lineHeight-body-medium);
     font-weight: var(--mn-baseType-weight-default);
-    margin: unset;
 }
 @mixin body-medium-highImp{
     font-family: var(--mn-baseType-fontFamily-default), sans-serif;
     font-size: var(--mn-baseType-size-body-medium);
     line-height: var(--mn-baseType-lineHeight-body-medium);
     font-weight: var(--mn-baseType-weight-highImp);
-    margin: unset;
 }
 @mixin body-small{
     font-family: var(--mn-baseType-fontFamily-default), sans-serif;
     font-size: var(--mn-baseType-size-body-small);
     line-height: var(--mn-baseType-lineHeight-body-small);
     font-weight: var(--mn-baseType-weight-default);
-    margin: unset;
 }
 @mixin body-xsmall{
     font-family: var(--mn-baseType-fontFamily-default), sans-serif;
     font-size: var(--mn-baseType-size-body-xsmall);
     line-height: var(--mn-baseType-lineHeight-body-xsmall);
     font-weight: var(--mn-baseType-weight-default);
-    margin: unset;
 }

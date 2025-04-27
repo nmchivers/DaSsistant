@@ -44,4 +44,26 @@ body.dark-mode{
     background-color: var(--compSpec-message-assistant-color-bg);
     color: var(--compSpec-message-assistant-color-text);
     @include messageContainerBase;
+
+    & p, & span, & li {
+        @include body-medium;
+    }
+    & p strong, & span strong, & li strong {
+        @include body-medium-highImp;
+    }
+    & h1{
+        @include headline-xlarge;
+    }
+    & h2{
+        @include headline-large;
+    }
+    & h3{
+        @include headline-medium;
+    }
+    & h4{
+        @include headline-small;
+    }
+    & h5{
+        @include headline-xsmall;
+    }
 }

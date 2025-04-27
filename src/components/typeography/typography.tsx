@@ -5,7 +5,7 @@ interface Props {
     classes?: String;
     tagType?: "span" | "p" | "h1"| "h2" | "h3" | "h4" | "h5" | "h6" | "a";
     href?: String;
-    style?: "headline.large" | "body.medium" | "body.small" | "body.xsmall" | "body.medium.highImp";
+    style?: "headline.xlarge" | "headline.large" | "headline.medium" | "headline.small" | "headline.xsmall" | "body.medium" | "body.small" | "body.xsmall" | "body.medium.highImp";
     color?: "default" | "supplementary" | "unset";
 }
 
@@ -15,8 +15,16 @@ function Typeography({
     color = "default",
     ...props
 }:Props){
-    if (style == "headline.large") {
+    if (style == "headline.xlarge") {
+        props.classes !== undefined ? props.classes = props.classes + " headline-xlarge" : props.classes = "headline-xlarge"
+    } else if (style == "headline.large") {
         props.classes !== undefined ? props.classes = props.classes + " headline-large" : props.classes = "headline-large"
+    } else if (style == "headline.medium") {
+        props.classes !== undefined ? props.classes = props.classes + " headline-medium" : props.classes = "headline-medium"
+    } else if (style == "headline.small") {
+        props.classes !== undefined ? props.classes = props.classes + " headline-small" : props.classes = "headline-small"
+    } else if (style == "headline.xsmall") {
+        props.classes !== undefined ? props.classes = props.classes + " headline-xsmall" : props.classes = "headline-xsmall"
     } else if (style == "body.small") {
         props.classes !== undefined ? props.classes = props.classes + " body-small" : props.classes = "body-small"
     } else if (style == "body.xsmall") {
