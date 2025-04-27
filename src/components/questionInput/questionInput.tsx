@@ -1,15 +1,68 @@
+import React from 'preact/compat';
+import { ChatMessage } from '../../models/ChatMessage';
 import Button from '../button/button';
-import Typeography from '../typeography/typography';
 import './questionInput.scss';
 import { useState } from 'preact/hooks';
+import { v4 as uuidv4 } from "uuid";
+import { getAccessibilityResponses } from '../../openai';
+import ContextSwitch from '../contextSwitch/contextSwitch';
 
-export default function questionInput() {
+interface Props {
+    isLoading: boolean,
+    setIsLoading: React.Dispatch<React.SetStateAction<boolean>>,
+    setConvo: React.Dispatch<React.SetStateAction<ChatMessage[]>>,
+}
+
+export default function questionInput({isLoading, setIsLoading, setConvo}:Props) {
     const [question, setQuestion] = useState("");
+    const [lastResponseID, setLastResponseID] = useState(String);
+    //keep track of the conext of the question being asked.
+    const [context, setContext] = useState<string>("accessibility")
 
     function handleOnChange(e: React.ChangeEvent<HTMLTextAreaElement>) {
         const questionInput = e.target as HTMLTextAreaElement;
         setQuestion(questionInput.value);
     }
+
+    async function handleRequest() {
+        //create the object for the user's message.
+        const newUserMessage:ChatMessage = {
+          id: uuidv4(),
+          role:"user",
+          content:question,
+          responseId: null,
+          timestamp:  new Date().toLocaleString(),
+        }
+        //add the user's message from the form to the set of chats.
+        setConvo(prev => [...prev, newUserMessage]);
+    
+        //clear the input
+        setQuestion("");
+        
+        //set the loading state to true
+        setIsLoading(true);
+    
+        //make the request to opanai in a try/catch/finally block
+        try {
+            //make the request to open ai
+          const response = await getAccessibilityResponses(question,lastResponseID,context);
+    
+          //set the last response id from the open ai response
+          setLastResponseID(response.id);
+    
+          //add the response from open ai to the set of chats.
+          setConvo(prev => [...prev, {id: uuidv4(), role:"assistant", content:response.output_text, responseId:response.id, timestamp:  new Date().toLocaleString()}]);
+          
+          //test the response from openai
+          console.log(response);
+        } catch (error) {
+          //log the error to the console
+          console.log(error);
+        } finally {
+          //set the loading state back to false while the 
+          setIsLoading(false);
+        }
+      }
     
     return (
       <div className="question-container">
@@ -22,11 +75,12 @@ export default function questionInput() {
             value={question}
             onChange={handleOnChange}
             placeholder={"What's on your mind?"}
+            disabled={isLoading}
           />
         </div>
         <div className="question-controls-container">
-            <Typeography copy={"Accessibility"} style='body.medium' color='supplementary' />
-            <Button text='Ask MechaNick' variant='filled' />
+            <ContextSwitch context={context} setContext={setContext} isToggle={false}/>
+            <Button text='Ask MechaNick' variant='filled' onClick={handleRequest} disabled={isLoading}/>
         </div>
       </div>
     );

@@ -1,0 +1,125 @@
+@use '../../variables' as *;
+
+:root {
+    --compSpec-contextSwitch-track-color-bg: var(--mn-baseColor-neutral-200);
+    --compSpec-contextSwitch-track-radius: var(--mn-baseSize-0200);
+    --compSpec-contextSwitch-button-unselected-color-text-resting: var(--mn-baseColor-teal-700);
+    --compSpec-contextSwitch-button-unselected-color-text-hover: var(--mn-baseColor-teal-800);
+    --compSpec-contextSwitch-button-unselected-color-text-focus: var(--mn-baseColor-teal-800);
+    --compSpec-contextSwitch-button-unselected-color-text-pressing: var(--mn-baseColor-teal-900);
+    --compSpec-contextSwitch-button-selected-color-text-resting: var(--mn-baseColor-teal-900);
+    --compSpec-contextSwitch-button-spacing-padding-vertical: var(--mn-baseSize-0150);
+    --compSpec-contextSwitch-button-spacing-padding-horizontal: var(--mn-baseSize-0300);
+    --compSpec-contextSwitch-track-color-bg-hover: var(--mn-baseColor-neutral-100);
+    --compSpec-contextSwitch-button-unselected-color-text-disabled: var(--mn-baseColor-neutral-500);
+}
+
+body.dark-mode {
+    --compSpec-contextSwitch-track-color-bg: var(--mn-baseColor-neutral-800);
+
+    --compSpec-contextSwitch-button-unselected-color-text-resting: var(--mn-baseColor-teal-300);
+    --compSpec-contextSwitch-button-unselected-color-text-hover: var(--mn-baseColor-teal-200);
+    --compSpec-contextSwitch-button-unselected-color-text-focus: var(--mn-baseColor-teal-200);
+    --compSpec-contextSwitch-button-unselected-color-text-pressing: var(--mn-baseColor-teal-100);
+    --compSpec-contextSwitch-button-selected-color-text-resting: var(--mn-baseColor-teal-100);
+    --compSpec-contextSwitch-track-color-bg-hover: var(--mn-baseColor-neutral-900);
+    --compSpec-contextSwitch-button-unselected-color-text-disabled: var(--mn-baseColor-neutral-500);
+}
+
+.context-switch{
+    display: flex;
+    flex-flow: row;
+    flex-wrap: nowrap;
+    position: relative;
+    background-color: var(--compSpec-contextSwitch-track-color-bg);
+    border-radius: var(--compSpec-contextSwitch-track-radius);
+
+    &::after {
+        content: '';
+        height: 44px;
+        background-color: var(--mn-baseColor-teal-200);
+        position: absolute;
+        top: 2px; 
+        border-radius: 14px;
+        transition: all .35s ease-out;
+        z-index: 0;
+    }
+    &:has( .context-switch-accessibility.selected)::after{
+        width: 143px;
+        left: 2px;
+    }
+    &:has( .context-switch-designSystem.selected)::after{
+        width: 159px;
+        left: 145px;
+    }
+    &:has( .context-switch-accessibility:not(.selected):hover)::after{
+        width: 151px;
+        left: 129px;
+    }
+    &:has( .context-switch-designSystem:not(.selected):hover)::after{
+        width: 151px;
+        left: 16px;
+    }
+
+    & button{
+        padding: var(--compSpec-contextSwitch-button-spacing-padding-vertical) var(--compSpec-contextSwitch-button-spacing-padding-horizontal);
+        background-color: transparent;
+        border: none;
+        outline: none;
+        z-index: 1;
+
+        & .selected{
+            color: var(--compSpec-contextSwitch-button-selected-color-text-resting);
+        }
+        &:not(:has(.selected)){
+            color: var(--compSpec-contextSwitch-button-unselected-color-text-resting);
+            cursor: pointer;
+        }
+        &:not(:has(.selected)):hover{
+            color: var(--compSpec-contextSwitch-button-unselected-color-text-hover);
+        }
+        &:not(:has(.selected)):focus-visible{
+            color: var(--compSpec-contextSwitch-button-unselected-color-text-focus);
+        }
+    }
+}
+.context-switch-single{
+    display: flex;
+    flex-flow: row;
+    flex-wrap: nowrap;
+    position: relative;
+    background-color: var(--compSpec-contextSwitch-track-color-bg);
+    border-radius: var(--compSpec-contextSwitch-track-radius);
+
+    & .text-container{
+        padding: var(--compSpec-contextSwitch-button-spacing-padding-vertical) var(--compSpec-contextSwitch-button-spacing-padding-horizontal);
+        color: var(--compSpec-contextSwitch-button-selected-color-text-resting);
+    }
+}
+
+.question-container:has(.question-input:disabled) {
+    .context-switch .text-container{
+        color: var(--compSpec-contextSwitch-button-unselected-color-text-disabled) !important;
+    }
+    .context-switch-single .text-container{
+        color: var(--compSpec-contextSwitch-button-unselected-color-text-disabled) !important;
+    }
+}
+
+.question-container:has(.question-input:hover) {
+    .context-switch {
+        background-color: var(--compSpec-contextSwitch-track-color-bg-hover);
+    }
+    .context-switch-single {
+        background-color: var(--compSpec-contextSwitch-track-color-bg-hover);
+    }
+}
+
+.question-container:has(.question-input:disabled:hover), .question-container:has(.question-input:focus-within:hover) {
+    .context-switch {
+        background-color: var(--compSpec-contextSwitch-track-color-bg);
+    }
+    .context-switch-single {
+        background-color: var(--compSpec-contextSwitch-track-color-bg);
+    }
+}

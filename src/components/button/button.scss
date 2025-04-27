@@ -69,6 +69,7 @@ body.dark-mode{
 
 button{
     &.button-filled{
+        cursor: pointer;
         background-color: var(--compSpec-button-filled-color-bg-resting);
         color: var(--compSpec-button-filled-color-text-resting);
         border-radius: var(--compSpec-button-filled-radius);
@@ -119,6 +120,7 @@ button{
             border-width: var(--compSpec-button-filled-size-border-disabled);
             outline-color: var(--compSpec-button-filled-color-outline-disabled);
             outline-width: var(--compSpec-button-filled-size-outline-disabled);
+            cursor: not-allowed;
         }
 
         & .icon-only{

@@ -1,53 +1,34 @@
 #app {
-    max-width: var(--semantic-size-app-maxWidth);
-    margin: 0 auto;
-    padding-top: var(--semantic-spacing-app-padding-vertical-top);
-    padding-left: var(--semantic-spacing-app-padding-horizontal);
-    padding-right: var(--semantic-spacing-app-padding-horizontal);
-  }
-  
-  .logo {
-    height: 6em;
-    padding: 1.5em;
-  }
-  .logo:hover {
-    filter: drop-shadow(0 0 2em #646cffaa);
-  }
-  .logo.preact:hover {
-    filter: drop-shadow(0 0 2em #673ab8aa);
-  }
-  
-  .card {
-    padding: 2em;
-  }
-  
-  .read-the-docs {
-    color: #888;
-  }
+  max-width: var(--semantic-size-app-maxWidth);
+  margin: 0 auto;
+  padding-top: var(--semantic-spacing-app-padding-vertical-top);
+  padding-left: var(--semantic-spacing-app-padding-horizontal);
+  padding-right: var(--semantic-spacing-app-padding-horizontal);
+  display: flex;
+  flex-flow: column;
+  min-height: calc(100vh - var(--semantic-spacing-app-padding-vertical-top));
+}
 
-  h2 {
-    color: #4f4A4a;
-  }
-
-.starting-header{
+.starting-header {
   display: flex;
   flex-flow: column;
   gap: var(--semantic-spacing-vertical-medium);
   margin-bottom: var(--semantic-spacing-vertical-xxlarge);
 }
 
-.footer{
-  position: fixed;
+.footer {
+  position: sticky;
   bottom: var(--mn-baseSize-0000);
   left: var(--mn-baseSize-0000);
-  width: 100vw;
+  //width: 100vw;
+  margin: 0 -16px;
   background-color: var(--semantic-color-bg-page-primary);
-  
-  & .bot-intro-container{
+
+  & .bot-intro-container {
     padding: 0px 16px;
   }
 
-  & .footer-content{
+  & .footer-content {
     padding: var(--mn-baseSize-0200) var(--mn-baseSize-0250) var(--mn-baseSize-0100);
     display: flex;
     flex-flow: column;
@@ -57,14 +38,4 @@
   & .footnote-centered {
     text-align: center;
   }
-
-  //Remove this when ready
-  & .hide-me{
-    display: none;
-  }
-
-  // //for testing only. remove this
-  // &:has(textarea:hover){
-  //   background-color: var(--mn-baseColor-teal-100);
-  // }
 }
