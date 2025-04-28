@@ -1,4 +1,4 @@
-import React, { ButtonHTMLAttributes } from "preact/compat";
+import { ButtonHTMLAttributes } from "preact/compat";
 import './button.scss';
 import Icon from "../icon/icon";
 
@@ -44,39 +44,6 @@ function Button({
         {/* {isLoading && <Loader size="small" color="neutral-100" />} */}
       </button>
     );
-
-    // if (variant === "filled") {
-    //     return (
-    //         <button className={"button-filled" + addClasses} type={type} name={name} title={text} {...props}>
-    //             {!iconOnly && text}
-    //             {icon && <Icon iconName={icon} addClasses="button-icon"/>}
-    //             {/* {icon && <i className={icon}></i>} */}
-    //             {/* {isLoading && <Loader size="small" color="neutral-100" />} */}
-    //         </button>
-    //     )
-    // } else if (variant === "outline") {
-    //     return (
-    //         <button className={"button-outline" + addClasses} type={type} name={name} title={text} {...props}>
-    //             {!iconOnly && text}
-    //             {icon && <i className={icon}></i>}
-    //             {/* {isLoading && <Loader size="small" color="interactive-500" />} */}
-    //         </button>
-    //     )
-    // } else if (variant === "hollow") {
-    //     return (
-    //         <button className={"button-hollow" + addClasses} type={type} name={name} title={text} {...props}>
-    //             {!iconOnly && text}
-    //             {icon && <i className={icon}></i>}
-    //         </button>
-    //     )
-    // } else {
-    //     return (
-    //         <button className={"button-hollow-square" + addClasses} type={type} name={name} title={text} {...props}>
-    //             {!iconOnly && text}
-    //             {icon && <i className={icon}></i>}
-    //         </button>
-    //     )
-    // } 
 }
 
 export default Button;
