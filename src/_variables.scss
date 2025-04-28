@@ -172,7 +172,7 @@ body.dark-mode {
 
 @mixin headline-xlarge{
     font-family: var(--mn-baseType-fontFamily-default), sans-serif;
-    font-size: var(--mn-baseType-size-headling-xlarge);
+    font-size: var(--mn-baseType-size-headline-xlarge);
     line-height: var(--mn-baseType-lineHeight-headline-xlarge);
     font-weight: var(--mn-baseType-weight-highImp);
 }
