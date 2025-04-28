@@ -155,6 +155,9 @@
     --semantic-color-text-supplementary: var(--mn-baseColor-neutral-700);
     --semantic-color-text-default-inverse: var(--mn-baseColor-neutral-100);
     --semantic-color-text-supplementary-inverse: var(--mn-baseColor-neutral-300);
+
+    --semantic-transition-standard: all 200ms ease-out;
+    --semantic-transition-long: all 400ms ease-out;
 }
 
 body.dark-mode {

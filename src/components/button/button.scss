@@ -2,6 +2,17 @@
 @use '../../variables' as *;
 
 :root {
+    --compSpec-button-spacing-vertical: var(--mn-baseSize-0150);
+    --compSpec-button-spacing-horizontal: var(--mn-baseSize-0200);
+    --compSpec-button-spacing-gap: var(--mn-baseSize-0100);
+    --compSpec-button-radius: var(--mn-baseSize-0200);
+    --compSpec-button-icon-size-width: var(--mn-baseSize-0225);
+    --compSpec-button-icon-size-height: var(--mn-baseSize-0225);
+    --compSpec-button-iconOnly-icon-size-width: var(--mn-baseSize-0300);
+    --compSpec-button-iconOnly-icon-size-height: var(--mn-baseSize-0300);
+    --compSpec-button-iconOnly-spacing-vertical: var(--mn-baseSize-0150);
+    --compSpec-button-iconOnly-spacing-horizontal: var(--mn-baseSize-0150);
+
     --compSpec-button-filled-color-bg-resting: var(--mn-baseColor-teal-700);
     --compSpec-button-filled-color-bg-hover: var(--mn-baseColor-teal-800);
     --compSpec-button-filled-color-bg-focus: var(--mn-baseColor-teal-800);
@@ -22,10 +33,6 @@
     --compSpec-button-filled-color-outline-focus: var(--mn-baseColor-teal-200);
     --compSpec-button-filled-color-outline-pressed: var(--mn-baseColor-teal-200);
     --compSpec-button-filled-color-outline-disabled: var(--mn-baseColor-transparent);
-    --compSpec-button-filled-spacing-vertical: var(--mn-baseSize-0150);
-    --compSpec-button-filled-spacing-horizontal: var(--mn-baseSize-0200);
-    --compSpec-button-filled-spacing-gap: var(--mn-baseSize-0100);
-    --compSpec-button-filled-radius: var(--mn-baseSize-0200);
     --compSpec-button-filled-size-border-resting: var(--mn-baseSize-0000);
     --compSpec-button-filled-size-border-hover: var(--mn-baseSize-0000);
     --compSpec-button-filled-size-border-focus: var(--mn-baseSize-0000);
@@ -36,15 +43,71 @@
     --compSpec-button-filled-size-outline-focus: var(--mn-baseSize-0025);
     --compSpec-button-filled-size-outline-pressed: var(--mn-baseSize-0000);
     --compSpec-button-filled-size-outline-disabled: var(--mn-baseSize-0000);
-    --compSpec-button-filled-icon-size-width: var(--mn-baseSize-0225);
-    --compSpec-button-filled-icon-size-height: var(--mn-baseSize-0225);
-    --compSpec-button-iconOnly-filled-icon-size-width: var(--mn-baseSize-0300);
-    --compSpec-button-iconOnly-filled-icon-size-height: var(--mn-baseSize-0300);
-    --compSpec-button-iconOnly-filled-spacing-vertical: var(--mn-baseSize-0150);
-    --compSpec-button-iconOnly-filled-spacing-horizontal: var(--mn-baseSize-0150);
+
+    --compSpec-button-outline-color-bg-resting: var(--mn-baseColor-transparent);
+    --compSpec-button-outline-color-bg-hover: var(--mn-baseColor-teal-100);
+    --compSpec-button-outline-color-bg-focus: var(--mn-baseColor-teal-100);
+    --compSpec-button-outline-color-bg-pressed: var(--mn-baseColor-teal-200);
+    --compSpec-button-outline-color-bg-disabled: var(--mn-baseColor-transparent);
+    --compSpec-button-outline-color-text-resting: var(--mn-baseColor-teal-700);
+    --compSpec-button-outline-color-text-hover: var(--mn-baseColor-teal-800);
+    --compSpec-button-outline-color-text-focus: var(--mn-baseColor-teal-800);
+    --compSpec-button-outline-color-text-pressed: var(--mn-baseColor-teal-800);
+    --compSpec-button-outline-color-text-disabled: var(--mn-baseColor-neutral-300);
+    --compSpec-button-outline-color-border-resting: var(--mn-baseColor-teal-700);
+    --compSpec-button-outline-color-border-hover: var(--mn-baseColor-teal-800);
+    --compSpec-button-outline-color-border-focus: var(--mn-baseColor-teal-800);
+    --compSpec-button-outline-color-border-pressed: var(--mn-baseColor-teal-800);
+    --compSpec-button-outline-color-border-disabled: var(--mn-baseColor-neutral-300);
+    --compSpec-button-outline-color-outline-resting: var(--mn-baseColor-transparent);
+    --compSpec-button-outline-color-outline-hover: var(--mn-baseColor-teal-200);
+    --compSpec-button-outline-color-outline-focus: var(--mn-baseColor-teal-200);
+    --compSpec-button-outline-color-outline-pressed: var(--mn-baseColor-transparent);
+    --compSpec-button-outline-color-outline-disabled: var(--mn-baseColor-transparent);
+    --compSpec-button-outline-size-border-resting: var(--mn-baseSize-0013);
+    --compSpec-button-outline-size-border-hover: var(--mn-baseSize-0013);
+    --compSpec-button-outline-size-border-focus: var(--mn-baseSize-0013);
+    --compSpec-button-outline-size-border-pressed: var(--mn-baseSize-0013);
+    --compSpec-button-outline-size-border-disabled: var(--mn-baseSize-0013);
+    --compSpec-button-outline-size-outline-resting: var(--mn-baseSize-0000);
+    --compSpec-button-outline-size-outline-hover: var(--mn-baseSize-0025);
+    --compSpec-button-outline-size-outline-focus: var(--mn-baseSize-0025);
+    --compSpec-button-outline-size-outline-pressed: var(--mn-baseSize-0000);
+    --compSpec-button-outline-size-outline-disabled: var(--mn-baseSize-0000);
+
+    --compSpec-button-hollow-color-bg-resting: var(--mn-baseColor-transparent);
+    --compSpec-button-hollow-color-bg-hover: var(--mn-baseColor-teal-100);
+    --compSpec-button-hollow-color-bg-focus: var(--mn-baseColor-teal-100);
+    --compSpec-button-hollow-color-bg-pressed: var(--mn-baseColor-teal-200);
+    --compSpec-button-hollow-color-bg-disabled: var(--mn-baseColor-transparent);
+    --compSpec-button-hollow-color-text-resting: var(--mn-baseColor-neutral-900);
+    --compSpec-button-hollow-color-text-hover: var(--mn-baseColor-teal-800);
+    --compSpec-button-hollow-color-text-focus: var(--mn-baseColor-teal-800);
+    --compSpec-button-hollow-color-text-pressed: var(--mn-baseColor-teal-800);
+    --compSpec-button-hollow-color-text-disabled: var(--mn-baseColor-neutral-300);
+    --compSpec-button-hollow-color-border-resting: var(--mn-baseColor-transparent);
+    --compSpec-button-hollow-color-border-hover: var(--mn-baseColor-transparent);
+    --compSpec-button-hollow-color-border-focus: var(--mn-baseColor-transparent);
+    --compSpec-button-hollow-color-border-pressed: var(--mn-baseColor-transparent);
+    --compSpec-button-hollow-color-border-disabled: var(--mn-baseColor-transparent);
+    --compSpec-button-hollow-color-outline-resting: var(--mn-baseColor-transparent);
+    --compSpec-button-hollow-color-outline-hover: var(--mn-baseColor-teal-200);
+    --compSpec-button-hollow-color-outline-focus: var(--mn-baseColor-teal-200);
+    --compSpec-button-hollow-color-outline-pressed: var(--mn-baseColor-transparent);
+    --compSpec-button-hollow-color-outline-disabled: var(--mn-baseColor-transparent);
+    --compSpec-button-hollow-size-border-resting: var(--mn-baseSize-0000);
+    --compSpec-button-hollow-size-border-hover: var(--mn-baseSize-0000);
+    --compSpec-button-hollow-size-border-focus: var(--mn-baseSize-0000);
+    --compSpec-button-hollow-size-border-pressed: var(--mn-baseSize-0000);
+    --compSpec-button-hollow-size-border-disabled: var(--mn-baseSize-0000);
+    --compSpec-button-hollow-size-outline-resting: var(--mn-baseSize-0000);
+    --compSpec-button-hollow-size-outline-hover: var(--mn-baseSize-0025);
+    --compSpec-button-hollow-size-outline-focus: var(--mn-baseSize-0025);
+    --compSpec-button-hollow-size-outline-pressed: var(--mn-baseSize-0000);
+    --compSpec-button-hollow-size-outline-disabled: var(--mn-baseSize-0000);
 }
 
-body.dark-mode{
+body.dark-mode {
     --compSpec-button-filled-color-bg-resting: var(--mn-baseColor-teal-400);
     --compSpec-button-filled-color-bg-hover: var(--mn-baseColor-teal-300);
     --compSpec-button-filled-color-bg-focus: var(--mn-baseColor-teal-300);
@@ -65,66 +128,316 @@ body.dark-mode{
     --compSpec-button-filled-color-outline-focus: var(--mn-baseColor-teal-800);
     --compSpec-button-filled-color-outline-pressed: var(--mn-baseColor-teal-800);
     --compSpec-button-filled-color-outline-disabled: var(--mn-baseColor-transparent);
+
+    --compSpec-button-outline-color-bg-resting: var(--mn-baseColor-transparent);
+    --compSpec-button-outline-color-bg-hover: var(--mn-baseColor-teal-900);
+    --compSpec-button-outline-color-bg-focus: var(--mn-baseColor-teal-900);
+    --compSpec-button-outline-color-bg-pressed: var(--mn-baseColor-teal-800);
+    --compSpec-button-outline-color-bg-disabled: var(--mn-baseColor-transparent);
+    --compSpec-button-outline-color-text-resting: var(--mn-baseColor-teal-400);
+    --compSpec-button-outline-color-text-hover: var(--mn-baseColor-teal-500);
+    --compSpec-button-outline-color-text-focus: var(--mn-baseColor-teal-500);
+    --compSpec-button-outline-color-text-pressed: var(--mn-baseColor-teal-500);
+    --compSpec-button-outline-color-text-disabled: var(--mn-baseColor-neutral-600);
+    --compSpec-button-outline-color-border-resting: var(--mn-baseColor-teal-400);
+    --compSpec-button-outline-color-border-hover: var(--mn-baseColor-teal-500);
+    --compSpec-button-outline-color-border-focus: var(--mn-baseColor-teal-500);
+    --compSpec-button-outline-color-border-pressed: var(--mn-baseColor-teal-500);
+    --compSpec-button-outline-color-border-disabled: var(--mn-baseColor-neutral-600);
+    --compSpec-button-outline-color-outline-resting: var(--mn-baseColor-transparent);
+    --compSpec-button-outline-color-outline-hover: var(--mn-baseColor-teal-800);
+    --compSpec-button-outline-color-outline-focus: var(--mn-baseColor-teal-800);
+    --compSpec-button-outline-color-outline-pressed: var(--mn-baseColor-transparent);
+    --compSpec-button-outline-color-outline-disabled: var(--mn-baseColor-transparent);
+
+    --compSpec-button-hollow-color-bg-resting: var(--mn-baseColor-transparent);
+    --compSpec-button-hollow-color-bg-hover: var(--mn-baseColor-teal-900);
+    --compSpec-button-hollow-color-bg-focus: var(--mn-baseColor-teal-900);
+    --compSpec-button-hollow-color-bg-pressed: var(--mn-baseColor-teal-800);
+    --compSpec-button-hollow-color-bg-disabled: var(--mn-baseColor-transparent);
+    --compSpec-button-hollow-color-text-resting: var(--mn-baseColor-neutral-100);
+    --compSpec-button-hollow-color-text-hover: var(--mn-baseColor-teal-500);
+    --compSpec-button-hollow-color-text-focus: var(--mn-baseColor-teal-500);
+    --compSpec-button-hollow-color-text-pressed: var(--mn-baseColor-teal-500);
+    --compSpec-button-hollow-color-text-disabled: var(--mn-baseColor-neutral-600);
+    --compSpec-button-hollow-color-border-resting: var(--mn-baseColor-transparent);
+    --compSpec-button-hollow-color-border-hover: var(--mn-baseColor-transparent);
+    --compSpec-button-hollow-color-border-focus: var(--mn-baseColor-transparent);
+    --compSpec-button-hollow-color-border-pressed: var(--mn-baseColor-transparent);
+    --compSpec-button-hollow-color-border-disabled: var(--mn-baseColor-transparent);
+    --compSpec-button-hollow-color-outline-resting: var(--mn-baseColor-transparent);
+    --compSpec-button-hollow-color-outline-hover: var(--mn-baseColor-teal-800);
+    --compSpec-button-hollow-color-outline-focus: var(--mn-baseColor-teal-800);
+    --compSpec-button-hollow-color-outline-pressed: var(--mn-baseColor-transparent);
+    --compSpec-button-hollow-color-outline-disabled: var(--mn-baseColor-transparent);
 }
 
-button{
-    &.button-filled{
-        cursor: pointer;
-        background-color: var(--compSpec-button-filled-color-bg-resting);
-        color: var(--compSpec-button-filled-color-text-resting);
-        border-radius: var(--compSpec-button-filled-radius);
-        border-color: var(--compSpec-button-filled-color-border-resting);
-        border-width: var(--compSpec-button-filled-size-border-resting);
-        border-style: solid;
-        outline-color: var(--compSpec-button-filled-color-outline-resting);
-        outline-width: var(--compSpec-button-filled-size-outline-resting);
-        outline-style: solid;
-        padding: var(--compSpec-button-filled-spacing-vertical) var(--compSpec-button-filled-spacing-horizontal);
-        display: flex;
-        flex-flow: row;
-        gap: var(--compSpec-button-filled-spacing-gap);
-        transition: all .20s ease-out;
-        @include body-medium;
+@mixin button-base{
+    cursor: pointer;
+    display: flex;
+    flex-flow: row;
+    align-items: center;
+    gap: var(--compSpec-button-spacing-gap);
+    padding: var(--compSpec-button-spacing-vertical) var(--compSpec-button-spacing-horizontal);
+    border-radius: var(--compSpec-button-radius);
+    transition: var(--semantic-transition-standard);
 
-        &:hover{
-            background-color: var(--compSpec-button-filled-color-bg-hover);
-            color: var(--compSpec-button-filled-color-text-hover);
-            border-color: var(--compSpec-button-filled-color-border-hover);
-            border-width: var(--compSpec-button-filled-size-border-hover);
-            outline-color: var(--compSpec-button-filled-color-outline-hover);
-            outline-width: var(--compSpec-button-filled-size-outline-hover);
+    &:not(.icon-only) .button-icon, &:not(.icon-only) .button-icon > svg {
+        height: var(--compSpec-button-icon-size-height);
+        width: var(--compSpec-button-icon-size-width);
+    }
+}
+
+@mixin button-base-icon-only{
+    cursor: pointer;
+    display: flex;
+    flex-flow: row;
+    align-items: center;
+    padding: var(--compSpec-button-iconOnly-spacing-vertical) var(--compSpec-button-iconOnly-spacing-horizontal);
+    border-radius: var(--compSpec-button-radius);
+    transition: var(--semantic-transition-standard);
+
+    & .button-icon, & .button-icon > svg {
+        height: var(--compSpec-button-iconOnly-icon-size-height);
+        width: var(--compSpec-button-iconOnly-icon-size-width);
+    }
+}
+
+@mixin button-filled {
+    background-color: var(--compSpec-button-filled-color-bg-resting);
+    color: var(--compSpec-button-filled-color-text-resting);
+    border-color: var(--compSpec-button-filled-color-border-resting);
+    border-width: var(--compSpec-button-filled-size-border-resting);
+    border-style: solid;
+    outline-color: var(--compSpec-button-filled-color-outline-resting);
+    outline-width: var(--compSpec-button-filled-size-outline-resting);
+    outline-style: solid;
+    @include body-medium;
+
+    & .button-icon {
+        fill: var(--compSpec-button-filled-color-text-resting);
+    }
+
+    &:hover {
+        background-color: var(--compSpec-button-filled-color-bg-hover);
+        color: var(--compSpec-button-filled-color-text-hover);
+        border-color: var(--compSpec-button-filled-color-border-hover);
+        border-width: var(--compSpec-button-filled-size-border-hover);
+        outline-color: var(--compSpec-button-filled-color-outline-hover);
+        outline-width: var(--compSpec-button-filled-size-outline-hover);
+
+        & .button-icon {
+            fill: var(--compSpec-button-filled-color-text-hover);
         }
+    }
 
-        &:focus-within{
-            background-color: var(--compSpec-button-filled-color-bg-focus);
-            color: var(--compSpec-button-filled-color-text-focus);
-            border-color: var(--compSpec-button-filled-color-border-focus);
-            border-width: var(--compSpec-button-filled-size-border-focus);
-            outline-color: var(--compSpec-button-filled-color-outline-focus);
-            outline-width: var(--compSpec-button-filled-size-outline-focus);
+    &:focus-visible {
+        background-color: var(--compSpec-button-filled-color-bg-focus);
+        color: var(--compSpec-button-filled-color-text-focus);
+        border-color: var(--compSpec-button-filled-color-border-focus);
+        border-width: var(--compSpec-button-filled-size-border-focus);
+        outline-color: var(--compSpec-button-filled-color-outline-focus);
+        outline-width: var(--compSpec-button-filled-size-outline-focus);
+
+        & .button-icon {
+            fill: var(--compSpec-button-filled-color-text-focus);
         }
+    }
 
-        &:active{
-            background-color: var(--compSpec-button-filled-color-bg-pressed);
-            color: var(--compSpec-button-filled-color-text-pressed);
-            border-color: var(--compSpec-button-filled-color-border-pressed);
-            border-width: var(--compSpec-button-filled-size-border-pressed);
-            outline-color: var(--compSpec-button-filled-color-outline-pressed);
-            outline-width: var(--compSpec-button-filled-size-outline-pressed);
+    &:active {
+        background-color: var(--compSpec-button-filled-color-bg-pressed);
+        color: var(--compSpec-button-filled-color-text-pressed);
+        border-color: var(--compSpec-button-filled-color-border-pressed);
+        border-width: var(--compSpec-button-filled-size-border-pressed);
+        outline-color: var(--compSpec-button-filled-color-outline-pressed);
+        outline-width: var(--compSpec-button-filled-size-outline-pressed);
+
+        & .button-icon {
+            fill: var(--compSpec-button-filled-color-text-pressed);
         }
+    }
 
-        &:disabled{
-            background-color: var(--compSpec-button-filled-color-bg-disabled);
-            color: var(--compSpec-button-filled-color-text-disabled);
-            border-color: var(--compSpec-button-filled-color-border-disabled);
-            border-width: var(--compSpec-button-filled-size-border-disabled);
-            outline-color: var(--compSpec-button-filled-color-outline-disabled);
-            outline-width: var(--compSpec-button-filled-size-outline-disabled);
-            cursor: not-allowed;
+    &:disabled {
+        background-color: var(--compSpec-button-filled-color-bg-disabled);
+        color: var(--compSpec-button-filled-color-text-disabled);
+        border-color: var(--compSpec-button-filled-color-border-disabled);
+        border-width: var(--compSpec-button-filled-size-border-disabled);
+        outline-color: var(--compSpec-button-filled-color-outline-disabled);
+        outline-width: var(--compSpec-button-filled-size-outline-disabled);
+        cursor: not-allowed;
+
+        & .button-icon {
+            fill: var(--compSpec-button-filled-color-text-disabled);
         }
+    }
+}
 
-        & .icon-only{
-            padding: var(--compSpec-button-iconOnly-filled-spacing-vertical) var(--compSpec-button-iconOnly-filled-spacing-horizontal);
+@mixin button-outline {
+    background-color: var(--compSpec-button-outline-color-bg-resting);
+    color: var(--compSpec-button-outline-color-text-resting);
+    border-color: var(--compSpec-button-outline-color-border-resting);
+    border-width: var(--compSpec-button-outline-size-border-resting);
+    border-style: solid;
+    outline-color: var(--compSpec-button-outline-color-outline-resting);
+    outline-width: var(--compSpec-button-outline-size-outline-resting);
+    outline-style: solid;
+    @include body-medium;
+
+    & .button-icon {
+        fill: var(--compSpec-button-outline-color-text-resting);
+    }
+
+    &:hover {
+        background-color: var(--compSpec-button-outline-color-bg-hover);
+        color: var(--compSpec-button-outline-color-text-hover);
+        border-color: var(--compSpec-button-outline-color-border-hover);
+        border-width: var(--compSpec-button-outline-size-border-hover);
+        outline-color: var(--compSpec-button-outline-color-outline-hover);
+        outline-width: var(--compSpec-button-outline-size-outline-hover);
+
+        & .button-icon {
+            fill: var(--compSpec-button-outline-color-text-hover);
+        }
+    }
+
+    &:focus-visible {
+        background-color: var(--compSpec-button-outline-color-bg-focus);
+        color: var(--compSpec-button-outline-color-text-focus);
+        border-color: var(--compSpec-button-outline-color-border-focus);
+        border-width: var(--compSpec-button-outline-size-border-focus);
+        outline-color: var(--compSpec-button-outline-color-outline-focus);
+        outline-width: var(--compSpec-button-outline-size-outline-focus);
+
+        & .button-icon {
+            fill: var(--compSpec-button-outline-color-text-focus);
+        }
+    }
+
+    &:active {
+        background-color: var(--compSpec-button-outline-color-bg-pressed);
+        color: var(--compSpec-button-outline-color-text-pressed);
+        border-color: var(--compSpec-button-outline-color-border-pressed);
+        border-width: var(--compSpec-button-outline-size-border-pressed);
+        outline-color: var(--compSpec-button-outline-color-outline-pressed);
+        outline-width: var(--compSpec-button-outline-size-outline-pressed);
+
+        & .button-icon {
+            fill: var(--compSpec-button-outline-color-text-pressed);
+        }
+    }
+
+    &:disabled {
+        background-color: var(--compSpec-button-outline-color-bg-disabled);
+        color: var(--compSpec-button-outline-color-text-disabled);
+        border-color: var(--compSpec-button-outline-color-border-disabled);
+        border-width: var(--compSpec-button-outline-size-border-disabled);
+        outline-color: var(--compSpec-button-outline-color-outline-disabled);
+        outline-width: var(--compSpec-button-outline-size-outline-disabled);
+        cursor: not-allowed;
+
+        & .button-icon {
+            fill: var(--compSpec-button-outline-color-text-disabled);
+        }
+    }
+}
+
+@mixin button-hollow {
+    background-color: var(--compSpec-button-hollow-color-bg-resting);
+    color: var(--compSpec-button-hollow-color-text-resting);
+    border-color: var(--compSpec-button-hollow-color-border-resting);
+    border-width: var(--compSpec-button-hollow-size-border-resting);
+    border-style: solid;
+    outline-color: var(--compSpec-button-hollow-color-outline-resting);
+    outline-width: var(--compSpec-button-hollow-size-outline-resting);
+    outline-style: solid;
+    @include body-medium;
+
+    & .button-icon {
+        fill: var(--compSpec-button-hollow-color-text-resting);
+    }
+
+    &:hover {
+        background-color: var(--compSpec-button-hollow-color-bg-hover);
+        color: var(--compSpec-button-hollow-color-text-hover);
+        border-color: var(--compSpec-button-hollow-color-border-hover);
+        border-width: var(--compSpec-button-hollow-size-border-hover);
+        outline-color: var(--compSpec-button-hollow-color-outline-hover);
+        outline-width: var(--compSpec-button-hollow-size-outline-hover);
+
+        & .button-icon {
+            fill: var(--compSpec-button-hollow-color-text-hover);
+        }
+    }
+
+    &:focus-visible {
+        background-color: var(--compSpec-button-hollow-color-bg-focus);
+        color: var(--compSpec-button-hollow-color-text-focus);
+        border-color: var(--compSpec-button-hollow-color-border-focus);
+        border-width: var(--compSpec-button-hollow-size-border-focus);
+        outline-color: var(--compSpec-button-hollow-color-outline-focus);
+        outline-width: var(--compSpec-button-hollow-size-outline-focus);
+
+        & .button-icon {
+            fill: var(--compSpec-button-hollow-color-text-focus);
+        }
+    }
+
+    &:active {
+        background-color: var(--compSpec-button-hollow-color-bg-pressed);
+        color: var(--compSpec-button-hollow-color-text-pressed);
+        border-color: var(--compSpec-button-hollow-color-border-pressed);
+        border-width: var(--compSpec-button-hollow-size-border-pressed);
+        outline-color: var(--compSpec-button-hollow-color-outline-pressed);
+        outline-width: var(--compSpec-button-hollow-size-outline-pressed);
+
+        & .button-icon {
+            fill: var(--compSpec-button-hollow-color-text-pressed);
+        }
+    }
+
+    &:disabled {
+        background-color: var(--compSpec-button-hollow-color-bg-disabled);
+        color: var(--compSpec-button-hollow-color-text-disabled);
+        border-color: var(--compSpec-button-hollow-color-border-disabled);
+        border-width: var(--compSpec-button-hollow-size-border-disabled);
+        outline-color: var(--compSpec-button-hollow-color-outline-disabled);
+        outline-width: var(--compSpec-button-hollow-size-outline-disabled);
+        cursor: not-allowed;
+
+        & .button-icon {
+            fill: var(--compSpec-button-hollow-color-text-disabled);
+        }
+    }
+}
+
+button {
+    &.button-filled {
+        @include button-base;
+        @include button-filled;
+
+        &-icon-only {
+            @include button-base-icon-only;
+            @include button-filled;
+        }
+    }
+
+    &.button-outline {
+        @include button-base;
+        @include button-outline;
+
+        &-icon-only {
+            @include button-base-icon-only;
+            @include button-outline;
+        }
+    }
+
+    &.button-hollow {
+        @include button-base;
+        @include button-hollow;
+
+        &-icon-only {
+            @include button-base-icon-only;
+            @include button-hollow;
         }
     }
 }
