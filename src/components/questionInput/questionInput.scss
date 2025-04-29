@@ -42,7 +42,7 @@
     --compSpec-question-input-container-spacing-padding-vertical-bottom: var(--mn-baseSize-0050);
     --compSpec-question-input-container-spacing-padding-horizontal: var(--mn-baseSize-0100);
 }
-body.dark-mode {
+.figma-dark body, body.dark-mode {
     --compSpec-question-container-color-bg-resting: var(--mn-baseColor-neutral-900);
     --compSpec-question-container-color-bg-hover: var(--mn-baseColor-teal-900);
     --compSpec-question-container-color-bg-focus: var(--mn-baseColor-teal-900);

@@ -14,7 +14,7 @@
     --compSpec-contextSwitch-button-unselected-color-text-disabled: var(--mn-baseColor-neutral-500);
 }
 
-body.dark-mode {
+.figma-dark body, body.dark-mode {
     --compSpec-contextSwitch-track-color-bg: var(--mn-baseColor-neutral-800);
 
     --compSpec-contextSwitch-button-unselected-color-text-resting: var(--mn-baseColor-teal-300);

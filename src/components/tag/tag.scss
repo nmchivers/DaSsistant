@@ -8,7 +8,7 @@
     --compSpec-tag-radius-default: var(--mn-baseSize-0100);
 }
 
-body.dark-mode{
+.figma-dark body, body.dark-mode{
     --compSpec-tag-color-bg-default: var(--mn-baseColor-neutral-200);
     --compSpec-tag-color-text-default: var(--semantic-color-text-default-inverse);
 }

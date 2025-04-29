@@ -13,7 +13,7 @@
     --compSpec-message-assistant-image-size-height: var(--mn-baseSize-0400);
 }
 
-body.dark-mode{
+.figma-dark body, body.dark-mode{
     --compSpec-message-user-color-bg: var(--mn-baseColor-neutral-800);
     --compSpec-message-assistant-color-bg: var(--mn-baseColor-teal-900);
     --compSpec-message-user-color-text: var(--semantic-color-text-default);

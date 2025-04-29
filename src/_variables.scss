@@ -160,7 +160,7 @@
     --semantic-transition-long: all 400ms ease-out;
 }
 
-body.dark-mode {
+.figma-dark body, body.dark-mode {
     --semantic-color-bg-page-primary: var(--mn-baseColor-neutral-900);
 
     --semantic-color-text-default: var(--mn-baseColor-neutral-100);

@@ -14,7 +14,7 @@
     --compSpec-botIntro-image-size-height: var(--mn-baseSize-1150);
 }
 
-body.dark-mode{
+.figma-dark body, body.dark-mode{
     --compSpec-botIntro-container-color-bg: var(--mn-baseColor-teal-800);
     --compSpec-botIntro-container-color-text: var(--semantic-color-text-default);
 }
