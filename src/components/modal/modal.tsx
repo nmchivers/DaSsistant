@@ -1,0 +1,48 @@
+import './modal.scss';
+import Button from "../button/button";
+import Typeography from "../typeography/typography";
+import React, { ReactNode } from 'preact/compat';
+import { StateUpdater, useState } from 'preact/hooks';
+
+
+interface Props {
+    title: string;
+    description?: string;
+    children: ReactNode;
+    modalState: string | 'open' | 'close';
+    setModalState: React.Dispatch<StateUpdater<string>>;
+}
+
+export default function Modal({title, description = "", children, modalState, setModalState}:Props) {
+    const [isClosing, setIsClosing] = useState(false);
+
+    function handleClose() {
+        setIsClosing(true);
+
+        setTimeout(() => {
+            setIsClosing(false); // Reset so next time it opens it's clean
+            setModalState("close");
+        }, 500);
+    }
+
+    if (modalState === "open") {
+        return(
+            <>
+                <div className="modal-scrim-container">
+                    <div className="scrim"></div>
+                    <div className={"modal" + (isClosing ? " closing" : "")}>
+                        <Button text="Close modal" iconOnly icon="x" variant='hollow' addClasses='modal-close' onClick={handleClose}/>
+                        <div className="modal-header">
+                            <Typeography copy={title} style="headline.large" color="default" tagType="h2" />
+                            {description !=="" ? <Typeography copy={description} style="body.medium" color="default" tagType="p" /> : <></>}
+                        </div>
+                        {children}
+                    </div>
+                </div>
+            </>
+        )
+    } else {
+
+        return(<></>)
+    }
+}

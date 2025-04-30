@@ -22,7 +22,7 @@ function Button({
     isLoading = false,
     ...props}: Props) {
 
-    var classes = (addClasses === undefined ? "button-" + variant : addClasses + "button-" + variant);
+    var classes = (addClasses === undefined ? "button-" + variant : addClasses + " button-" + variant);
     if (iconOnly) {
         classes = classes + "-icon-only";
     }
