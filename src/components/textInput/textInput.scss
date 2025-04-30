@@ -1,0 +1,96 @@
+@use '../../variables' as *;
+
+:root {
+
+}
+.figma-dark body, body.dark-mode {
+
+}
+
+.input-text-container{
+    display: flex;
+    flex-flow: column nowrap;
+
+    & .input-text-label {
+        @include body-medium-highImp;
+        margin-bottom: 4px;
+        color: var(--mn-baseColor-neutral-900);
+
+        & > span {
+            @include body-small;
+            color: var(--mn-baseColor-neutral-700);
+            padding-left: 8px;
+        }
+    
+        &.error {
+            color: var(--mn-baseColor-red-600);
+        }
+    }
+
+    & .input-text-description {
+        @include body-small;
+        color: var(--mn-baseColor-neutral-700);
+        margin-bottom: 8px;
+    }
+
+    & .input-text-errormessage{
+        @include body-small;
+        margin-top: 8px;
+        color: var(--mn-baseColor-red-600);
+        transition: var(--semantic-transition-standard);
+        opacity: 0;
+        display: none;
+    
+        &.error{
+            display: block;
+            opacity: 1;
+        }
+    }
+
+    & input[type=text] {
+        @include body-medium;
+        border: 1px var(--mn-baseColor-neutral-600) solid;
+        border-radius: 16px;
+        padding: var(--mn-baseSize-0150) var(--mn-baseSize-0200);
+        outline: 0;
+        color: var(--mn-baseColor-neutral-900);
+        background-color: transparent;
+        transition: var(--semantic-transition-standard);
+    
+        &::placeholder, &:-ms-input-placeholder, &::-ms-input-placeholder {
+            color: var(--mn-baseColor-neutral-700);
+            opacity: 1; 
+        }
+    
+        //this is the filled state
+        &:not(:placeholder-shown) {
+            background-color: var(--mn-baseColor-neutral-100);
+            border-color: var(--mn-baseColor-neutral-900);
+        } 
+        
+        &:active, &:focus {
+            background-color: var(--mn-baseColor-neutral-100) !important;
+            border-color: var(--mn-baseColor-neutral-900) !important;
+            
+            &.error-state{
+                border-color: var(--mn-baseColor-red-700) !important;
+                outline-color: var(--mn-baseColor-red-700) !important;
+            }
+        }
+    
+        &:hover{
+            background-color: var(--mn-baseColor-teal-100);
+            border-color: var(--mn-baseColor-teal-800);
+    
+            &.error-state{
+                background-color: var(--mn-baseColor-red-100);
+            }
+        }
+    
+        &.error-state {
+            outline: 1px var(--mn-baseColor-red-600) solid;
+            border-color: var(--mn-baseColor-red-600);
+        }
+    }
+}
+
