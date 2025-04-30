@@ -5,7 +5,7 @@ import './questionInput.scss';
 import { useState } from 'preact/hooks';
 import { v4 as uuidv4 } from "uuid";
 import { getAccessibilityResponses } from '../../openai';
-import ContextSwitch from '../contextSwitch/contextSwitch';
+// import ContextSwitch from '../contextSwitch/contextSwitch';
 
 interface Props {
     isLoading: boolean,
@@ -16,7 +16,6 @@ interface Props {
 export default function questionInput({isLoading, setIsLoading, setConvo}:Props) {
     const [question, setQuestion] = useState("");
     const [lastResponseID, setLastResponseID] = useState(String);
-    //keep track of the conext of the question being asked.
     const [context, setContext] = useState<string>("accessibility")
 
     function handleOnChange(e: React.ChangeEvent<HTMLTextAreaElement>) {
@@ -79,8 +78,8 @@ export default function questionInput({isLoading, setIsLoading, setConvo}:Props)
           />
         </div>
         <div className="question-controls-container">
-            <ContextSwitch context={context} setContext={setContext} isToggle={false}/>
-            <Button text='Ask MechaNick' variant='filled' onClick={handleRequest} disabled={isLoading}/>
+            {/* <ContextSwitch context={context} setContext={setContext} isToggle={false}/> */}
+            <Button text='Ask MechaNick' variant='filled' onClick={handleRequest} disabled={isLoading || question === ""} iconOnly icon='sendQuestion'/>
         </div>
       </div>
     );
