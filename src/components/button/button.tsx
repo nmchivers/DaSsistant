@@ -1,6 +1,7 @@
 import { ButtonHTMLAttributes } from "preact/compat";
 import './button.scss';
 import Icon from "../icon/icon";
+import Loader from "../loader/loader";
 
 interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
     text: string;
@@ -41,7 +42,7 @@ function Button({
       >
         {!iconOnly && text}
         {icon && <Icon iconName={icon} addClasses="button-icon" />}
-        {/* {isLoading && <Loader size="small" color="neutral-100" />} */}
+        {isLoading && <Loader size="small" />}
       </button>
     );
 }

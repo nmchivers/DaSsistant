@@ -14,26 +14,27 @@ export default function SettingsForm({}:Props) {
     const [apiKey, setApiKey] = useState("");
     const [modelList, setModelList] = useState<{id: string}[]>([]);
     const [isValidKey, setIsValidKey] = useState(true);
+    const [isLoading, setIsLoading] = useState(false);
     function handleInputChange(event: ChangeEvent<HTMLInputElement>) {
         const target = event.target as HTMLInputElement;
         setApiKey(target.value);
     }
     async function handleTest(){
+        setIsLoading(true);
         if (apiKey == "") {
             setIsValidKey(false);
         }
-        console.log(apiKey);
         try {
             const modelList = await getModels(apiKey);
             setModelList(modelList);
             if (modelList.length < 1) {
                 setIsValidKey(false);
+                setIsLoading(false);
             } else {
                 setIsValidKey(true);
+                setIsLoading(false);
             }
-            //console.log(modelList);
         } catch (error) {
-            //console.log(error);
             setIsValidKey(false);
         }
     }
@@ -74,6 +75,7 @@ export default function SettingsForm({}:Props) {
                   onClick={handleTest}
                   disabled={apiKey == ""}
                   addClasses="api-key-test-button"
+                  isLoading={isLoading}
                 />
               </div>
             ) : (

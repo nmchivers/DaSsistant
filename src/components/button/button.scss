@@ -186,6 +186,17 @@
         height: var(--compSpec-button-icon-size-height);
         width: var(--compSpec-button-icon-size-width);
     }
+
+    &.is-loading {
+        position: relative;
+
+        & .loader-small {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+    }
 }
 
 @mixin button-base-icon-only{
@@ -213,6 +224,10 @@
     outline-width: var(--compSpec-button-filled-size-outline-resting);
     outline-style: solid;
     @include body-medium;
+
+    & .loader-small {
+        color: var(--mn-baseColor-teal-200);
+    }
 
     & .button-icon {
         fill: var(--compSpec-button-filled-color-text-resting);
@@ -282,6 +297,10 @@
     outline-width: var(--compSpec-button-outline-size-outline-resting);
     outline-style: solid;
     @include body-medium;
+
+    & .loader-small {
+        color: var(--mn-baseColor-teal-200);
+    }
 
     & .button-icon {
         fill: var(--compSpec-button-outline-color-text-resting);
