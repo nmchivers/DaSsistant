@@ -44,3 +44,12 @@
 .color-supplementary {
     color: var(--semantic-color-text-supplementary);
 }
+
+a {
+    color: var(--mn-baseColor-teal-700);
+    text-decoration: underline;
+
+    &:hover {
+        color: var(--mn-baseColor-teal-800);
+    }
+}
