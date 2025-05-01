@@ -2,8 +2,8 @@
 
 :root {
     --compSpec-textInput-label-color-text: var(--mn-baseColor-neutral-900);
-    --compSpec-textInput-label-color-text-error: var(--mn-baseColor-neutral-700);
-    --compSpec-textInput-label-optional-color-text: var(--mn-baseColor-red-600);
+    --compSpec-textInput-label-color-text-error: var(--mn-baseColor-red-600);
+    --compSpec-textInput-label-optional-color-text: var(--mn-baseColor-neutral-700);
     --compSpec-textInput-description-color-text: var(--mn-baseColor-neutral-700);
     --compSpec-textInput-label-container-spacing-gap-vertical: var(--mn-baseSize-0050);
     --compSpec-textInput-label-container-spacing-margin-vertical-bottom: var(--mn-baseSize-0100);
@@ -51,8 +51,8 @@
 .figma-dark body,
 body.dark-mode {
     --compSpec-textInput-label-color-text: var(--mn-baseColor-neutral-100);
-    --compSpec-textInput-label-color-text-error: var(--mn-baseColor-neutral-300);
-    --compSpec-textInput-label-optional-color-text: var(--mn-baseColor-red-300);
+    --compSpec-textInput-label-color-text-error: var(--mn-baseColor-red-300);
+    --compSpec-textInput-label-optional-color-text: var(--mn-baseColor-neutral-300);
     --compSpec-textInput-description-color-text: var(--mn-baseColor-neutral-300);
 
     --compSpec-textInput-errorMessage-color-text: var(--mn-baseColor-red-300);
@@ -159,7 +159,7 @@ body.dark-mode {
             background-color: var(--compSpec-textInput-input-color-bg-focus) !important;
             border-color: var(--compSpec-textInput-input-color-border-focus) !important;
             
-            &.error-state{
+            &.error{
                 background-color: var(--compSpec-textInput-input-color-bg-focus-error) !important;
                 border-color: var(--compSpec-textInput-input-color-border-focus-error) !important;
                 outline-color: var(--compSpec-textInput-input-color-outline-error) !important;
@@ -170,13 +170,13 @@ body.dark-mode {
             background-color: var(--compSpec-textInput-input-color-bg-hover);
             border-color: var(--compSpec-textInput-input-color-border-hover);
     
-            &.error-state{
+            &.error{
                 background-color: var(--compSpec-textInput-input-color-bg-hover-error);
                 border-color: var(--compSpec-textInput-input-color-border-hover-error);
             }
         }
     
-        &.error-state {
+        &.error {
             outline: var(--compSpec-textInput-input-size-outline-error) var(--compSpec-textInput-input-color-outline-error) solid;
             border-color: var(--compSpec-textInput-input-size-border-error);
         }

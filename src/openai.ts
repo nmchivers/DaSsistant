@@ -30,3 +30,21 @@ export async function getAccessibilityResponses(question: string, lastResponseID
     //pass back the response from open ai
     return response;
 }
+
+export async function getModels(apiKey:string) {
+    //get the key from referring function
+    const oaiKey = apiKey;
+    //create an opening with open ai
+    const openai = new OpenAI({
+        apiKey: oaiKey,
+        dangerouslyAllowBrowser: true,
+    });
+
+    try {
+        const modelList = await openai.models.list();
+
+        return modelList.data;
+    } catch (error) {
+        return [];
+    }
+}

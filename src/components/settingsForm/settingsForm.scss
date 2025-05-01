@@ -1,0 +1,56 @@
+@use '../../variables' as *;
+
+:root {
+
+}
+
+.figma-dark body,
+body.dark-mode {
+
+}
+
+.settings-form-container{
+    display: flex;
+    flex-flow: column;
+    margin-top: 24px;
+}
+
+.api-key-input-miniform{
+    display: flex;
+    flex-flow: row;
+
+    & .api-key-input{
+        flex-grow: 1;
+    }
+
+    & .api-key-test-button-container {
+        margin-top: 56px;
+        margin-left: -64px;
+        background-color: var(--mn-baseColor-neutral-100);
+        border-radius: 16px;
+    }
+
+    & .api-key-test-button-container {
+        align-self: flex-start;
+        margin-top: 56px;
+        margin-left: -67px;
+        background-color: var(--mn-baseColor-neutral-100);
+        border-radius: 16px;
+        outline: 1px var(--mn-baseColor-neutral-100) solid;
+    }
+
+    & .api-key-test-successIcon-container{
+        align-self: flex-start;
+        margin-top: 68px;
+        margin-left: -36px;
+        padding-right: 12px;
+        
+        & svg{
+            fill: var(--mn-baseColor-green-700);
+        }
+    }
+}
+
+.api-key-input input[type=text]{
+    padding-right: 80px;
+}

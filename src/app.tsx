@@ -7,6 +7,7 @@ import Conversation from './components/conversation/conversastion';
 import Tag from './components/tag/tag';
 import QuestionInput from './components/questionInput/questionInput';
 import Modal from './components/modal/modal';
+import SettingsForm from './components/settingsForm/settingsForm';
 
 export function App() {
   //Create the loading variable for tracking loading state
@@ -56,9 +57,7 @@ export function App() {
         title="Settings"
         description="Calibrate MechaNick to get up and running!"
         children={
-          <>
-            <p>This is a test</p>
-          </>
+          <SettingsForm />
         }
         modalState={settingsModalState}
         setModalState={setSettingsModalState}
