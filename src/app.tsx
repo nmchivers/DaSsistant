@@ -28,22 +28,41 @@ export function App() {
       </div>
       <Conversation convo={convo} isLoading={isLoading} />
       <div className={"footer"}>
-        
-        {convo.length < 1 ? <div className="bot-intro-container"><BotIntro /></div> : <></>}
-        
+        {convo.length < 1 ? (
+          <div className="bot-intro-container">
+            <BotIntro />
+          </div>
+        ) : (
+          <></>
+        )}
+
         <div className="footer-content">
-          <QuestionInput setConvo={setConvo} isLoading={isLoading} setIsLoading={setIsLoading} />
+          <QuestionInput
+            setConvo={setConvo}
+            isLoading={isLoading}
+            setIsLoading={setIsLoading}
+          />
           <Typeography
             copy={
               "MechaNick can make mistakes. Always double check information."
             }
             style="body.small"
             color="supplementary"
-            classes={'footnote-centered'}
+            classes={"footnote-centered"}
           />
         </div>
       </div>
-      <Modal title='Settings' description='Calibrate MechaNick to get up and running!' children={<><p>This is a test</p></>} modalState={settingsModalState} setModalState={setSettingsModalState} />
+      <Modal
+        title="Settings"
+        description="Calibrate MechaNick to get up and running!"
+        children={
+          <>
+            <p>This is a test</p>
+          </>
+        }
+        modalState={settingsModalState}
+        setModalState={setSettingsModalState}
+      />
     </>
   );
 }

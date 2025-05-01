@@ -32,7 +32,7 @@
     --compSpec-question-input-color-text-filled: var(--mn-baseColor-neutral-900);
     --compSpec-question-input-border: none;
     --compSpec-question-input-outline: none;
-    --compSpec-question-input-color-carrot: var(--mn-baseColor-teal-700);
+    --compSpec-question-input-color-caret: var(--mn-baseColor-teal-700);
     --compSpec-question-input-spacing-padding-vertical: var(--mn-baseSize-0000);
     --compSpec-question-input-spacing-padding-horizontal: var(--mn-baseSize-0150);
     --compSpec-question-input-size-resting: var(--mn-baseSize-0600);
@@ -56,7 +56,7 @@
 
     --compSpec-question-input-color-text-placeholder: var(--mn-baseColor-neutral-400);
     --compSpec-question-input-color-text-filled: var(--mn-baseColor-neutral-100);
-    --compSpec-question-input-color-carrot: var(--mn-baseColor-teal-300);
+    --compSpec-question-input-color-caret: var(--mn-baseColor-teal-300);
 }
 
 .question-container {
@@ -113,7 +113,7 @@
         outline: var(--compSpec-question-input-outline);
         padding: var(--compSpec-question-input-spacing-padding-vertical) var(--compSpec-question-input-spacing-padding-horizontal);
         height: var(--compSpec-question-input-size-resting);
-        caret-color: var(--compSpec-question-input-color-carrot);
+        caret-color: var(--compSpec-question-input-color-caret);
         
         @include body-medium;
 

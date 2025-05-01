@@ -30,26 +30,70 @@ export default function Modal({title, description = "", children, modalState, se
         setTimeout(() => {
             setIsClosing(false); // Reset so next time it opens it's clean
             setModalState("close");
-        }, 500);
+        }, 1000);
     }
 
     if (modalState === "open") {
-        return(
-            <>
-                <div className="modal-scrim-container">
-                    <div className="scrim"></div>
-                    <div className={"modal" + (isClosing ? " closing" : "")}>
-                        <Button text="Close modal" iconOnly icon="x" variant='hollow' addClasses='modal-close' onClick={handleClose}/>
-                        <div className="modal-header">
-                            <Typeography copy={title} style="headline.large" color="default" tagType="h2" />
-                            {description !=="" ? <Typeography copy={description} style="body.medium" color="default" tagType="p" /> : <></>}
-                        </div>
-                        <TextInput id="api-key" value={apiKey} onChange={handleInputChange} placeholder='sk-###...' label='OpenAI API Key' description='You will need your own API key from OpenAI to run MechaNick.' isRequired errorMessage='Please provide an Open AI API Key.' />
-                        {children}
-                    </div>
+        return (
+          <>
+            <div className="modal-scrim-container">
+              {/* <div className="scrim"></div> */}
+              <div className={"modal" + (isClosing ? " closing" : "")}>
+                <Button
+                  text="Close modal"
+                  iconOnly
+                  icon="x"
+                  variant="hollow"
+                  addClasses="modal-close"
+                  onClick={handleClose}
+                />
+                <div className="modal-header">
+                  <Typeography
+                    copy={title}
+                    style="headline.large"
+                    color="default"
+                    tagType="h2"
+                  />
+                  {description !== "" ? (
+                    <Typeography
+                      copy={description}
+                      style="body.medium"
+                      color="default"
+                      tagType="p"
+                    />
+                  ) : (
+                    <></>
+                  )}
                 </div>
-            </>
-        )
+                <TextInput
+                  id="api-key"
+                  value={apiKey}
+                  onChange={handleInputChange}
+                  placeholder="sk-###..."
+                  label="OpenAI API Key"
+                  description={
+                    <>
+                      You will need your own{" "}
+                      <Typeography
+                        copy="API key from OpenAI"
+                        tagType="a"
+                        href="https://openai.com/api/"
+                        style='body.small'
+                        color='unset'
+                        target="_blank"
+                      />{" "}
+                      to run MechaNick.
+                    </>
+                  }
+                  isRequired
+                  errorMessage="Please provide an Open AI API Key."
+                />
+                {children}
+              </div>
+              <div className="scrim"></div>
+            </div>
+          </>
+        );
     } else {
 
         return(<></>)

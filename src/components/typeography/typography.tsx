@@ -5,6 +5,7 @@ interface Props {
     classes?: String;
     tagType?: "span" | "p" | "h1"| "h2" | "h3" | "h4" | "h5" | "h6" | "a";
     href?: String;
+    target?: String;
     style?: "headline.xlarge" | "headline.large" | "headline.medium" | "headline.small" | "headline.xsmall" | "body.medium" | "body.small" | "body.xsmall" | "body.medium.highImp";
     color?: "default" | "supplementary" | "unset";
 }
@@ -70,7 +71,7 @@ function Typeography({
     } else if (tagType == "a") {
         if (props.href !== undefined) {
             return (
-                <a href={props.href.toString()} className={props.classes !== undefined ? props.classes.toString() : ""}>{props.copy}</a>
+                <a href={props.href.toString()} className={props.classes !== undefined ? props.classes.toString() : ""} target={props.target?.toString()}>{props.copy}</a>
             )
         } else {
             return (

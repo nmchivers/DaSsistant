@@ -1,42 +1,128 @@
 @use '../../variables' as *;
 
 :root {
-
+    --compSpec-textInput-label-color-text: var(--mn-baseColor-neutral-900);
+    --compSpec-textInput-label-color-text-error: var(--mn-baseColor-neutral-700);
+    --compSpec-textInput-label-optional-color-text: var(--mn-baseColor-red-600);
+    --compSpec-textInput-description-color-text: var(--mn-baseColor-neutral-700);
+    --compSpec-textInput-label-container-spacing-gap-vertical: var(--mn-baseSize-0050);
+    --compSpec-textInput-label-container-spacing-margin-vertical-bottom: var(--mn-baseSize-0100);
+    --compSpec-textInput-labelOptional-spacing-gap-horizontal: var(--mn-baseSize-0100);
+    --compSpec-textInput-errorMessage-color-text: var(--mn-baseColor-red-600);
+    --compSpec-textInput-errorMessage-spacing-margin-vertical-top: var(--mn-baseSize-0100);
+    --compSpec-textInput-input-color-bg-resting: var(--mn-baseColor-neutral-100);
+    --compSpec-textInput-input-color-bg-hover: var(--mn-baseColor-teal-100);
+    --compSpec-textInput-input-color-bg-focus: var(--mn-baseColor-neutral-100);
+    --compSpec-textInput-input-color-bg-active: var(--mn-baseColor-neutral-100);
+    --compSpec-textInput-input-color-bg-filled: var(--mn-baseColor-neutral-100);
+    --compSpec-textInput-input-color-bg-disabled: var(--mn-baseColor-neutral-200);
+    --compSpec-textInput-input-color-bg-resting-error: var(--mn-baseColor-neutral-100);
+    --compSpec-textInput-input-color-bg-hover-error: var(--mn-baseColor-red-100);
+    --compSpec-textInput-input-color-bg-focus-error: var(--mn-baseColor-neutral-100);
+    --compSpec-textInput-input-color-bg-active-error: var(--mn-baseColor-neutral-100);
+    --compSpec-textInput-input-color-bg-filled-error: var(--mn-baseColor-neutral-100);
+    --compSpec-textInput-input-color-text-placeholder: var(--mn-baseColor-neutral-700);
+    --compSpec-textInput-input-color-text-placeholder-disabled: var(--mn-baseColor-neutral-500);
+    --compSpec-textInput-input-color-text: var(--mn-baseColor-neutral-900);
+    --compSpec-textInput-input-color-text-disabled: var(--mn-baseColor-neutral-500);
+    --compSpec-textInput-input-color-border-resting: var(--mn-baseColor-neutral-600);
+    --compSpec-textInput-input-color-border-hover: var(--mn-baseColor-teal-800);
+    --compSpec-textInput-input-color-border-focus: var(--mn-baseColor-teal-800);
+    --compSpec-textInput-input-color-border-active: var(--mn-baseColor-teal-800);
+    --compSpec-textInput-input-color-border-filled: var(--mn-baseColor-neutral-900);
+    --compSpec-textInput-input-color-border-disabled: var(--mn-baseColor-neutral-400);
+    --compSpec-textInput-input-color-border-resting-error: var(--mn-baseColor-red-600);
+    --compSpec-textInput-input-color-border-hover-error: var(--mn-baseColor-red-600);
+    --compSpec-textInput-input-color-border-focus-error: var(--mn-baseColor-red-600);
+    --compSpec-textInput-input-color-border-active-error: var(--mn-baseColor-red-600);
+    --compSpec-textInput-input-color-border-filled-error: var(--mn-baseColor-red-600);
+    --compSpec-textInput-input-color-outline: var(--mn-baseColor-transparent);
+    --compSpec-textInput-input-color-outline-error: var(--mn-baseColor-red-600);
+    --compSpec-textInput-input-color-caret: var(--mn-baseColor-teal-700);
+    --compSpec-textInput-input-size-border: var(--mn-baseSize-0013);
+    --compSpec-textInput-input-size-border-error: var(--mn-baseSize-0025);
+    --compSpec-textInput-input-size-outline: var(--mn-baseSize-0000);
+    --compSpec-textInput-input-size-outline-error: var(--mn-baseSize-0013);
+    --compSpec-textInput-input-spacing-vertical: var(--mn-baseSize-0150);
+    --compSpec-textInput-input-spacing-horizontal: var(--mn-baseSize-0200);
+    --compSpec-textInput-input-radius: var(--mn-baseSize-0200);
 }
-.figma-dark body, body.dark-mode {
 
+.figma-dark body,
+body.dark-mode {
+    --compSpec-textInput-label-color-text: var(--mn-baseColor-neutral-100);
+    --compSpec-textInput-label-color-text-error: var(--mn-baseColor-neutral-300);
+    --compSpec-textInput-label-optional-color-text: var(--mn-baseColor-red-300);
+    --compSpec-textInput-description-color-text: var(--mn-baseColor-neutral-300);
+
+    --compSpec-textInput-errorMessage-color-text: var(--mn-baseColor-red-300);
+
+    --compSpec-textInput-input-color-bg-resting: var(--mn-baseColor-neutral-900);
+    --compSpec-textInput-input-color-bg-hover: var(--mn-baseColor-teal-900);
+    --compSpec-textInput-input-color-bg-focus: var(--mn-baseColor-neutral-900);
+    --compSpec-textInput-input-color-bg-active: var(--mn-baseColor-neutral-900);
+    --compSpec-textInput-input-color-bg-filled: var(--mn-baseColor-neutral-900);
+    --compSpec-textInput-input-color-bg-disabled: var(--mn-baseColor-neutral-800);
+    --compSpec-textInput-input-color-bg-resting-error: var(--mn-baseColor-neutral-900);
+    --compSpec-textInput-input-color-bg-hover-error: var(--mn-baseColor-red-900);
+    --compSpec-textInput-input-color-bg-focus-error: var(--mn-baseColor-neutral-900);
+    --compSpec-textInput-input-color-bg-active-error: var(--mn-baseColor-neutral-900);
+    --compSpec-textInput-input-color-bg-filled-error: var(--mn-baseColor-neutral-900);
+    --compSpec-textInput-input-color-text-placeholder: var(--mn-baseColor-neutral-300);
+    --compSpec-textInput-input-color-text-placeholder-disabled: var(--mn-baseColor-neutral-500);
+    --compSpec-textInput-input-color-text: var(--mn-baseColor-neutral-100);
+    --compSpec-textInput-input-color-text-disabled: var(--mn-baseColor-neutral-500);
+    --compSpec-textInput-input-color-border-resting: var(--mn-baseColor-neutral-200);
+    --compSpec-textInput-input-color-border-hover: var(--mn-baseColor-teal-200);
+    --compSpec-textInput-input-color-border-focus: var(--mn-baseColor-teal-200);
+    --compSpec-textInput-input-color-border-active: var(--mn-baseColor-teal-200);
+    --compSpec-textInput-input-color-border-filled: var(--mn-baseColor-neutral-100);
+    --compSpec-textInput-input-color-border-disabled: var(--mn-baseColor-neutral-600);
+    --compSpec-textInput-input-color-border-resting-error: var(--mn-baseColor-red-300);
+    --compSpec-textInput-input-color-border-hover-error: var(--mn-baseColor-red-300);
+    --compSpec-textInput-input-color-border-focus-error: var(--mn-baseColor-red-300);
+    --compSpec-textInput-input-color-border-active-error: var(--mn-baseColor-red-300);
+    --compSpec-textInput-input-color-border-filled-error: var(--mn-baseColor-red-300);
+
+    --compSpec-textInput-input-color-outline-error: var(--mn-baseColor-red-300);
+    --compSpec-textInput-input-color-caret: var(--mn-baseColor-teal-300);
 }
 
 .input-text-container{
     display: flex;
     flex-flow: column nowrap;
 
+    .input-text-label-container{
+        display: flex;
+        flex-flow: column nowrap;
+        gap: var(--compSpec-textInput-label-container-spacing-gap-vertical);
+        margin-bottom: var(--compSpec-textInput-label-container-spacing-margin-vertical-bottom);
+    }
+
     & .input-text-label {
         @include body-medium-highImp;
-        margin-bottom: 4px;
-        color: var(--mn-baseColor-neutral-900);
+        color: var(--compSpec-textInput-label-color-text);
 
         & > span {
             @include body-small;
-            color: var(--mn-baseColor-neutral-700);
-            padding-left: 8px;
+            color: var(--compSpec-textInput-label-optional-color-text);
+            padding-left: var(--compSpec-textInput-labelOptional-spacing-gap-horizontal);
         }
     
         &.error {
-            color: var(--mn-baseColor-red-600);
+            color: var(--compSpec-textInput-label-color-text-error);
         }
     }
 
     & .input-text-description {
         @include body-small;
-        color: var(--mn-baseColor-neutral-700);
-        margin-bottom: 8px;
+        color: var(--compSpec-textInput-description-color-text);
     }
 
     & .input-text-errormessage{
         @include body-small;
-        margin-top: 8px;
-        color: var(--mn-baseColor-red-600);
+        margin-top: var(--compSpec-textInput-errorMessage-spacing-margin-vertical-top);
+        color: var(--compSpec-textInput-errorMessage-color-text);
         transition: var(--semantic-transition-standard);
         opacity: 0;
         display: none;
@@ -49,47 +135,50 @@
 
     & input[type=text] {
         @include body-medium;
-        border: 1px var(--mn-baseColor-neutral-600) solid;
-        border-radius: 16px;
-        padding: var(--mn-baseSize-0150) var(--mn-baseSize-0200);
-        outline: 0;
-        color: var(--mn-baseColor-neutral-900);
-        background-color: transparent;
+        border: var(--compSpec-textInput-input-size-border) var(--compSpec-textInput-input-color-border-resting) solid;
+        border-radius: var(--compSpec-textInput-input-radius);
+        padding: var(--compSpec-textInput-input-spacing-vertical) var(--compSpec-textInput-input-spacing-horizontal);
+        outline: var(--compSpec-textInput-input-size-outline);
+        color: var(--compSpec-textInput-input-color-text);
+        background-color: var(--compSpec-textInput-input-color-bg-resting);
         transition: var(--semantic-transition-standard);
+        caret-color: var(--compSpec-textInput-input-color-caret);
     
         &::placeholder, &:-ms-input-placeholder, &::-ms-input-placeholder {
-            color: var(--mn-baseColor-neutral-700);
+            color: var(--compSpec-textInput-input-color-text-placeholder);
             opacity: 1; 
         }
     
         //this is the filled state
         &:not(:placeholder-shown) {
-            background-color: var(--mn-baseColor-neutral-100);
-            border-color: var(--mn-baseColor-neutral-900);
+            background-color: var(--compSpec-textInput-input-color-bg-filled);
+            border-color: var(--compSpec-textInput-input-color-border-filled);
         } 
         
         &:active, &:focus {
-            background-color: var(--mn-baseColor-neutral-100) !important;
-            border-color: var(--mn-baseColor-neutral-900) !important;
+            background-color: var(--compSpec-textInput-input-color-bg-focus) !important;
+            border-color: var(--compSpec-textInput-input-color-border-focus) !important;
             
             &.error-state{
-                border-color: var(--mn-baseColor-red-700) !important;
-                outline-color: var(--mn-baseColor-red-700) !important;
+                background-color: var(--compSpec-textInput-input-color-bg-focus-error) !important;
+                border-color: var(--compSpec-textInput-input-color-border-focus-error) !important;
+                outline-color: var(--compSpec-textInput-input-color-outline-error) !important;
             }
         }
     
         &:hover{
-            background-color: var(--mn-baseColor-teal-100);
-            border-color: var(--mn-baseColor-teal-800);
+            background-color: var(--compSpec-textInput-input-color-bg-hover);
+            border-color: var(--compSpec-textInput-input-color-border-hover);
     
             &.error-state{
-                background-color: var(--mn-baseColor-red-100);
+                background-color: var(--compSpec-textInput-input-color-bg-hover-error);
+                border-color: var(--compSpec-textInput-input-color-border-hover-error);
             }
         }
     
         &.error-state {
-            outline: 1px var(--mn-baseColor-red-600) solid;
-            border-color: var(--mn-baseColor-red-600);
+            outline: var(--compSpec-textInput-input-size-outline-error) var(--compSpec-textInput-input-color-outline-error) solid;
+            border-color: var(--compSpec-textInput-input-size-border-error);
         }
     }
 }
