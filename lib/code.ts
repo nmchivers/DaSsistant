@@ -12,26 +12,53 @@ figma.showUI(__html__, {themeColors: true, width: 640, height: 917 });
 // Calls to "parent.postMessage" from within the HTML page will trigger this
 // callback. The callback will be passed the "pluginMessage" property of the
 // posted message.
-figma.ui.onmessage =  (msg: {type: string, count: number}) => {
+figma.ui.onmessage =  async (msg) => {
   // One way of distinguishing between different types of messages sent from
   // your HTML page is to use an object with a "type" property like this.
-  if (msg.type === 'create-shapes') {
-    // This plugin creates rectangles on the screen.
-    const numberOfRectangles = msg.count;
+  // if (msg.type === 'create-shapes') {
+  //   // This plugin creates rectangles on the screen.
+  //   const numberOfRectangles = msg.count;
 
-    const nodes: SceneNode[] = [];
-    for (let i = 0; i < numberOfRectangles; i++) {
-      const rect = figma.createRectangle();
-      rect.x = i * 150;
-      rect.fills = [{ type: 'SOLID', color: { r: 1, g: 0.5, b: 0 } }];
-      figma.currentPage.appendChild(rect);
-      nodes.push(rect);
+  //   const nodes: SceneNode[] = [];
+  //   for (let i = 0; i < numberOfRectangles; i++) {
+  //     const rect = figma.createRectangle();
+  //     rect.x = i * 150;
+  //     rect.fills = [{ type: 'SOLID', color: { r: 1, g: 0.5, b: 0 } }];
+  //     figma.currentPage.appendChild(rect);
+  //     nodes.push(rect);
+  //   }
+  //   figma.currentPage.selection = nodes;
+  //   figma.viewport.scrollAndZoomIntoView(nodes);
+  // }
+
+  if (msg.type === 'save-api-key') {
+    try {
+      await figma.clientStorage.setAsync('oaiApiKey', msg.apiKey);
+      const saved = await figma.clientStorage.getAsync('oaiApiKey');
+      console.log("Saved key:", saved);
+    } catch (err) {
+      console.error("Storage error:", err);
     }
-    figma.currentPage.selection = nodes;
-    figma.viewport.scrollAndZoomIntoView(nodes);
+    
   }
 
   // Make sure to close the plugin when you're done. Otherwise the plugin will
   // keep running, which shows the cancel button at the bottom of the screen.
-  figma.closePlugin();
+  
+  if (msg.type === 'close') {
+    figma.closePlugin();
+  }
 };
+
+(async () => {
+  //for testing clear the api key on open - remove before publishing.
+  await figma.clientStorage.setAsync('oaiApiKey', "");
+
+  const savedKey = await figma.clientStorage.getAsync('oaiApiKey');
+  // Send the saved key to the UI after loading
+  figma.ui.postMessage({
+    type: 'load-api-key',
+    apiKey: savedKey || '',
+  });
+  console.log("saved key: " + savedKey)
+})();

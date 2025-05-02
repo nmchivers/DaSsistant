@@ -11,9 +11,10 @@ interface Props {
     isLoading: boolean,
     setIsLoading: React.Dispatch<React.SetStateAction<boolean>>,
     setConvo: React.Dispatch<React.SetStateAction<ChatMessage[]>>,
+    apiKey: string,
 }
 
-export default function questionInput({isLoading, setIsLoading, setConvo}:Props) {
+export default function questionInput({isLoading, setIsLoading, setConvo, apiKey}:Props) {
     const [question, setQuestion] = useState("");
     const [lastResponseID, setLastResponseID] = useState(String);
     const [context, setContext] = useState<string>("accessibility")
@@ -44,7 +45,7 @@ export default function questionInput({isLoading, setIsLoading, setConvo}:Props)
         //make the request to opanai in a try/catch/finally block
         try {
             //make the request to open ai
-          const response = await getAccessibilityResponses(question,lastResponseID,context);
+          const response = await getAccessibilityResponses(question,lastResponseID,context,apiKey);
     
           //set the last response id from the open ai response
           setLastResponseID(response.id);

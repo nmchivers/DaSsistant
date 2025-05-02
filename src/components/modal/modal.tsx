@@ -10,19 +10,18 @@ interface Props {
     description?: string;
     children: ReactNode;
     modalState: string | 'open' | 'close';
+    isClosingState: boolean;
     setModalState: React.Dispatch<StateUpdater<string>>;
 }
 
-export default function Modal({title, description = "", children, modalState, setModalState}:Props) {
-    const [isClosing, setIsClosing] = useState(false);
-
-    
+export default function Modal({title, description = "", children, modalState, isClosingState, setModalState}:Props) {
+    const [isClosing, setIsClosing] = useState(isClosingState);
 
     function handleClose() {
         setIsClosing(true);
 
         setTimeout(() => {
-            setIsClosing(false); // Reset so next time it opens it's clean
+            setIsClosing(false);
             setModalState("close");
         }, 1000);
     }
@@ -32,7 +31,7 @@ export default function Modal({title, description = "", children, modalState, se
           <>
             <div className="modal-scrim-container">
               {/* <div className="scrim"></div> */}
-              <div className={"modal" + (isClosing ? " closing" : "")}>
+              <div className={"modal" + (isClosing || isClosingState ? " closing" : "")}>
                 <Button
                   text="Close modal"
                   iconOnly

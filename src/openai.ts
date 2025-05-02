@@ -2,12 +2,13 @@ import OpenAI from 'openai';
 
 
 
-export async function getAccessibilityResponses(question: string, lastResponseID: string, context: string) {
+export async function getAccessibilityResponses(question: string, lastResponseID: string, context: string, apiKey: string) {
     //get the key from the .env file
-    const oaiKey = import.meta.env.VITE_DASSISTANT_OAI_DKEY;
+    //const oaiKey = import.meta.env.VITE_DASSISTANT_OAI_DKEY;
     //create an opening with open ai
     const openai = new OpenAI({
-        apiKey: oaiKey,
+        //apiKey: oaiKey,
+        apiKey: apiKey,
         dangerouslyAllowBrowser: true,
     });
     //check the context and set the instructions
@@ -24,6 +25,7 @@ export async function getAccessibilityResponses(question: string, lastResponseID
         instructions: instructions,
         input: question,
         user: "Dev-NC",
+        store: true,
         previous_response_id: lastResponseID !== "undefined" ? lastResponseID : null,
     });  
     
