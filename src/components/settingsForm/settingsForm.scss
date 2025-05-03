@@ -1,18 +1,28 @@
 @use '../../variables' as *;
 
 :root {
-
+    --apiKey-test-button-container-color-bg: var(--mn-baseColor-neutral-100);
+    --apiKey-test-success-icon-color-icon: var(--mn-baseColor-green-700);
 }
 
 .figma-dark body,
 body.dark-mode {
-
+    --apiKey-test-button-container-color-bg: var(--mn-baseColor-neutral-900);
+    --apiKey-test-success-icon-color-icon: var(--mn-baseColor-green-300);
 }
 
 .settings-form-container{
     display: flex;
     flex-flow: column;
     margin-top: 24px;
+
+    & .button-group{
+        display: flex;
+        flex-flow: row;
+        flex-wrap: nowrap;
+        gap: 16px;
+        margin-top: 32px;
+    }
 }
 
 .api-key-input-miniform{
@@ -24,19 +34,12 @@ body.dark-mode {
     }
 
     & .api-key-test-button-container {
-        margin-top: 56px;
-        margin-left: -64px;
-        background-color: var(--mn-baseColor-neutral-100);
-        border-radius: 16px;
-    }
-
-    & .api-key-test-button-container {
         align-self: flex-start;
         margin-top: 56px;
         margin-left: -67px;
-        background-color: var(--mn-baseColor-neutral-100);
+        background-color: var(--apiKey-test-button-container-color-bg);
         border-radius: 16px;
-        outline: 1px var(--mn-baseColor-neutral-100) solid;
+        outline: 1px var(--apiKey-test-button-container-color-bg) solid;
     }
 
     & .api-key-test-successIcon-container{
@@ -46,11 +49,14 @@ body.dark-mode {
         padding-right: 12px;
         
         & svg{
-            fill: var(--mn-baseColor-green-700);
+            fill: var(--apiKey-test-success-icon-color-icon);
         }
     }
 }
 
-.api-key-input input[type=text]{
+.api-key-input:not(.success) input[type=text]{
     padding-right: 80px;
+}
+.api-key-input.success input[type=text]{
+    padding-right: 52px;
 }

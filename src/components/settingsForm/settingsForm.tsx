@@ -14,7 +14,6 @@ interface Props {
 }
 
 export default function SettingsForm({closeFunction, apiKey, setApiKey}:Props) {
-    //const [apiKey, setApiKey] = useState("");
     const [modelList, setModelList] = useState<{id: string}[]>([]);
     const [isValidKey, setIsValidKey] = useState(true);
     const [isLoadingTest, setIsLoadingTest] = useState(false);
@@ -48,8 +47,6 @@ export default function SettingsForm({closeFunction, apiKey, setApiKey}:Props) {
     async function handleSubmit(event: FormEvent<HTMLFormElement>) {
         event.preventDefault();
         setIsSaving(true);
-        //localStorage.setItem('oaiApiKey', apiKey);
-        //console.log(localStorage.getItem('oaiApiKey'));
         parent.postMessage(
             {
               pluginMessage: {
@@ -59,12 +56,6 @@ export default function SettingsForm({closeFunction, apiKey, setApiKey}:Props) {
             },
             '*'
           );
-        // try {
-        //     await figma.clientStorage.setAsync('oaiApiKey', apiKey);
-        //     console.log(await figma.clientStorage.getAsync('oaiApiKey'));
-        // } catch (error) {
-        //     console.log(error)
-        // }
         setIsSaving(false);
         closeFunction();
     }
@@ -100,7 +91,7 @@ export default function SettingsForm({closeFunction, apiKey, setApiKey}:Props) {
                 isRequired
                 isInvalid={!isValidKey}
                 errorMessage="Please provide a valid Open AI API Key."
-                addClasses="api-key-input"
+                addClasses={modelList.length > 0 ? "api-key-input success" : "api-key-input"}
             />
             {modelList.length < 1 ? (
                 <div className="api-key-test-button-container">
@@ -120,7 +111,7 @@ export default function SettingsForm({closeFunction, apiKey, setApiKey}:Props) {
                 )}
             </div>
 
-            <div className=''>
+            <div className='button-group'>
                 <Button text='Save Settings' variant='filled' type='submit' isLoading={isSaving} />
                 <Button text='Cancel' variant='outline' type='button' onClick={() => handleCancel()} />
             </div>
