@@ -5,10 +5,10 @@ import SettingsForm from "../settingsForm/settingsForm";
 interface Props {
     apiKey: string;
     setApiKey: Dispatch<StateUpdater<string>>;
+    setShowSettingsModal: Dispatch<StateUpdater<boolean>>;
 }
 
-export default function SettingsFormModal({apiKey, setApiKey}:Props) {
-    const [settingsModalState, setSettingsModalState] = useState<string>("open");
+export default function SettingsFormModal({apiKey, setApiKey, setShowSettingsModal}:Props) {
     const [isClosing, setIsClosing] = useState(false);
 
     function handleClose() {
@@ -16,7 +16,7 @@ export default function SettingsFormModal({apiKey, setApiKey}:Props) {
 
         setTimeout(() => {
             setIsClosing(false);
-            setSettingsModalState("close");
+            setShowSettingsModal(false);
         }, 1000);
     }
 
@@ -25,9 +25,8 @@ export default function SettingsFormModal({apiKey, setApiKey}:Props) {
             title="Settings"
             description="Calibrate MechaNick to get up and running!"
             children={<SettingsForm closeFunction={handleClose} apiKey={apiKey} setApiKey={setApiKey}/>}
-            modalState={settingsModalState}
             isClosingState={isClosing}
-            setModalState={setSettingsModalState}
+            closeFunction={handleClose}
         />
     );
 }

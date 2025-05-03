@@ -1,0 +1,69 @@
+@use '../../variables' as *;
+
+:root{
+    --compSpec-appHeader-color-bg-start: var(--mn-baseColor-neutral-100);
+    --compSpec-appHeader-color-bg-inConvo: #FDFDFDCC;
+    --compSpec-appHeader-headline-color-text: var(--mn-baseColor-neutral-900);
+    --compSpec-appHeader-spacing-padding-horizontal: var(--mn-baseSize-0250);
+    --compSpec-appHeader-spacing-padding-vertical-bottom: var(--mn-baseSize-0050);
+    --compSpec-appHeader-spacing-padding-vertical-top-start: var(--mn-baseSize-0200);
+    --compSpec-appHeader-spacing-padding-vertical-top-inConvo: var(--mn-baseSize-0050);
+    --compSpec-appHeader-headlineBadge-margin-vertical-top: var(--mn-baseSize-0100);
+    --compSpec-appHeader-headlineBadge-gap-vertical: var(--mn-baseSize-0100);
+}
+
+.figma-dark body, body.dark-mode{
+    --compSpec-appHeader-color-bg-start: var(--mn-baseColor-neutral-900);
+    --compSpec-appHeader-color-bg-inConvo: #0F1C0DCC;
+    --compSpec-appHeader-headline-color-text: var(--mn-baseColor-neutral-100);
+}
+
+.app-header{
+    position: sticky;
+    top: 0;
+    left: 0;
+    z-index: 900;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    padding-left: var(--compSpec-appHeader-spacing-padding-horizontal);
+    padding-right: var(--compSpec-appHeader-spacing-padding-horizontal);
+    padding-bottom: var(--compSpec-appHeader-spacing-padding-vertical-bottom);
+    transition: var(--semantic-transition-standard);
+    margin: -24px -16px 0px;
+
+    &:not(.convo-started){
+        padding-top: var(--compSpec-appHeader-spacing-padding-vertical-top-start);
+        background-color: var(--compSpec-appHeader-color-bg-start);
+
+        & h1{
+            @include headline-large;
+            margin: unset;
+        }
+    }
+    &.convo-started{
+        padding-top: var(--compSpec-appHeader-spacing-padding-vertical-top-inConvo);
+        background-color: var(--compSpec-appHeader-color-bg-inConvo);
+        backdrop-filter: blur(12px);
+        
+        & h1{
+            @include headline-small;
+            margin: unset;
+        }
+    }
+
+    & .headline-badge-container {
+        display: flex;
+        flex-flow: column nowrap;
+        margin-top: var(--compSpec-appHeader-headlineBadge-margin-vertical-top);
+        gap: var(--compSpec-appHeader-headlineBadge-gap-vertical);
+
+        & h1 {
+            color: var(--compSpec-appHeader-headline-color-text);
+        }
+    }
+
+    & .header-button{
+        align-self: flex-start;
+    }
+}

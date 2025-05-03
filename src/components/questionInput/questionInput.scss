@@ -108,6 +108,10 @@
         transition: all .35s ease-out;
         cursor: text;
 
+        color: var(--compSpec-question-input-color-text-filled);
+        &::placeholder{
+            color: var(--compSpec-question-input-color-text-placeholder);
+        }
         background-color: var(--compSpec-question-input-color-bg);
         border: var(--compSpec-question-input-border);
         outline: var(--compSpec-question-input-outline);

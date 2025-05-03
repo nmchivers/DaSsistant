@@ -4,16 +4,15 @@ import { ChatMessage } from './models/ChatMessage';
 import Typeography from './components/typeography/typography';
 import BotIntro from './components/botIntro/botIntro';
 import Conversation from './components/conversation/conversastion';
-import Tag from './components/tag/tag';
 import QuestionInput from './components/questionInput/questionInput';
 import SettingsFormModal from './components/modals/settingsFormModal';
+import AppHeader from './components/appHeader/appHeader';
 // import Modal from './components/modal/modal';
 // import SettingsForm from './components/settingsForm/settingsForm';
 
 export function App() {
   const [apiKey, setApiKey] = useState('');
-  const [apiAvailableOnStartUp, setApiAvailableOnStartUp] = useState(false);
-  //let apiAvailableOnStartUp = false;
+  const [showSettingsModal, setShowSettingsModal] = useState(false);
   //Create the loading variable for tracking loading state
   const [isLoading, setIsLoading] = useState<boolean>(false);
   //create an array of chat message to track the convo.
@@ -27,7 +26,9 @@ export function App() {
       if (msg.type === 'load-api-key') {
         setApiKey(msg.apiKey);
         if (msg.apiKey !== '') {
-          setApiAvailableOnStartUp(true);
+          setShowSettingsModal(false);
+        } else {
+          setShowSettingsModal(true);
         }
       }
     };
@@ -36,14 +37,7 @@ export function App() {
     
   return (
     <>
-      <div className="starting-header">
-        <Tag copy={"Powered by Open.AI"} />
-        <Typeography
-          copy="MechaNick v0.1"
-          style="headline.xlarge"
-          tagType="h1"
-        />
-      </div>
+      <AppHeader botName='MechaNick' version='v0.1' convoStarted={convo.length > 0} openSettingsModalFunction={setShowSettingsModal}/>
       <Conversation convo={convo} isLoading={isLoading} />
       <div className={"footer"}>
         {convo.length < 1 ? (
@@ -71,8 +65,7 @@ export function App() {
           />
         </div>
       </div>
-      {/* <SettingsFormModal apiKey={apiKey} setApiKey={setApiKey} /> */}
-      {apiAvailableOnStartUp ? <></> : <SettingsFormModal apiKey={apiKey} setApiKey={setApiKey} />}
+      {showSettingsModal ? <SettingsFormModal apiKey={apiKey} setApiKey={setApiKey} setShowSettingsModal={setShowSettingsModal} /> : <></>}
     </>
   );
 }
