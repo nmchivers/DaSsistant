@@ -18,19 +18,20 @@ export default function SettingsForm({closeFunction, apiKey, setApiKey}:Props) {
     const [isValidKey, setIsValidKey] = useState(true);
     const [isLoadingTest, setIsLoadingTest] = useState(false);
     const [isSaving, setIsSaving] = useState(false);
+    const [localApiKey, setLocalApiKey] = useState(apiKey);
 
     function handleInputChange(event: ChangeEvent<HTMLInputElement>) {
         const target = event.target as HTMLInputElement;
-        setApiKey(target.value);
+        setLocalApiKey(target.value);
     }
 
     async function handleTest(){
         setIsLoadingTest(true);
-        if (apiKey == "") {
+        if (localApiKey == "") {
             setIsValidKey(false);
         }
         try {
-            const modelList = await getModels(apiKey);
+            const modelList = await getModels(localApiKey);
             setModelList(modelList);
             if (modelList.length < 1) {
                 setIsValidKey(false);
@@ -47,11 +48,12 @@ export default function SettingsForm({closeFunction, apiKey, setApiKey}:Props) {
     async function handleSubmit(event: FormEvent<HTMLFormElement>) {
         event.preventDefault();
         setIsSaving(true);
+        setApiKey(localApiKey);
         parent.postMessage(
             {
               pluginMessage: {
                 type: 'save-api-key',
-                apiKey: apiKey,
+                apiKey: localApiKey,
               },
             },
             '*'
@@ -70,7 +72,7 @@ export default function SettingsForm({closeFunction, apiKey, setApiKey}:Props) {
             <div className="api-key-input-miniform">
             <TextInput
                 id="api-key"
-                value={apiKey}
+                value={localApiKey}
                 onChange={handleInputChange}
                 placeholder="sk-###..."
                 label="OpenAI API Key"
@@ -99,7 +101,7 @@ export default function SettingsForm({closeFunction, apiKey, setApiKey}:Props) {
                     text="Test"
                     variant="outline"
                     onClick={handleTest}
-                    disabled={apiKey == ""}
+                    disabled={localApiKey == ""}
                     addClasses="api-key-test-button"
                     isLoading={isLoadingTest}
                     />

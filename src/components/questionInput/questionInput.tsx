@@ -8,13 +8,14 @@ import { getAccessibilityResponses } from '../../openai';
 // import ContextSwitch from '../contextSwitch/contextSwitch';
 
 interface Props {
-    isLoading: boolean,
+    isDisabled: boolean,
+    setIsDisabled: React.Dispatch<React.SetStateAction<boolean>>,
     setIsLoading: React.Dispatch<React.SetStateAction<boolean>>,
     setConvo: React.Dispatch<React.SetStateAction<ChatMessage[]>>,
     apiKey: string,
 }
 
-export default function questionInput({isLoading, setIsLoading, setConvo, apiKey}:Props) {
+export default function questionInput({ isDisabled, setIsDisabled, setIsLoading, setConvo, apiKey}:Props) {
     const [question, setQuestion] = useState("");
     const [lastResponseID, setLastResponseID] = useState(String);
     const [context, setContext] = useState<string>("accessibility")
@@ -39,8 +40,9 @@ export default function questionInput({isLoading, setIsLoading, setConvo, apiKey
         //clear the input
         setQuestion("");
         
-        //set the loading state to true
+        //set the loading state and disabled state to true
         setIsLoading(true);
+        setIsDisabled(true);
     
         //make the request to opanai in a try/catch/finally block
         try {
@@ -61,6 +63,7 @@ export default function questionInput({isLoading, setIsLoading, setConvo, apiKey
         } finally {
           //set the loading state back to false while the 
           setIsLoading(false);
+          setIsDisabled(false);
         }
       }
     
@@ -75,12 +78,12 @@ export default function questionInput({isLoading, setIsLoading, setConvo, apiKey
             value={question}
             onChange={handleOnChange}
             placeholder={"What's on your mind?"}
-            disabled={isLoading}
+            disabled={isDisabled}
           />
         </div>
         <div className="question-controls-container">
-            {/* <ContextSwitch context={context} setContext={setContext} isToggle={false}/> */}
-            <Button text='Ask MechaNick' variant='filled' onClick={handleRequest} disabled={isLoading || question === ""} iconOnly icon='sendQuestion'/>
+            {/* <ContextSwitch context={context} setContext={setContext} isToggle={false}/> */}<div></div>
+            <Button text='Ask MechaNick' variant='filled' onClick={handleRequest} disabled={isDisabled || question === ""} iconOnly icon='sendQuestion'/>
         </div>
       </div>
     );

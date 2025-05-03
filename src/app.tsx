@@ -15,6 +15,8 @@ export function App() {
   const [showSettingsModal, setShowSettingsModal] = useState(false);
   //Create the loading variable for tracking loading state
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  //Create the disabled variable for tracking if the question should be disabled
+  const [isDisabled, setIsDisabled] = useState<boolean>(false);
   //create an array of chat message to track the convo.
   const chatMessages:ChatMessage[] = [];
   const [convo, setConvo] = useState(chatMessages);
@@ -29,10 +31,20 @@ export function App() {
           setShowSettingsModal(false);
         } else {
           setShowSettingsModal(true);
+          setIsDisabled(true);
         }
       }
     };
   }, []);
+
+  //disable the question input if the api key is missing
+  useEffect(() => {
+    if (apiKey == '') {
+      setIsDisabled(true);
+    } else {
+      setIsDisabled(false);
+    }
+  }, [apiKey]);
 
     
   return (
@@ -51,8 +63,9 @@ export function App() {
         <div className="footer-content">
           <QuestionInput
             setConvo={setConvo}
-            isLoading={isLoading}
+            isDisabled={isDisabled}
             setIsLoading={setIsLoading}
+            setIsDisabled={setIsDisabled}
             apiKey={apiKey}
           />
           <Typeography

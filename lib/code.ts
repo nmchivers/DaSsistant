@@ -52,7 +52,7 @@ figma.ui.onmessage =  async (msg) => {
 
 (async () => {
   //for testing clear the api key on open - remove before publishing.
-  //await figma.clientStorage.setAsync('oaiApiKey', "");
+  await figma.clientStorage.setAsync('oaiApiKey', "");
 
   const savedKey = await figma.clientStorage.getAsync('oaiApiKey');
   // Send the saved key to the UI after loading
