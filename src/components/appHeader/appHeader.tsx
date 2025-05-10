@@ -7,7 +7,7 @@ interface Props {
     botName: string;
     version: string;
     convoStarted: boolean;
-    openSettingsModalFunction: Dispatch<StateUpdater<boolean>>
+    openSettingsModalFunction: Dispatch<StateUpdater<boolean>>;
 }
 
 export default function AppHeader({botName, version, convoStarted, openSettingsModalFunction}:Props) {

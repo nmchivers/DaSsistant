@@ -1,5 +1,15 @@
 @use '../../variables' as *;
 
+:root {
+    --compSpec-message-assistant-color-bg: var(--mn-baseColor-teal-100);
+    --compSpec-message-assistant-image-size-width: var(--mn-baseSize-0400);
+    --compSpec-message-assistant-image-size-height: var(--mn-baseSize-0400);
+}
+
+.figma-dark body, body.dark-mode{
+    --compSpec-message-assistant-color-bg: var(--mn-baseColor-teal-900);
+}
+
 .conversation {
     display: flex;
     flex-flow: column;
@@ -9,4 +19,42 @@
 
     //TO-DO: Refactor this into a variable
     flex-grow: 1;
+}
+
+.bot-thinking-message{
+    background-color: var(--compSpec-message-assistant-color-bg);
+    //padding: 8px 36px;
+    padding: 8px 16px;
+    border-radius: 20px;
+    align-self: flex-start;
+    transition-property: opacity, translate;
+    transition-duration: 400ms;
+    transition-timing-function: ease-out;
+
+    @starting-style{
+        opacity: 0;
+        translate: 0 48px;
+    }
+
+    &::before{
+        //put something here to make the shimmer effect!
+    }
+}
+.bot-image{
+    height: 32px;
+    width: 32px;
+    min-height: 32px;
+    min-width: 32px;
+    border-radius: 16px;
+    margin-top: -20px;
+    background: var(--compSpec-bot-image);
+    background-size: contain;
+    transition-property: opacity, translate;
+    transition-duration: 400ms;
+    transition-timing-function: ease-out;
+
+    @starting-style{
+        opacity: 0;
+        translate: 0 48px;
+    }
 }

@@ -7,6 +7,7 @@ import Conversation from './components/conversation/conversastion';
 import QuestionInput from './components/questionInput/questionInput';
 import SettingsFormModal from './components/modals/settingsFormModal';
 import AppHeader from './components/appHeader/appHeader';
+import Loader from './components/loader/loader';
 // import Modal from './components/modal/modal';
 // import SettingsForm from './components/settingsForm/settingsForm';
 
@@ -16,7 +17,8 @@ export function App() {
   //Create the loading variable for tracking loading state
   const [isLoading, setIsLoading] = useState<boolean>(false);
   //Create the disabled variable for tracking if the question should be disabled
-  const [isDisabled, setIsDisabled] = useState<boolean>(false);
+  const [isQIDisabled, setIsQIDisabled] = useState<boolean>(false);
+  const [isDSEnabled, setIsDSEnabled] = useState<boolean>(false);
   //create an array of chat message to track the convo.
   const chatMessages:ChatMessage[] = [];
   const [convo, setConvo] = useState(chatMessages);
@@ -31,7 +33,7 @@ export function App() {
           setShowSettingsModal(false);
         } else {
           setShowSettingsModal(true);
-          setIsDisabled(true);
+          setIsQIDisabled(true);
         }
       }
     };
@@ -40,9 +42,9 @@ export function App() {
   //disable the question input if the api key is missing
   useEffect(() => {
     if (apiKey == '') {
-      setIsDisabled(true);
+      setIsQIDisabled(true);
     } else {
-      setIsDisabled(false);
+      setIsQIDisabled(false);
     }
   }, [apiKey]);
 
@@ -54,7 +56,7 @@ export function App() {
       <div className={"footer"}>
         {convo.length < 1 ? (
           <div className="bot-intro-container">
-            <BotIntro />
+            <BotIntro isDSEnabled={isDSEnabled} openSettingsModalFunction={setShowSettingsModal} variant={apiKey == '' ? "no-key" : "has-key"} />
           </div>
         ) : (
           <></>
@@ -63,9 +65,9 @@ export function App() {
         <div className="footer-content">
           <QuestionInput
             setConvo={setConvo}
-            isDisabled={isDisabled}
+            isDisabled={isQIDisabled}
             setIsLoading={setIsLoading}
-            setIsDisabled={setIsDisabled}
+            setIsDisabled={setIsQIDisabled}
             apiKey={apiKey}
           />
           <Typeography

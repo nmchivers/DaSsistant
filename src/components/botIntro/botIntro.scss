@@ -29,6 +29,10 @@
     flex-flow: row;
     flex-wrap: nowrap;
 
+    &.no-key{
+        border-bottom-left-radius: var(--compSpec-botIntro-container-radius-right);
+    }
+
     & .text-group{
         color: var(--compSpec-botIntro-container-color-text);
         padding-top: var(--compSpec-botIntro-textGroup-padding-vertical);
@@ -38,11 +42,27 @@
         display: flex;
         flex-flow: column;
         gap: var(--compSpec-botIntro-textGroup-gap);
+
+        & .requirements{
+            margin-top: 4px;
+            margin-bottom: 12px;
+            
+            & ul{
+                margin: unset;
+            }
+        }
+
+        & .button-group {
+            margin-bottom: 12px;;
+        }
     }
 
     & .image{
         height: var(--compSpec-botIntro-image-size-height);
         width: var(--compSpec-botIntro-image-size-width);
+        min-height: var(--compSpec-botIntro-image-size-height);
+        min-width: var(--compSpec-botIntro-image-size-width);
         border-radius: var(--compSpec-botIntro-image-radius);
+        background: var(--compSpec-bot-image);
     }
 }
