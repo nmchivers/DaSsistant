@@ -7,17 +7,19 @@ import Conversation from './components/conversation/conversastion';
 import QuestionInput from './components/questionInput/questionInput';
 import SettingsFormModal from './components/modals/settingsFormModal';
 import AppHeader from './components/appHeader/appHeader';
-import Loader from './components/loader/loader';
+// import Loader from './components/loader/loader';
 // import Modal from './components/modal/modal';
 // import SettingsForm from './components/settingsForm/settingsForm';
 
 export function App() {
   const [apiKey, setApiKey] = useState('');
+  const [userName, setUserName] = useState('anonymous');
   const [showSettingsModal, setShowSettingsModal] = useState(false);
   //Create the loading variable for tracking loading state
   const [isLoading, setIsLoading] = useState<boolean>(false);
   //Create the disabled variable for tracking if the question should be disabled
   const [isQIDisabled, setIsQIDisabled] = useState<boolean>(false);
+  const [dsLink, setDSLink] = useState('');
   const [isDSEnabled, setIsDSEnabled] = useState<boolean>(false);
   //create an array of chat message to track the convo.
   const chatMessages:ChatMessage[] = [];
@@ -27,7 +29,7 @@ export function App() {
   useEffect(() => {
     window.onmessage = (event) => {
       const msg = event.data.pluginMessage;
-      if (msg.type === 'load-api-key') {
+      if (msg.type === 'load-saved-data') {
         setApiKey(msg.apiKey);
         if (msg.apiKey !== '') {
           setShowSettingsModal(false);
@@ -35,6 +37,8 @@ export function App() {
           setShowSettingsModal(true);
           setIsQIDisabled(true);
         }
+        setUserName(msg.userName);
+        setDSLink(msg.dsLink);
       }
     };
   }, []);
@@ -47,6 +51,15 @@ export function App() {
       setIsQIDisabled(false);
     }
   }, [apiKey]);
+
+  //Keep track of whether a DS Link has been provided and toggle on or off DS availability accordingly
+  useEffect(() => {
+    if (dsLink == '') {
+      setIsDSEnabled(false);
+    } else {
+      setIsDSEnabled(true);
+    }
+  }, [dsLink]);
 
     
   return (
@@ -80,7 +93,7 @@ export function App() {
           />
         </div>
       </div>
-      {showSettingsModal ? <SettingsFormModal apiKey={apiKey} setApiKey={setApiKey} setShowSettingsModal={setShowSettingsModal} /> : <></>}
+      {showSettingsModal ? <SettingsFormModal apiKey={apiKey} setApiKey={setApiKey} setShowSettingsModal={setShowSettingsModal} setDSLink={setDSLink} /> : <></>}
     </>
   );
 }

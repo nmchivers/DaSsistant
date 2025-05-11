@@ -11,6 +11,7 @@ interface Props {
     closeFunction: () => void;
     apiKey: string;
     setApiKey: Dispatch<StateUpdater<string>>;
+    setDSLink: Dispatch<StateUpdater<string>>;
 }
 
 export default function SettingsForm({closeFunction, apiKey, setApiKey}:Props) {
@@ -25,41 +26,56 @@ export default function SettingsForm({closeFunction, apiKey, setApiKey}:Props) {
         setLocalApiKey(target.value);
     }
 
+    async function testKey(): Promise<boolean> {
+        //return false if the key is empty or cannot pull the list of models from OpenAI
+        if (localApiKey == "") {
+            return false;
+        } else {
+            try {
+                const modelList = await getModels(localApiKey);
+                setModelList(modelList);
+                if (modelList.length < 1) {
+                    return false;
+                } else {
+                    return true;
+                }
+            } catch (error) {
+                return false;
+            }
+        }
+    }
+
     async function handleTest(){
         setIsLoadingTest(true);
-        if (localApiKey == "") {
-            setIsValidKey(false);
-        }
-        try {
-            const modelList = await getModels(localApiKey);
-            setModelList(modelList);
-            if (modelList.length < 1) {
-                setIsValidKey(false);
-                setIsLoadingTest(false);
-            } else {
-                setIsValidKey(true);
-                setIsLoadingTest(false);
-            }
-        } catch (error) {
-            setIsValidKey(false);
-        }
+        setIsValidKey(await testKey());
+        setIsLoadingTest(false);
     }
 
     async function handleSubmit(event: FormEvent<HTMLFormElement>) {
         event.preventDefault();
         setIsSaving(true);
-        setApiKey(localApiKey);
-        parent.postMessage(
-            {
-              pluginMessage: {
-                type: 'save-api-key',
-                apiKey: localApiKey,
-              },
-            },
-            '*'
-          );
-        setIsSaving(false);
-        closeFunction();
+        setIsLoadingTest(true);
+        const keyIsValid = await testKey();
+        //await handleTest();
+        if (keyIsValid) {
+            setApiKey(localApiKey);
+            parent.postMessage(
+                {
+                pluginMessage: {
+                    type: 'save-api-key',
+                    apiKey: localApiKey,
+                    //add more here when model and DS Link are ready but match code.ts
+                },
+                },
+                '*'
+            );
+            setIsSaving(false);
+            closeFunction();
+        } else {
+            setIsValidKey(keyIsValid);
+            setIsSaving(false);
+            setIsLoadingTest(false);
+        }
     }
 
     function handleCancel() {
@@ -95,6 +111,7 @@ export default function SettingsForm({closeFunction, apiKey, setApiKey}:Props) {
                 errorMessage="Please provide a valid Open AI API Key."
                 addClasses={modelList.length > 0 ? "api-key-input success" : "api-key-input"}
             />
+            {/* Need to improve this to handle changing the key and then retesting. */}
             {modelList.length < 1 ? (
                 <div className="api-key-test-button-container">
                     <Button

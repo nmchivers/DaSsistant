@@ -30,16 +30,40 @@
     transition-property: opacity, translate;
     transition-duration: 400ms;
     transition-timing-function: ease-out;
+    position: relative;
+    overflow: hidden;
 
     @starting-style{
         opacity: 0;
         translate: 0 48px;
     }
 
+    &::before, &::after{
+        content: '';
+        width: 20px;
+        height: 40px;
+        transform: rotate(-30deg);
+        position: absolute;
+        left: -40px;
+        top: 0;
+        background-color: var(--mn-baseColor-teal-100);
+        filter: blur(4px);
+    }
+    
     &::before{
-        //put something here to make the shimmer effect!
+        animation: shimmer 1600ms ease-out 200ms infinite;
     }
 }
+@keyframes shimmer {
+    0% {
+        transform: translateX(0) rotate(-30deg);
+    }
+    100% {
+        transform: translateX(260px) rotate(-30deg);
+    }
+}
+
+
 .bot-image{
     height: 32px;
     width: 32px;

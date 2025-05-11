@@ -10,7 +10,6 @@ interface Props {
 }
 
 export default function Conversation({convo, isLoading}:Props) {
-    isLoading = true;
     return (
       <div className="conversation">
         {convo.map((message) => (
@@ -21,14 +20,13 @@ export default function Conversation({convo, isLoading}:Props) {
           <>
             <div className="bot-thinking-message">
                 <Typeography copy={"Let me think about that."} style='body.medium' color='default'/>
-              {/* <Loader size="large" /> */}
             </div>
             {/* <div className="bot-image"></div> */}
           </>
         ) : (
           <></>
         )}
-        {convo.find((message) => message.role == "assistant") !== null ? <div className="bot-image"></div> : (isLoading ? <div className="bot-image"></div> : <></>)}
+        {convo.find((message) => message.role == "assistant") !== undefined ? <div className="bot-image"></div> : (isLoading == true ? <div className="bot-image"></div> : <></>)}
       </div>
     );
     

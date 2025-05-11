@@ -31,34 +31,57 @@ figma.ui.onmessage =  async (msg) => {
   //   figma.viewport.scrollAndZoomIntoView(nodes);
   // }
 
+  //This saves the api key from the settings form
   if (msg.type === 'save-api-key') {
     try {
       await figma.clientStorage.setAsync('oaiApiKey', msg.apiKey);
-      const saved = await figma.clientStorage.getAsync('oaiApiKey');
-      console.log("Saved key:", saved);
+      
+      //The below is just used for testing.
+      //const saved = await figma.clientStorage.getAsync('oaiApiKey');
+      //console.log("Saved key:", saved);
     } catch (err) {
       console.error("Storage error:", err);
     }
-    
   }
-
-  // Make sure to close the plugin when you're done. Otherwise the plugin will
-  // keep running, which shows the cancel button at the bottom of the screen.
+  //This saves the DS Link from the settings form
+  if (msg.type === 'save-ds-link') {
+    try {
+      await figma.clientStorage.setAsync('dsLink', msg.dsLink);
+      
+      //The below is just used for testing.
+      //const saved = await figma.clientStorage.getAsync('oaiApiKey');
+      //console.log("Saved key:", saved);
+    } catch (err) {
+      console.error("Storage error:", err);
+    }
+  }
+  //To-Do: Add a save-model section here to save the selected model from the settings form.
   
+  //This closes the plugin - Not currently used.
   if (msg.type === 'close') {
     figma.closePlugin();
   }
 };
 
+//this gets the api key, userName, and DS link when the plugin starts up.
+//To-D-: Add the saved model to the information returned.
 (async () => {
   //for testing clear the api key on open - remove before publishing.
   await figma.clientStorage.setAsync('oaiApiKey', "");
 
+  //Get the variables saved in Figma
   const savedKey = await figma.clientStorage.getAsync('oaiApiKey');
+  const savedDSLink = await figma.clientStorage.getAsync('dsLink');
+  const userName = (figma.currentUser !== null ? figma.currentUser.name : 'Anonymous');
+
   // Send the saved key to the UI after loading
   figma.ui.postMessage({
-    type: 'load-api-key',
+    type: 'load-saved-data',
     apiKey: savedKey || '',
+    dsLink: savedDSLink || '',
+    user: userName,
   });
-  console.log("saved key: " + savedKey)
+  console.log("saved key: " + savedKey);
+  console.log("saved ds link: " + savedDSLink);
+  console.log("user name: " + userName);
 })();
