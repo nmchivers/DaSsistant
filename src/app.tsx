@@ -53,6 +53,15 @@ export function App() {
     <>
       <AppHeader botName='MechaNick' version='v0.1' convoStarted={convo.length > 0} openSettingsModalFunction={setShowSettingsModal}/>
       <Conversation convo={convo} isLoading={isLoading} />
+      <div className="test-900"></div>
+      <div className="test-800"></div>
+      <div className="test-700"></div>
+      <div className="test-600"></div>
+      <div className="test-500"></div>
+      <div className="test-400"></div>
+      <div className="test-300"></div>
+      <div className="test-200"></div>
+      <div className="test-100"></div>
       <div className={"footer"}>
         {convo.length < 1 ? (
           <div className="bot-intro-container">

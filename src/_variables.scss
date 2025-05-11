@@ -1,6 +1,24 @@
 @use 'sass:color';
 
 :root {
+    --mn-baseColor-primary: #216B51;
+    //--mn-baseColor-primary: #D7E9D6;
+    //--mn-baseColor-primary: #4A4AF4;
+    //--mn-baseColor-primary: #E30062;
+    //--mn-baseColor-primary: #428682;
+
+
+    --mn-baseColor-primary-900: oklch(from var(--mn-baseColor-primary) 26.26% c h);
+    --mn-baseColor-primary-800: oklch(from var(--mn-baseColor-primary) 34.45% c h);
+    --mn-baseColor-primary-700: oklch(from var(--mn-baseColor-primary) 42.65% c h);
+    --mn-baseColor-primary-600: oklch(from var(--mn-baseColor-primary) 50.84% c h);
+    --mn-baseColor-primary-500: oklch(from var(--mn-baseColor-primary) 59.03% calc(c * .98) h);
+    --mn-baseColor-primary-400: oklch(from var(--mn-baseColor-primary) 67.23% calc(c * .84) h);
+    --mn-baseColor-primary-300: oklch(from var(--mn-baseColor-primary) 75.42% calc(c * .69) h);
+    --mn-baseColor-primary-200: oklch(from var(--mn-baseColor-primary) 83.61% calc(c * .52) h);
+    --mn-baseColor-primary-100: oklch(from var(--mn-baseColor-primary) 91.81% calc(c * .31) h);
+
+
     --mn-baseColor-teal-900: #1A3432;
     --mn-baseColor-teal-800: #244B48;
     --mn-baseColor-teal-700: #37716D;
