@@ -55,23 +55,96 @@
 
     & p, & span, & li {
         @include body-medium;
+
+        &:not(:first-child){
+            margin-top: 8px;
+            margin-bottom: unset;
+        }
+        &:first-child{
+            margin: unset;
+        }
     }
     & p strong, & span strong, & li strong {
         @include body-medium-highImp;
     }
+
+    & ol, & ul{
+        &:not(:first-child){
+            margin-top: 8px;
+            margin-bottom: unset;
+        }
+        &:first-child{
+            margin: unset;
+        }
+    }
+
     & h1{
-        @include headline-xlarge;
+        @include headline-medium;
+        
+        &:not(:first-child){
+            margin-top: 24px;
+            margin-bottom: unset;
+        }
+        &:first-child{
+            margin: unset;
+        }
     }
     & h2{
-        @include headline-large;
+        @include headline-small;
+        
+        &:not(:first-child){
+            margin-top: 24px;
+            margin-bottom: unset;
+        }
+        &:first-child{
+            margin: unset;
+        }
     }
     & h3{
-        @include headline-medium;
+        //@include headline-medium;
+        font-family: var(--mn-baseType-fontFamily-default), sans-serif;
+        font-size: var(--mn-baseType-size-headline-xsmall);
+        line-height: var(--mn-baseType-lineHeight-headline-xsmall);
+        font-weight: var(--mn-baseType-weight-highImp);
+
+        &:not(:first-child){
+            margin-top: 24px;
+            margin-bottom: unset;
+        }
+        &:first-child{
+            margin: unset;
+        }
     }
     & h4{
-        @include headline-small;
+        font-family: var(--mn-baseType-fontFamily-default), sans-serif;
+        font-size: 22px;
+        line-height: 28px;
+        font-weight: var(--mn-baseType-weight-highImp);
+        
+        &:not(:first-child){
+            margin-top: 24px;
+            margin-bottom: unset;
+        }
+        &:first-child{
+            margin: unset;
+        }
     }
     & h5{
-        @include headline-xsmall;
+        font-family: var(--mn-baseType-fontFamily-default), sans-serif;
+        font-size: 20px;
+        line-height: 26px;
+        font-weight: var(--mn-baseType-weight-highImp);
+        
+        &:not(:first-child){
+            margin-top: 24px;
+            margin-bottom: unset;
+        }
+        &:first-child{
+            margin: unset;
+        }
+    }
+    & hr{
+        margin-top: 24px;
+        margin-bottom: unset;
     }
 }
