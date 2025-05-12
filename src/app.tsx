@@ -7,6 +7,7 @@ import Conversation from './components/conversation/conversastion';
 import QuestionInput from './components/questionInput/questionInput';
 import SettingsFormModal from './components/modals/settingsFormModal';
 import AppHeader from './components/appHeader/appHeader';
+import Footer from './components/footer/footer';
 // import Loader from './components/loader/loader';
 // import Modal from './components/modal/modal';
 // import SettingsForm from './components/settingsForm/settingsForm';
@@ -85,14 +86,7 @@ export function App() {
             apiKey={apiKey}
             user={userName}
           />
-          <Typeography
-            copy={
-              "MechaNick can make mistakes. Always double check information."
-            }
-            style="body.small"
-            color="supplementary"
-            classes={"footnote-centered"}
-          />
+          <Footer />
         </div>
       </div>
       {showSettingsModal ? <SettingsFormModal apiKey={apiKey} setApiKey={setApiKey} setShowSettingsModal={setShowSettingsModal} setDSLink={setDSLink} /> : <></>}

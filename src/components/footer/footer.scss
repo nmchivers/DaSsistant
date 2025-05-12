@@ -1,0 +1,49 @@
+@use '../../variables' as *;
+
+.footer-text {
+    &-container {
+        display: flex;
+        flex-flow: column;
+        gap: 8px;
+        height: 20px;
+        overflow: hidden;
+    }
+    &-one{
+        text-align: center;
+        animation: text-one-movement 5s ease-out 2.5s infinite alternate;
+    }
+    &-two{
+        text-align: center;
+        animation: text-two-movement 5s ease-out 2.5s infinite alternate;
+    }
+}
+
+@keyframes text-one-movement {
+    0%{
+        transform: scale(1) translateY(0px);
+    }
+    45%{
+        transform: scale(1) translateY(0px);
+    }
+    55%{
+        transform: scale(.8) translateY(28px);
+    }
+    100%{
+        transform: scale(.8) translateY(28px);
+    }
+}
+
+@keyframes text-two-movement {
+    0%{
+        transform: scale(.8) translateY(0px);
+    }
+    45%{
+        transform: scale(.8) translateY(0px);
+    }
+    55%{
+        transform: scale(1) translateY(-28px);
+    }
+    100%{
+        transform: scale(1) translateY(-28px);
+    }
+}
