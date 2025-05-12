@@ -9,15 +9,15 @@ import { getAccessibilityResponses } from '../../openai';
 
 interface Props {
     isDisabled: boolean,
+    convo: ChatMessage[],
     setIsDisabled: React.Dispatch<React.SetStateAction<boolean>>,
     setIsLoading: React.Dispatch<React.SetStateAction<boolean>>,
     setConvo: React.Dispatch<React.SetStateAction<ChatMessage[]>>,
     apiKey: string,
 }
 
-export default function questionInput({ isDisabled, setIsDisabled, setIsLoading, setConvo, apiKey}:Props) {
+export default function questionInput({ isDisabled, convo, setIsDisabled, setIsLoading, setConvo, apiKey}:Props) {
     const [question, setQuestion] = useState("");
-    const [lastResponseID, setLastResponseID] = useState(String);
     const [context, setContext] = useState<string>("accessibility")
 
     function handleOnChange(e: React.ChangeEvent<HTMLTextAreaElement>) {
@@ -47,10 +47,7 @@ export default function questionInput({ isDisabled, setIsDisabled, setIsLoading,
         //make the request to opanai in a try/catch/finally block
         try {
             //make the request to open ai
-          const response = await getAccessibilityResponses(question,lastResponseID,context,apiKey);
-    
-          //set the last response id from the open ai response
-          setLastResponseID(response.id);
+          const response = await getAccessibilityResponses([...convo, newUserMessage],context,apiKey,"NC-Dev");
     
           //add the response from open ai to the set of chats.
           setConvo(prev => [...prev, {id: uuidv4(), role:"assistant", content:response.output_text, responseId:response.id, timestamp:  new Date().toLocaleString()}]);

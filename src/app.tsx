@@ -78,6 +78,7 @@ export function App() {
         <div className="footer-content">
           <QuestionInput
             setConvo={setConvo}
+            convo={convo}
             isDisabled={isQIDisabled}
             setIsLoading={setIsLoading}
             setIsDisabled={setIsQIDisabled}
