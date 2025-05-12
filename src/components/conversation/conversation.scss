@@ -4,10 +4,12 @@
     --compSpec-message-assistant-color-bg: var(--mn-baseColor-teal-100);
     --compSpec-message-assistant-image-size-width: var(--mn-baseSize-0400);
     --compSpec-message-assistant-image-size-height: var(--mn-baseSize-0400);
+    --compSpec-message-assistant-thinkingShimmer-color-bg: var(--mn-baseColor-teal-100);
 }
 
 .figma-dark body, body.dark-mode{
     --compSpec-message-assistant-color-bg: var(--mn-baseColor-teal-900);
+    --compSpec-message-assistant-thinkingShimmer-color-bg: var(--mn-baseColor-teal-900);
 }
 
 .conversation {
@@ -38,15 +40,15 @@
         translate: 0 48px;
     }
 
-    &::before, &::after{
+    &::before{
         content: '';
-        width: 20px;
+        width: 16px;
         height: 40px;
         transform: rotate(-30deg);
         position: absolute;
         left: -40px;
         top: 0;
-        background-color: var(--mn-baseColor-teal-100);
+        background-color: var(--compSpec-message-assistant-thinkingShimmer-color-bg);
         filter: blur(4px);
     }
     
