@@ -83,6 +83,7 @@ export function App() {
             setIsLoading={setIsLoading}
             setIsDisabled={setIsQIDisabled}
             apiKey={apiKey}
+            user={userName}
           />
           <Typeography
             copy={
