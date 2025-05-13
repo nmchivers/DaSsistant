@@ -21,22 +21,13 @@
 .modal-scrim-container{
     width: 100vw;
     height: 100vh;
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     display: flex;
     flex-flow: column;
     z-index: 1000;
     justify-content: center;
-    // transition-property: opacity;
-    // transition-duration: 400ms;
-    // transition-timing-function: ease-out;
-    // opacity: 1;
-
-    // &:has(.closing) {
-    //     transition-delay: 400ms;
-    //     opacity: 0;
-    // }
 }
 
 .scrim {

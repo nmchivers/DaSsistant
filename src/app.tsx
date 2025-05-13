@@ -62,6 +62,22 @@ export function App() {
     }
   }, [dsLink]);
 
+  // Lock scroll when modal is open
+  useEffect(() => {
+    // When modal opens, prevent body scrolling
+    if (showSettingsModal) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      // When it closes, restore scroll
+      document.body.style.overflow = '';
+    }
+
+    // Cleanup in case component unmounts while modal is open
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [showSettingsModal]);
+
     
   return (
     <>
