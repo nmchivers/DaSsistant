@@ -17,7 +17,7 @@ interface Props {
     user: string,
 }
 
-export default function questionInput({ isDisabled, convo, setIsDisabled, setIsLoading, setConvo, apiKey, user}:Props) {
+export default function QuestionInput({ isDisabled, convo, setIsDisabled, setIsLoading, setConvo, apiKey, user}:Props) {
     const [question, setQuestion] = useState("");
     const [context, setContext] = useState<string>("accessibility")
 
