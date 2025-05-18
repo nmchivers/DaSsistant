@@ -1,0 +1,268 @@
+@use '../../variables' as *;
+
+:root{
+    --compSpec-dropDown-label-color-text: var(--mn-color-neutral-0900);
+    --compSpec-dropDown-label-color-text-error: var(--mn-color-red-0600);
+    --compSpec-dropDown-label-optional-color-text: var(--mn-color-neutral-0700);
+    --compSpec-dropDown-description-color-text: var(--mn-color-neutral-0700);
+    --compSpec-dropDown-label-container-spacing-gap-vertical: var(--mn-baseSize-0050);
+    --compSpec-dropDown-label-container-spacing-margin-vertical-bottom: var(--mn-baseSize-0100);
+    --compSpec-dropDown-labelOptional-spacing-gap-horizontal: var(--mn-baseSize-0100);
+    --compSpec-dropDown-errorMessage-color-text: var(--mn-color-red-0600);
+    --compSpec-dropDown-errorMessage-spacing-margin-vertical-top: var(--mn-baseSize-0100);
+    --compSpec-dropDown-input-color-bg-resting: var(--mn-color-neutral-0100);
+    --compSpec-dropDown-input-color-bg-hover: var(--mn-color-primary-0100);
+    --compSpec-dropDown-input-color-bg-focus: var(--mn-color-neutral-0100);
+    --compSpec-dropDown-input-color-bg-active: var(--mn-color-neutral-0100);
+    --compSpec-dropDown-input-color-bg-filled: var(--mn-color-neutral-0100);
+    --compSpec-dropDown-input-color-bg-disabled: var(--mn-color-neutral-0200);
+    --compSpec-dropDown-input-color-bg-resting-error: var(--mn-color-neutral-0100);
+    --compSpec-dropDown-input-color-bg-hover-error: var(--mn-color-red-0100);
+    --compSpec-dropDown-input-color-bg-focus-error: var(--mn-color-neutral-0100);
+    --compSpec-dropDown-input-color-bg-active-error: var(--mn-color-neutral-0100);
+    --compSpec-dropDown-input-color-bg-filled-error: var(--mn-color-neutral-0100);
+    --compSpec-dropDown-input-color-text-placeholder: var(--mn-color-neutral-0700);
+    --compSpec-dropDown-input-color-text-placeholder-disabled: var(--mn-color-neutral-0500);
+    --compSpec-dropDown-input-color-text: var(--mn-color-neutral-0900);
+    --compSpec-dropDown-input-color-text-disabled: var(--mn-color-neutral-0500);
+    --compSpec-dropDown-input-color-border-resting: var(--mn-color-neutral-0600);
+    --compSpec-dropDown-input-color-border-hover: var(--mn-color-primary-0800);
+    --compSpec-dropDown-input-color-border-focus: var(--mn-color-primary-0800);
+    --compSpec-dropDown-input-color-border-active: var(--mn-color-primary-0800);
+    --compSpec-dropDown-input-color-border-filled: var(--mn-color-neutral-0900);
+    --compSpec-dropDown-input-color-border-disabled: var(--mn-color-neutral-0400);
+    --compSpec-dropDown-input-color-border-resting-error: var(--mn-color-red-0600);
+    --compSpec-dropDown-input-color-border-hover-error: var(--mn-color-red-0600);
+    --compSpec-dropDown-input-color-border-focus-error: var(--mn-color-red-0600);
+    --compSpec-dropDown-input-color-border-active-error: var(--mn-color-red-0600);
+    --compSpec-dropDown-input-color-border-filled-error: var(--mn-color-red-0600);
+    --compSpec-dropDown-input-color-outline: var(--mn-color-transparent);
+    --compSpec-dropDown-input-color-outline-error: var(--mn-color-red-0600);
+    --compSpec-dropDown-input-color-caret: var(--mn-color-primary-0700);
+    --compSpec-dropDown-input-size-border: var(--mn-baseSize-0013);
+    --compSpec-dropDown-input-size-border-error: var(--mn-baseSize-0025);
+    --compSpec-dropDown-input-size-outline: var(--mn-baseSize-0000);
+    --compSpec-dropDown-input-size-outline-error: var(--mn-baseSize-0013);
+    --compSpec-dropDown-input-spacing-y: var(--mn-baseSize-0150);
+    --compSpec-dropDown-input-spacing-x: var(--mn-baseSize-0200);
+    --compSpec-dropDown-input-spacing-gap: var(--mn-baseSize-0100);
+    --compSpec-dropDown-input-radius: var(--mn-baseSize-0200);
+    --compSpec-dropDown-chevron-size: var(--mn-baseSize-0225);
+    --compSpec-dropDown-chevron-color-icon-resting: var(--mn-color-neutral-0600);
+    --compSpec-dropDown-chevron-color-icon-hover: var(--mn-color-primary-0800);
+    --compSpec-dropDown-chevron-color-icon-focus: var(--mn-color-primary-0800);
+    --compSpec-dropDown-chevron-color-icon-active: var(--mn-color-primary-0800);
+    --compSpec-dropDown-chevron-color-icon-filled: var(--mn-color-neutral-0900);
+    --compSpec-dropDown-chevron-color-icon-disabled: var(--mn-color-neutral-0400);
+
+    --compSpec-dropDown-option-notSelected-color-bg-resting: var(--mn-color-transparent);
+    --compSpec-dropDown-option-notSelected-color-bg-hover: var(--mn-color-primary-0200);
+    --compSpec-dropDown-option-notSelected-color-bg-focus: var(--mn-color-primary-0200);
+    --compSpec-dropDown-option-notSelected-color-bg-active: var(--mn-color-primary-0100);
+    --compSpec-dropDown-option-selected-color-bg-resting: var(--mn-color-primary-0100);
+    --compSpec-dropDown-option-selected-color-bg-hover: var(--mn-color-primary-0200);
+    --compSpec-dropDown-option-selected-color-bg-focus: var(--mn-color-primary-0200);
+    --compSpec-dropDown-option-selected-color-bg-active: var(--mn-color-transparent);
+    --compSpec-dropDown-option-indicator-color-bg: var(--mn-color-primary-0300);
+    --compSpec-dropDown-option-notSelected-color-text-resting: var(--semantic-color-text-default);
+    --compSpec-dropDown-option-notSelected-color-text-hover: var(--semantic-color-text-default);
+    --compSpec-dropDown-option-notSelected-color-text-focus: var(--semantic-color-text-default);
+    --compSpec-dropDown-option-notSelected-color-text-active: var(--semantic-color-text-default);
+    --compSpec-dropDown-option-selected-color-text-resting: var(--semantic-color-text-default);
+    --compSpec-dropDown-option-selected-color-text-hover: var(--semantic-color-text-default);
+    --compSpec-dropDown-option-selected-color-text-focus: var(--semantic-color-text-default);
+    --compSpec-dropDown-option-selected-color-text-active: var(--semantic-color-text-default);
+    --compSpec-dropDown-option-color-divider: var(--mn-color-neutral-0300);
+    --compSpec-dropDown-optionList-color-bg: var(--mn-color-neutral-0100);
+    --compSpec-dropDown-optionList-radius: var(--mn-baseSize-0200);
+    --compSpec-dropDown-option-size-divider: var(--mn-baseSize-0013);
+    --compSpec-dropDown-option-indicator-selected-size-width: var(--mn-baseSize-0050);
+    --compSpec-dropDown-option-indicator-notSelected-size-width: var(--mn-baseSize-0000);
+    --compSpec-dropDown-option-indicator-size-height: var(--mn-baseSize-0600);
+    --compSpec-dropDown-option-indicator-container-width: var(--mn-baseSize-0000);
+    --compSpec-dropDown-option-spacing-padding-x: var(--mn-baseSize-0200);
+    --compSpec-dropDown-option-spacing-padding-y: var(--mn-baseSize-0150);
+}
+
+.figma-dark body,
+body.dark-mode {
+    --compSpec-dropDown-label-color-text: var(--mn-color-neutral-0100);
+    --compSpec-dropDown-label-color-text-error: var(--mn-color-red-0300);
+    --compSpec-dropDown-label-optional-color-text: var(--mn-color-neutral-0300);
+    --compSpec-dropDown-description-color-text: var(--mn-color-neutral-0300);
+
+    --compSpec-dropDown-errorMessage-color-text: var(--mn-color-red-0300);
+
+    --compSpec-dropDown-input-color-bg-resting: var(--mn-color-neutral-0900);
+    --compSpec-dropDown-input-color-bg-hover: var(--mn-color-primary-0900);
+    --compSpec-dropDown-input-color-bg-focus: var(--mn-color-neutral-0900);
+    --compSpec-dropDown-input-color-bg-active: var(--mn-color-neutral-0900);
+    --compSpec-dropDown-input-color-bg-filled: var(--mn-color-neutral-0900);
+    --compSpec-dropDown-input-color-bg-disabled: var(--mn-color-neutral-0800);
+    --compSpec-dropDown-input-color-bg-resting-error: var(--mn-color-neutral-0900);
+    --compSpec-dropDown-input-color-bg-hover-error: var(--mn-color-red-0900);
+    --compSpec-dropDown-input-color-bg-focus-error: var(--mn-color-neutral-0900);
+    --compSpec-dropDown-input-color-bg-active-error: var(--mn-color-neutral-0900);
+    --compSpec-dropDown-input-color-bg-filled-error: var(--mn-color-neutral-0900);
+    --compSpec-dropDown-input-color-text-placeholder: var(--mn-color-neutral-0300);
+    --compSpec-dropDown-input-color-text-placeholder-disabled: var(--mn-color-neutral-0500);
+    --compSpec-dropDown-input-color-text: var(--mn-color-neutral-0100);
+    --compSpec-dropDown-input-color-text-disabled: var(--mn-color-neutral-0500);
+    --compSpec-dropDown-input-color-border-resting: var(--mn-color-neutral-0200);
+    --compSpec-dropDown-input-color-border-hover: var(--mn-color-primary-0200);
+    --compSpec-dropDown-input-color-border-focus: var(--mn-color-primary-0200);
+    --compSpec-dropDown-input-color-border-active: var(--mn-color-primary-0200);
+    --compSpec-dropDown-input-color-border-filled: var(--mn-color-neutral-0100);
+    --compSpec-dropDown-input-color-border-disabled: var(--mn-color-neutral-0600);
+    --compSpec-dropDown-input-color-border-resting-error: var(--mn-color-red-0300);
+    --compSpec-dropDown-input-color-border-hover-error: var(--mn-color-red-0300);
+    --compSpec-dropDown-input-color-border-focus-error: var(--mn-color-red-0300);
+    --compSpec-dropDown-input-color-border-active-error: var(--mn-color-red-0300);
+    --compSpec-dropDown-input-color-border-filled-error: var(--mn-color-red-0300);
+
+    --compSpec-dropDown-input-color-outline-error: var(--mn-color-red-0300);
+    --compSpec-dropDown-input-color-caret: var(--mn-color-primary-0300);
+
+    --compSpec-dropDown-chevron-color-icon-resting: var(--mn-color-neutral-0200);
+    --compSpec-dropDown-chevron-color-icon-hover: var(--mn-color-primary-0200);
+    --compSpec-dropDown-chevron-color-icon-focus: var(--mn-color-primary-0200);
+    --compSpec-dropDown-chevron-color-icon-active: var(--mn-color-primary-0200);
+    --compSpec-dropDown-chevron-color-icon-filled: var(--mn-color-neutral-0100);
+    --compSpec-dropDown-chevron-color-icon-disabled: var(--mn-color-neutral-0600);
+
+    --compSpec-dropDown-option-notSelected-color-bg-resting: var(--mn-color-transparent);
+    --compSpec-dropDown-option-notSelected-color-bg-hover: var(--mn-color-primary-0800);
+    --compSpec-dropDown-option-notSelected-color-bg-focus: var(--mn-color-primary-0800);
+    --compSpec-dropDown-option-notSelected-color-bg-active: var(--mn-color-primary-0900);
+    --compSpec-dropDown-option-selected-color-bg-resting: var(--mn-color-primary-0900);
+    --compSpec-dropDown-option-selected-color-bg-hover: var(--mn-color-primary-0800);
+    --compSpec-dropDown-option-selected-color-bg-focus: var(--mn-color-primary-0800);
+    --compSpec-dropDown-option-selected-color-bg-active: var(--mn-color-transparent);
+    --compSpec-dropDown-option-indicator-color-bg: var(--mn-color-primary-0700);
+    --compSpec-dropDown-option-notSelected-color-text-resting: var(--semantic-color-text-default);
+    --compSpec-dropDown-option-notSelected-color-text-hover: var(--semantic-color-text-default);
+    --compSpec-dropDown-option-notSelected-color-text-focus: var(--semantic-color-text-default);
+    --compSpec-dropDown-option-notSelected-color-text-active: var(--semantic-color-text-default);
+    --compSpec-dropDown-option-selected-color-text-resting: var(--semantic-color-text-default);
+    --compSpec-dropDown-option-selected-color-text-hover: var(--semantic-color-text-default);
+    --compSpec-dropDown-option-selected-color-text-focus: var(--semantic-color-text-default);
+    --compSpec-dropDown-option-selected-color-text-active: var(--semantic-color-text-default);
+    --compSpec-dropDown-option-color-divider: var(--mn-color-neutral-0700);
+    --compSpec-dropDown-optionList-color-bg: var(--mn-color-neutral-0900);
+}
+
+.input-dropdown-container{
+    display: flex;
+    flex-flow: column nowrap;
+
+    .input-dropdown-label-container{
+        display: flex;
+        flex-flow: column nowrap;
+        gap: var(--compSpec-dropDown-label-container-spacing-gap-vertical);
+        margin-bottom: var(--compSpec-dropDown-label-container-spacing-margin-vertical-bottom);
+    }
+
+    & .input-dropdown-label {
+        @include body-medium-highImp;
+        color: var(--compSpec-dropDown-label-color-text);
+
+        & > span {
+            @include body-small;
+            color: var(--compSpec-dropDown-label-optional-color-text);
+            padding-left: var(--compSpec-dropDown-labelOptional-spacing-gap-horizontal);
+        }
+    
+        &.error {
+            color: var(--compSpec-dropDown-label-color-text-error);
+        }
+    }
+
+    & .input-dropdown-description {
+        @include body-small;
+        color: var(--compSpec-dropDown-description-color-text);
+    }
+
+    & .input-dropdown-errormessage{
+        @include body-small;
+        margin-top: var(--compSpec-dropDown-errorMessage-spacing-margin-vertical-top);
+        color: var(--compSpec-dropDown-errorMessage-color-text);
+        transition: var(--semantic-transition-standard);
+        opacity: 0;
+        display: none;
+    
+        &.error{
+            display: block;
+            opacity: 1;
+        }
+    }
+
+    .input-dropdown {
+        position: relative;
+        display: flex;
+        flex-flow: row nowrap;
+        gap: var(--compSpec-dropDown-input-spacing-gap);
+        align-items: center;
+        padding: var(--compSpec-dropDown-input-spacing-y) var(--compSpec-dropDown-input-spacing-x);
+        background: var(--compSpec-dropDown-input-color-bg-resting);
+        border-style: solid;
+        border-width: var(--compSpec-dropDown-input-size-border);
+        border-color: var(--compSpec-dropDown-input-color-border-resting);
+        border-radius: var(--compSpec-dropDown-input-radius);
+        cursor: pointer;
+
+        //this needs to be specified to the test string
+        &-placeholder{
+            @include body-medium();
+            color: var(--compSpec-dropDown-input-color-text-placeholder);
+            flex-grow: 1;
+        }
+
+        &-selected{
+            @include body-medium();
+            color: var(--compSpec-dropDown-input-color-text);
+            flex-grow: 1;
+        }
+
+        &-chevron{
+            width: var(--compSpec-dropDown-chevron-size);
+            height: var(--compSpec-dropDown-chevron-size);
+            fill: var(--compSpec-dropDown-chevron-color-icon-resting);
+        }
+
+        & .input-dropdown-options {
+            display: none;
+            position: absolute;
+            top: calc(100% + 4px);
+            left: 0;
+            width: 100%;
+            margin: 0;
+            padding: 4px 0;
+            list-style: none;
+            background: #fff;
+            border: 2px solid #CEE2DE;
+            border-radius: 12px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+            max-height: 200px;
+            overflow-y: auto;
+            z-index: 10;
+          }
+        &.open .input-dropdown-options {
+            display: block;
+          }
+      }
+      
+      /* Show when open */
+      .input-dropdown-select.open .input-dropdown-options {
+        display: block;
+      }
+      
+      /* Option rows */
+      .input-dropdown-options li {
+        padding: 8px 16px;
+        cursor: pointer;
+      }
+      .input-dropdown-options li:hover,
+      .input-dropdown-options li.focused {
+        background: #F2F7F5;
+      }
+}

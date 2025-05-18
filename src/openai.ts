@@ -3,7 +3,7 @@ import { ChatMessage } from './models/ChatMessage';
 
 
 
-export async function getAccessibilityResponses(convo: ChatMessage[], context: string, apiKey: string, user: string, dsLink?: string) {
+export async function getAccessibilityResponses(convo: ChatMessage[], context: string, apiKey: string, apiModel:string, user: string, dsLink?: string) {
     //create an opening with open ai
     const openai = new OpenAI({
         apiKey: apiKey,
@@ -23,7 +23,7 @@ export async function getAccessibilityResponses(convo: ChatMessage[], context: s
 
     //make the call with the info from the user and the last response id
     const response = await openai.responses.create({
-        model: "gpt-4.1-mini",
+        model: apiModel,
         instructions: instructions,
         input: newConvo,
         user: user,

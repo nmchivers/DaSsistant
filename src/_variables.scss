@@ -1,97 +1,101 @@
 @use 'sass:color';
 
 :root {
-    --mn-baseColor-teal-900: #1A3432;
-    --mn-baseColor-teal-800: #244B48;
-    --mn-baseColor-teal-700: #37716D;
-    --mn-baseColor-teal-600: #428682;
-    --mn-baseColor-teal-500: #499590;
-    --mn-baseColor-teal-400: #5FA29D;
-    --mn-baseColor-teal-300: #80B5B1;
-    --mn-baseColor-teal-200: #BFDAD8;
-    --mn-baseColor-teal-100: #DBEAE9;
+    --base-color: oklch(from #428682 l c h);
 
-    --mn-baseColor-neutral-900: #0F1C0D;
-    --mn-baseColor-neutral-800: #2C2F2C;
-    --mn-baseColor-neutral-700: #50524F;
-    --mn-baseColor-neutral-600: #6C6D6B;
-    --mn-baseColor-neutral-500: #8A8B8A;
-    --mn-baseColor-neutral-400: #A7AAA7;
-    --mn-baseColor-neutral-300: #C4C5C3;
-    --mn-baseColor-neutral-200: #E7E8E7;
-    --mn-baseColor-neutral-100: #FDFDFD;
+    --mn-color-primary-0950: oklch(from var(--base-color) 0.2216 calc(c * 1) h);
+    --mn-color-primary-0900: oklch(from var(--base-color) 0.2626 calc(c * 1) h);
+    --mn-color-primary-0850: oklch(from var(--base-color) 0.3036 calc(c * 1) h);
+    --mn-color-primary-0800: oklch(from var(--base-color) 0.3445 calc(c * 1) h);
+    --mn-color-primary-0750: oklch(from var(--base-color) 0.3855 calc(c * 1) h);
+    --mn-color-primary-0700: oklch(from var(--base-color) 0.4265 calc(c * 1) h);
+    --mn-color-primary-0650: oklch(from var(--base-color) 0.4674 calc(c * 1) h);
+    --mn-color-primary-0600: oklch(from var(--base-color) 0.5084 calc(c * 1) h);
+    --mn-color-primary-0550: oklch(from var(--base-color) 0.5494 calc(c * 1) h);
+    --mn-color-primary-0500: oklch(from var(--base-color) 0.5903 calc(c * 0.9775) h);
+    --mn-color-primary-0450: oklch(from var(--base-color) 0.6313 calc(c * 0.913825) h);
+    --mn-color-primary-0400: oklch(from var(--base-color) 0.6723 calc(c * 0.8448) h);
+    --mn-color-primary-0350: oklch(from var(--base-color) 0.7132 calc(c * 0.770425) h);
+    --mn-color-primary-0300: oklch(from var(--base-color) 0.7542 calc(c * 0.6907) h);
+    --mn-color-primary-0250: oklch(from var(--base-color) 0.7952 calc(c * 0.605625) h);
+    --mn-color-primary-0200: oklch(from var(--base-color) 0.8361 calc(c * 0.5152) h);
+    --mn-color-primary-0150: oklch(from var(--base-color) 0.8771 calc(c * 0.419425) h);
+    --mn-color-primary-0100: oklch(from var(--base-color) 0.9181 calc(c * 0.3183) h);
+    --mn-color-primary-0050: oklch(from var(--base-color) 0.959 calc(c * 0.211825) h);
 
-    // --mn-baseColor-neutral-900: #0F1C0D;
-    // --mn-baseColor-neutral-800: #273325;
-    // --mn-baseColor-neutral-700: #4B5549;
-    // --mn-baseColor-neutral-600: #687067;
-    // --mn-baseColor-neutral-500: #878D86;
-    // --mn-baseColor-neutral-400: #A6ABA5;
-    // --mn-baseColor-neutral-300: #C3C6C2;
-    // --mn-baseColor-neutral-200: #E7E8E7;
-    // --mn-baseColor-neutral-100: #FDFDFD;
+    --mn-color-neutral-1000: oklch(from var(--base-color) 0.1807 calc(c * 0.4378) h);
+    --mn-color-neutral-0950: oklch(from var(--base-color) 0.2216 calc(c * 0.3588) h);
+    --mn-color-neutral-0900: oklch(from var(--base-color) 0.2626 calc(c * 0.294) h);
+    --mn-color-neutral-0850: oklch(from var(--base-color) 0.3036 calc(c * 0.241) h);
+    --mn-color-neutral-0800: oklch(from var(--base-color) 0.3445 calc(c * 0.1975) h);
+    --mn-color-neutral-0750: oklch(from var(--base-color) 0.3855 calc(c * 0.1619) h);
+    --mn-color-neutral-0700: oklch(from var(--base-color) 0.4265 calc(c * 0.1326) h);
+    --mn-color-neutral-0650: oklch(from var(--base-color) 0.4674 calc(c * 0.1087) h);
+    --mn-color-neutral-0600: oklch(from var(--base-color) 0.5084 calc(c * 0.0891) h);
+    --mn-color-neutral-0550: oklch(from var(--base-color) 0.5494 calc(c * 0.073) h);
+    --mn-color-neutral-0500: oklch(from var(--base-color) 0.5903 calc(c * 0.0598) h);
+    --mn-color-neutral-0450: oklch(from var(--base-color) 0.6313 calc(c * 0.049) h);
+    --mn-color-neutral-0400: oklch(from var(--base-color) 0.6723 calc(c * 0.0402) h);
+    --mn-color-neutral-0350: oklch(from var(--base-color) 0.7132 calc(c * 0.0329) h);
+    --mn-color-neutral-0300: oklch(from var(--base-color) 0.7542 calc(c * 0.027) h);
+    --mn-color-neutral-0250: oklch(from var(--base-color) 0.7952 calc(c * 0.0221) h);
+    --mn-color-neutral-0200: oklch(from var(--base-color) 0.8361 calc(c * 0.0181) h);
+    --mn-color-neutral-0150: oklch(from var(--base-color) 0.8771 calc(c * 0.0149) h);
+    --mn-color-neutral-0100: oklch(from var(--base-color) 0.9181 calc(c * 0.0122) h);
+    --mn-color-neutral-0050: oklch(from var(--base-color) 0.959 calc(c * 0.01) h);
+    --mn-color-neutral-0000: oklch(from var(--base-color) 1 calc(c * 0.0082) h);
 
-    --mn-baseColor-red-900: #4D0021;
-    --mn-baseColor-red-800: #800037;
-    --mn-baseColor-red-700: #BF0052;
-    --mn-baseColor-red-600: #E30062;
-    --mn-baseColor-red-500: #FF006E;
-    --mn-baseColor-red-400: #FF2684;
-    --mn-baseColor-red-300: #FF59A1;
-    --mn-baseColor-red-200: #FFA6CC;
-    --mn-baseColor-red-100: #FFCCE2;
+    --mn-color-green-0950: oklch(from var(--base-color) 0.2216 calc(c * 1) 140.92);
+    --mn-color-green-0900: oklch(from var(--base-color) 0.2626 calc(c * 1) 140.92);
+    --mn-color-green-0850: oklch(from var(--base-color) 0.3036 calc(c * 1) 140.92);
+    --mn-color-green-0800: oklch(from var(--base-color) 0.3445 calc(c * 1) 140.92);
+    --mn-color-green-0750: oklch(from var(--base-color) 0.3855 calc(c * 1) 140.92);
+    --mn-color-green-0700: oklch(from var(--base-color) 0.4265 calc(c * 1) 140.92);
+    --mn-color-green-0650: oklch(from var(--base-color) 0.4674 calc(c * 1) 140.92);
+    --mn-color-green-0600: oklch(from var(--base-color) 0.5084 calc(c * 1) 140.92);
+    --mn-color-green-0550: oklch(from var(--base-color) 0.5494 calc(c * 1) 140.92);
+    --mn-color-green-0500: oklch(from var(--base-color) 0.5903 calc(c * 0.9775) 140.92);
+    --mn-color-green-0450: oklch(from var(--base-color) 0.6313 calc(c * 0.913825) 140.92);
+    --mn-color-green-0400: oklch(from var(--base-color) 0.6723 calc(c * 0.8448) 140.92);
+    --mn-color-green-0350: oklch(from var(--base-color) 0.7132 calc(c * 0.770425) 140.92);
+    --mn-color-green-0300: oklch(from var(--base-color) 0.7542 calc(c * 0.6907) 140.92);
+    --mn-color-green-0250: oklch(from var(--base-color) 0.7952 calc(c * 0.605625) 140.92);
+    --mn-color-green-0200: oklch(from var(--base-color) 0.8361 calc(c * 0.5152) 140.92);
+    --mn-color-green-0150: oklch(from var(--base-color) 0.8771 calc(c * 0.419425) 140.92);
+    --mn-color-green-0100: oklch(from var(--base-color) 0.9181 calc(c * 0.3183) 140.92);
+    --mn-color-green-0050: oklch(from var(--base-color) 0.959 calc(c * 0.211825) 140.92);
 
-    --mn-baseColor-orange-900: #4B1A02;
-    --mn-baseColor-orange-800: #7E2B03;
-    --mn-baseColor-orange-700: #C94506;
-    --mn-baseColor-orange-600: #E24D06;
-    --mn-baseColor-orange-500: #FB5607;
-    --mn-baseColor-orange-400: #FC6F2C;
-    --mn-baseColor-orange-300: #FC8951;
-    --mn-baseColor-orange-200: #FEC4A8;
-    --mn-baseColor-orange-100: #FEDDCD;
+    --mn-color-red-0950: oklch(from var(--base-color) 0.2216 calc(c * 1) 7.76);
+    --mn-color-red-0900: oklch(from var(--base-color) 0.2626 calc(c * 1) 7.76);
+    --mn-color-red-0850: oklch(from var(--base-color) 0.3036 calc(c * 1) 7.76);
+    --mn-color-red-0800: oklch(from var(--base-color) 0.3445 calc(c * 1) 7.76);
+    --mn-color-red-0750: oklch(from var(--base-color) 0.3855 calc(c * 1) 7.76);
+    --mn-color-red-0700: oklch(from var(--base-color) 0.4265 calc(c * 1) 7.76);
+    --mn-color-red-0650: oklch(from var(--base-color) 0.4674 calc(c * 1) 7.76);
+    --mn-color-red-0600: oklch(from var(--base-color) 0.5084 calc(c * 1) 7.76);
+    --mn-color-red-0550: oklch(from var(--base-color) 0.5494 calc(c * 1) 7.76);
+    --mn-color-red-0500: oklch(from var(--base-color) 0.5903 calc(c * 0.9775) 7.76);
+    --mn-color-red-0450: oklch(from var(--base-color) 0.6313 calc(c * 0.913825) 7.76);
+    --mn-color-red-0400: oklch(from var(--base-color) 0.6723 calc(c * 0.8448) 7.76);
+    --mn-color-red-0350: oklch(from var(--base-color) 0.7132 calc(c * 0.770425) 7.76);
+    --mn-color-red-0300: oklch(from var(--base-color) 0.7542 calc(c * 0.6907) 7.76);
+    --mn-color-red-0250: oklch(from var(--base-color) 0.7952 calc(c * 0.605625) 7.76);
+    --mn-color-red-0200: oklch(from var(--base-color) 0.8361 calc(c * 0.5152) 7.76);
+    --mn-color-red-0150: oklch(from var(--base-color) 0.8771 calc(c * 0.419425) 7.76);
+    --mn-color-red-0100: oklch(from var(--base-color) 0.9181 calc(c * 0.3183) 7.76);
+    --mn-color-red-0050: oklch(from var(--base-color) 0.959 calc(c * 0.211825) 7.76);
 
-    --mn-baseColor-yellow-900: #4D3903;
-    --mn-baseColor-yellow-800: #8C6806;
-    --mn-baseColor-yellow-700: #BF8E08;
-    --mn-baseColor-yellow-600: #E5AB0A;
-    --mn-baseColor-yellow-500: #FFBE0B;
-    --mn-baseColor-yellow-400: #FFC830;
-    --mn-baseColor-yellow-300: #FFD154;
-    --mn-baseColor-yellow-200: #FFE8AA;
-    --mn-baseColor-yellow-100: #FFF2CE;
+    // --mn-baseColor-green-900: #192F15;
+    // --mn-baseColor-green-800: #294F23;
+    // --mn-color-green-0700: #427E39;
+    // --mn-baseColor-green-600: #4B8E40;
+    // --mn-baseColor-green-500: #539E47;
+    // --mn-baseColor-green-400: #6DAD63;
+    // --mn-color-green-0300: #87BB7E;
+    // --mn-baseColor-green-200: #C3DDBF;
+    // --mn-baseColor-green-100: #DDECDA;
 
-    --mn-baseColor-green-900: #192F15;
-    --mn-baseColor-green-800: #294F23;
-    --mn-baseColor-green-700: #427E39;
-    --mn-baseColor-green-600: #4B8E40;
-    --mn-baseColor-green-500: #539E47;
-    --mn-baseColor-green-400: #6DAD63;
-    --mn-baseColor-green-300: #87BB7E;
-    --mn-baseColor-green-200: #C3DDBF;
-    --mn-baseColor-green-100: #DDECDA;
-
-    --mn-baseColor-blue-900: #11284D;
-    --mn-baseColor-blue-800: #1D4380;
-    --mn-baseColor-blue-700: #2E6BCC;
-    --mn-baseColor-blue-600: #3479E5;
-    --mn-baseColor-blue-500: #3A86FF;
-    --mn-baseColor-blue-400: #5898FF;
-    --mn-baseColor-blue-300: #75AAFF;
-    --mn-baseColor-blue-200: #BAD5FF;
-    --mn-baseColor-blue-100: #D8E7FF;
-
-    --mn-baseColor-purple-900: #2D1A48;
-    --mn-baseColor-purple-800: #4B2B78;
-    --mn-baseColor-purple-700: #7141B3;
-    --mn-baseColor-purple-600: #884ED7;
-    --mn-baseColor-purple-500: #9757EF;
-    --mn-baseColor-purple-400: #A770F1;
-    --mn-baseColor-purple-300: #B689F4;
-    --mn-baseColor-purple-200: #DBC4F9;
-    --mn-baseColor-purple-100: #EADDFC;
-
-    --mn-baseColor-transparent: transparent;
+    --mn-Color-transparent: transparent;
 
     --mn-baseSize-0000: 0px;
     --mn-baseSize-0013: 1px;
@@ -159,14 +163,14 @@
     --semantic-spacing-vertical-xlarge: var(--mn-baseSize-0200);
     --semantic-spacing-vertical-xxlarge: var(--mn-baseSize-0300);
 
-    --semantic-color-bg-page-primary: var(--mn-baseColor-neutral-100);
+    --semantic-color-bg-page-primary: var(--mn-color-neutral-0050);
 
-    --semantic-color-text-default: var(--mn-baseColor-neutral-900);
-    --semantic-color-text-supplementary: var(--mn-baseColor-neutral-700);
-    --semantic-color-text-default-inverse: var(--mn-baseColor-neutral-100);
-    --semantic-color-text-supplementary-inverse: var(--mn-baseColor-neutral-300);
-    --semantic-color-text-link: var(--mn-baseColor-teal-600);
-    --semantic-color-text-link-hover: var(--mn-baseColor-teal-800);
+    --semantic-color-text-default: var(--mn-color-neutral-0900);
+    --semantic-color-text-supplementary: var(--mn-color-neutral-0700);
+    --semantic-color-text-default-inverse: var(--mn-color-neutral-0100);
+    --semantic-color-text-supplementary-inverse: var(--mn-color-neutral-0300);
+    --semantic-color-text-link: var(--mn-color-primary-0600);
+    --semantic-color-text-link-hover: var(--mn-color-primary-0800);
 
     --semantic-transition-standard: all 200ms ease-out;
     --semantic-transition-long: all 400ms ease-out;
@@ -175,14 +179,14 @@
 }
 
 .figma-dark body, body.dark-mode {
-    --semantic-color-bg-page-primary: var(--mn-baseColor-neutral-900);
+    --semantic-color-bg-page-primary: var(--mn-color-neutral-0900);
 
-    --semantic-color-text-default: var(--mn-baseColor-neutral-100);
-    --semantic-color-text-supplementary: var(--mn-baseColor-neutral-300);
-    --semantic-color-text-default-inverse: var(--mn-baseColor-neutral-900);
-    --semantic-color-text-supplementary-inverse: var(--mn-baseColor-neutral-700);
-    --semantic-color-text-link: var(--mn-baseColor-teal-400);
-    --semantic-color-text-link-hover: var(--mn-baseColor-teal-200);
+    --semantic-color-text-default: var(--mn-color-neutral-0100);
+    --semantic-color-text-supplementary: var(--mn-color-neutral-0300);
+    --semantic-color-text-default-inverse: var(--mn-color-neutral-0900);
+    --semantic-color-text-supplementary-inverse: var(--mn-color-neutral-0700);
+    --semantic-color-text-link: var(--mn-color-primary-0400);
+    --semantic-color-text-link-hover: var(--mn-color-primary-0200);
 }
   
 

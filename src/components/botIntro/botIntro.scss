@@ -1,7 +1,7 @@
 @use '../../variables' as *;
 
 :root{
-    --compSpec-botIntro-container-color-bg: var(--mn-baseColor-teal-100);
+    --compSpec-botIntro-container-color-bg: var(--mn-color-primary-0100);
     --compSpec-botIntro-container-color-text: var(--semantic-color-text-default);
     --compSpec-botIntro-container-radius-left: var(--mn-baseSize-0600);
     --compSpec-botIntro-container-radius-right: var(--mn-baseSize-0250);
@@ -15,7 +15,7 @@
 }
 
 .figma-dark body, body.dark-mode{
-    --compSpec-botIntro-container-color-bg: var(--mn-baseColor-teal-800);
+    --compSpec-botIntro-container-color-bg: var(--mn-color-primary-0800);
     --compSpec-botIntro-container-color-text: var(--semantic-color-text-default);
 }
 

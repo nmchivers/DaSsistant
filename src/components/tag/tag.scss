@@ -1,7 +1,7 @@
 @use '../../variables' as *;
 
 :root {
-    --compSpec-tag-color-bg-default: var(--mn-baseColor-neutral-800);
+    --compSpec-tag-color-bg-default: var(--mn-color-neutral-0800);
     --compSpec-tag-color-text-default: var(--semantic-color-text-default-inverse);
     --compSpec-tag-spacing-padding-vertical: var(--mn-baseSize-0075);
     --compSpec-tag-spacing-padding-horizontal: var(--mn-baseSize-0150);
@@ -9,7 +9,7 @@
 }
 
 .figma-dark body, body.dark-mode{
-    --compSpec-tag-color-bg-default: var(--mn-baseColor-neutral-200);
+    --compSpec-tag-color-bg-default: var(--mn-color-neutral-0200);
     --compSpec-tag-color-text-default: var(--semantic-color-text-default-inverse);
 }
 

@@ -14,10 +14,11 @@ interface Props {
     setIsLoading: React.Dispatch<React.SetStateAction<boolean>>,
     setConvo: React.Dispatch<React.SetStateAction<ChatMessage[]>>,
     apiKey: string,
+    apiModel: string,
     user: string,
 }
 
-export default function QuestionInput({ isDisabled, convo, setIsDisabled, setIsLoading, setConvo, apiKey, user}:Props) {
+export default function QuestionInput({ isDisabled, convo, setIsDisabled, setIsLoading, setConvo, apiKey, apiModel, user}:Props) {
     const [question, setQuestion] = useState("");
     const [context, setContext] = useState<string>("accessibility")
 
@@ -48,7 +49,7 @@ export default function QuestionInput({ isDisabled, convo, setIsDisabled, setIsL
         //make the request to opanai in a try/catch/finally block
         try {
             //make the request to open ai
-          const response = await getAccessibilityResponses([...convo, newUserMessage],context,apiKey,user);
+          const response = await getAccessibilityResponses([...convo, newUserMessage],context,apiKey,apiModel,user);
     
           //add the response from open ai to the set of chats.
           setConvo(prev => [...prev, {id: uuidv4(), role:"assistant", content:response.output_text, responseId:response.id, timestamp:  new Date().toLocaleString()}]);

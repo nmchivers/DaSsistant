@@ -1,16 +1,16 @@
 @use '../../variables' as *;
 
 :root {
-    --compSpec-question-container-color-bg-resting: var(--mn-baseColor-neutral-100);
-    --compSpec-question-container-color-bg-hover: var(--mn-baseColor-teal-100);
-    --compSpec-question-container-color-bg-focus: var(--mn-baseColor-teal-100);
-    --compSpec-question-container-color-bg-active: var(--mn-baseColor-neutral-100);
-    --compSpec-question-container-color-bg-disabled: var(--mn-baseColor-neutral-200);
-    --compSpec-question-container-color-border-resting: var(--mn-baseColor-neutral-600);
-    --compSpec-question-container-color-border-hover: var(--mn-baseColor-teal-800);
-    --compSpec-question-container-color-border-focus: var(--mn-baseColor-teal-800);
-    --compSpec-question-container-color-border-active: var(--mn-baseColor-teal-800);
-    --compSpec-question-container-color-border-disabled: var(--mn-baseColor-neutral-400);
+    --compSpec-question-container-color-bg-resting: var(--mn-color-neutral-0100);
+    --compSpec-question-container-color-bg-hover: var(--mn-color-primary-0100);
+    --compSpec-question-container-color-bg-focus: var(--mn-color-primary-0100);
+    --compSpec-question-container-color-bg-active: var(--mn-color-neutral-0100);
+    --compSpec-question-container-color-bg-disabled: var(--mn-color-neutral-0200);
+    --compSpec-question-container-color-border-resting: var(--mn-color-neutral-0600);
+    --compSpec-question-container-color-border-hover: var(--mn-color-primary-0800);
+    --compSpec-question-container-color-border-focus: var(--mn-color-primary-0800);
+    --compSpec-question-container-color-border-active: var(--mn-color-primary-0800);
+    --compSpec-question-container-color-border-disabled: var(--mn-color-neutral-0400);
     --compSpec-question-container-size-border-resting: var(--mn-baseSize-0013);
     --compSpec-question-container-size-border-hover: var(--mn-baseSize-0013);
     --compSpec-question-container-size-border-focus: var(--mn-baseSize-0013);
@@ -28,11 +28,11 @@
     --compSpec-question-controls-container-spacing-horizontal: var(--mn-baseSize-0100);
 
     --compSpec-question-input-color-bg: transparent;
-    --compSpec-question-input-color-text-placeholder: var(--mn-baseColor-neutral-600);
-    --compSpec-question-input-color-text-filled: var(--mn-baseColor-neutral-900);
+    --compSpec-question-input-color-text-placeholder: var(--mn-color-neutral-0600);
+    --compSpec-question-input-color-text-filled: var(--mn-color-neutral-0900);
     --compSpec-question-input-border: none;
     --compSpec-question-input-outline: none;
-    --compSpec-question-input-color-caret: var(--mn-baseColor-teal-700);
+    --compSpec-question-input-color-caret: var(--mn-color-primary-0700);
     --compSpec-question-input-spacing-padding-vertical: var(--mn-baseSize-0000);
     --compSpec-question-input-spacing-padding-horizontal: var(--mn-baseSize-0150);
     --compSpec-question-input-size-resting: var(--mn-baseSize-0600);
@@ -43,20 +43,20 @@
     --compSpec-question-input-container-spacing-padding-horizontal: var(--mn-baseSize-0100);
 }
 .figma-dark body, body.dark-mode {
-    --compSpec-question-container-color-bg-resting: var(--mn-baseColor-neutral-900);
-    --compSpec-question-container-color-bg-hover: var(--mn-baseColor-teal-900);
-    --compSpec-question-container-color-bg-focus: var(--mn-baseColor-teal-900);
-    --compSpec-question-container-color-bg-active: var(--mn-baseColor-neutral-900);
-    --compSpec-question-container-color-bg-disabled: var(--mn-baseColor-neutral-800);
-    --compSpec-question-container-color-border-resting: var(--mn-baseColor-neutral-200);
-    --compSpec-question-container-color-border-hover: var(--mn-baseColor-teal-200);
-    --compSpec-question-container-color-border-focus: var(--mn-baseColor-teal-200);
-    --compSpec-question-container-color-border-active: var(--mn-baseColor-teal-200);
-    --compSpec-question-container-color-border-disabled: var(--mn-baseColor-neutral-600);
+    --compSpec-question-container-color-bg-resting: var(--mn-color-neutral-0900);
+    --compSpec-question-container-color-bg-hover: var(--mn-color-primary-0900);
+    --compSpec-question-container-color-bg-focus: var(--mn-color-primary-0900);
+    --compSpec-question-container-color-bg-active: var(--mn-color-neutral-0900);
+    --compSpec-question-container-color-bg-disabled: var(--mn-color-neutral-0800);
+    --compSpec-question-container-color-border-resting: var(--mn-color-neutral-0200);
+    --compSpec-question-container-color-border-hover: var(--mn-color-primary-0200);
+    --compSpec-question-container-color-border-focus: var(--mn-color-primary-0200);
+    --compSpec-question-container-color-border-active: var(--mn-color-primary-0200);
+    --compSpec-question-container-color-border-disabled: var(--mn-color-neutral-0600);
 
-    --compSpec-question-input-color-text-placeholder: var(--mn-baseColor-neutral-400);
-    --compSpec-question-input-color-text-filled: var(--mn-baseColor-neutral-100);
-    --compSpec-question-input-color-caret: var(--mn-baseColor-teal-300);
+    --compSpec-question-input-color-text-placeholder: var(--mn-color-neutral-0400);
+    --compSpec-question-input-color-text-filled: var(--mn-color-neutral-0100);
+    --compSpec-question-input-color-caret: var(--mn-color-primary-0300);
 }
 
 .question-container {

@@ -3,7 +3,7 @@
 :root {
     --compSpec-modal-scrim-color-bg: #A6ABA528;
     --compSpec-modal-scrim-effect-bgBlur: var(--mn-baseSize-0400);
-    --compSpec-modal-color-bg: var(--mn-baseColor-neutral-100);
+    --compSpec-modal-color-bg: var(--mn-color-neutral-0100);
     --compSpec-modal-spacing-margin-vertical: var(--mn-baseSize-0000);
     --compSpec-modal-spacing-margin-horizontal: var(--mn-baseSize-0400);
     --compSpec-modal-spacing-padding-vertical-top: var(--mn-baseSize-0500);
@@ -15,7 +15,7 @@
 
 .figma-dark body, body.dark-mode {
     --compSpec-modal-scrim-color-bg: #27332528;
-    --compSpec-modal-color-bg: var(--mn-baseColor-neutral-900);
+    --compSpec-modal-color-bg: var(--mn-color-neutral-0900);
 }
 
 .modal-scrim-container{

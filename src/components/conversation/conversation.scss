@@ -1,15 +1,15 @@
 @use '../../variables' as *;
 
 :root {
-    --compSpec-message-assistant-color-bg: var(--mn-baseColor-teal-100);
+    --compSpec-message-assistant-color-bg: var(--mn-color-primary-0100);
     --compSpec-message-assistant-image-size-width: var(--mn-baseSize-0400);
     --compSpec-message-assistant-image-size-height: var(--mn-baseSize-0400);
-    --compSpec-message-assistant-thinkingShimmer-color-bg: var(--mn-baseColor-teal-100);
+    --compSpec-message-assistant-thinkingShimmer-color-bg: var(--mn-color-primary-0100);
 }
 
 .figma-dark body, body.dark-mode{
-    --compSpec-message-assistant-color-bg: var(--mn-baseColor-teal-900);
-    --compSpec-message-assistant-thinkingShimmer-color-bg: var(--mn-baseColor-teal-900);
+    --compSpec-message-assistant-color-bg: var(--mn-color-primary-0900);
+    --compSpec-message-assistant-thinkingShimmer-color-bg: var(--mn-color-primary-0900);
 }
 
 .conversation {

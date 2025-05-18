@@ -32,9 +32,10 @@ figma.ui.onmessage =  async (msg) => {
   // }
 
   //This saves the api key from the settings form
-  if (msg.type === 'save-api-key') {
+  if (msg.type === 'save-settings') {
     try {
       await figma.clientStorage.setAsync('oaiApiKey', msg.apiKey);
+      await figma.clientStorage.setAsync('oaiApiModel', msg.apiModel);
       
       //The below is just used for testing.
       //const saved = await figma.clientStorage.getAsync('oaiApiKey');
@@ -71,6 +72,7 @@ figma.ui.onmessage =  async (msg) => {
 
   //Get the variables saved in Figma
   const savedKey = await figma.clientStorage.getAsync('oaiApiKey');
+  const savedModel = await figma.clientStorage.getAsync('oaiApiModel');
   const savedDSLink = await figma.clientStorage.getAsync('dsLink');
   const userName = (figma.currentUser !== null ? figma.currentUser.name : 'Anonymous');
 
@@ -78,10 +80,12 @@ figma.ui.onmessage =  async (msg) => {
   figma.ui.postMessage({
     type: 'load-saved-data',
     apiKey: savedKey || '',
+    apiModel: savedModel || '',
     dsLink: savedDSLink || '',
     user: userName,
   });
   console.log("saved key: " + savedKey);
+  console.log("saved model: " + savedModel);
   console.log("saved ds link: " + savedDSLink);
   console.log("user name: " + userName);
 })();

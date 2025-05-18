@@ -1,12 +1,12 @@
 @use '../../variables' as *;
 
 :root {
-  --compSpec-loader-color-bg: var(--mn-baseColor-neutral-100);
+  --compSpec-loader-color-bg: var(--mn-color-neutral-0100);
 }
 
 .figma-dark body,
 body.dark-mode {
-  --compSpec-loader-color-bg: var(--mn-baseColor-neutral-900);
+  --compSpec-loader-color-bg: var(--mn-color-neutral-0900);
 }
 
 .loader-small, .loader-small:before, .loader-small:after {

@@ -1,4 +1,4 @@
-import { StateUpdater } from 'preact/hooks';
+import { StateUpdater, useEffect, useMemo } from 'preact/hooks';
 import { getModels } from '../../openai';
 import Button from '../button/button';
 import Icon from '../icon/icon';
@@ -6,24 +6,56 @@ import TextInput from '../textInput/textInput';
 import Typeography from '../typeography/typography';
 import './settingsForm.scss';
 import {useState, ChangeEvent, FormEvent, Dispatch } from 'preact/compat';
+import { v4 as uuidv4 } from "uuid";
+import DropDown from '../dropDown/dropDown';
 
 interface Props {
     closeFunction: () => void;
     apiKey: string;
     setApiKey: Dispatch<StateUpdater<string>>;
     setDSLink: Dispatch<StateUpdater<string>>;
+    apiModel: string;
+    setApiModel: Dispatch<StateUpdater<string>>;
 }
 
-export default function SettingsForm({closeFunction, apiKey, setApiKey}:Props) {
+export default function SettingsForm({closeFunction, apiKey, setApiKey, apiModel, setApiModel}:Props) {
     const [modelList, setModelList] = useState<{id: string}[]>([]);
+    const [modelOptions, setModelOptions] = useState<{id: string, text:string, value:string}[]>([]);
     const [isValidKey, setIsValidKey] = useState(true);
     const [isLoadingTest, setIsLoadingTest] = useState(false);
     const [isSaving, setIsSaving] = useState(false);
-    const [localApiKey, setLocalApiKey] = useState(apiKey);
 
-    function handleInputChange(event: ChangeEvent<HTMLInputElement>) {
+    //these create local stateful versions of the apikey and the apimodel so that the form can be canceled without updating the saved key and model
+    const [localApiKey, setLocalApiKey] = useState(apiKey);
+    const [localModel, setLocalModal] = useState(apiModel);
+
+    useEffect(() => {
+        if (apiKey !== undefined || "") {
+            handleTest();
+        }
+    },[])
+    
+    useEffect(() => {
+        const newModelOptions: {id: string, text:string, value:string}[] = 
+            modelList
+            .filter(model => !/realtime|audio|preview|dall-e|text-embedding|babbage|davinci|tts|whisper|transcribe|image|moderation|chat|codex/i.test(model.id))
+            .sort((a, b) => a.id.localeCompare(b.id, undefined, { sensitivity: 'base' }))
+            .map(model => ({
+                id: uuidv4(),
+                text: model.id,
+                value: model.id
+            }));
+        setModelOptions(newModelOptions);
+    }, modelList)
+
+    function handleAPIInputChange(event: ChangeEvent<HTMLInputElement>) {
         const target = event.target as HTMLInputElement;
         setLocalApiKey(target.value);
+    }
+
+    function handleModelDropDownChange(newModel:string) {
+        setLocalModal(newModel);
+        console.log("model was changed to:" + newModel);
     }
 
     async function testKey(): Promise<boolean> {
@@ -56,15 +88,16 @@ export default function SettingsForm({closeFunction, apiKey, setApiKey}:Props) {
         setIsSaving(true);
         setIsLoadingTest(true);
         const keyIsValid = await testKey();
-        //await handleTest();
         if (keyIsValid) {
             setApiKey(localApiKey);
+            setApiModel(localModel);
             parent.postMessage(
                 {
                 pluginMessage: {
-                    type: 'save-api-key',
+                    type: 'save-settings',
                     apiKey: localApiKey,
-                    //add more here when model and DS Link are ready but match code.ts
+                    apiModel: localModel,
+                    //add more here when DS Link are ready but match code.ts
                 },
                 },
                 '*'
@@ -89,7 +122,7 @@ export default function SettingsForm({closeFunction, apiKey, setApiKey}:Props) {
             <TextInput
                 id="api-key"
                 value={localApiKey}
-                onChange={handleInputChange}
+                onChange={handleAPIInputChange}
                 placeholder="sk-###..."
                 label="OpenAI API Key"
                 description={
@@ -117,7 +150,7 @@ export default function SettingsForm({closeFunction, apiKey, setApiKey}:Props) {
                     <Button
                     text="Test"
                     variant="outline"
-                    onClick={handleTest}
+                    onClick={() => handleTest()}
                     disabled={localApiKey == ""}
                     addClasses="api-key-test-button"
                     isLoading={isLoadingTest}
@@ -129,6 +162,17 @@ export default function SettingsForm({closeFunction, apiKey, setApiKey}:Props) {
                     </div>
                 )}
             </div>
+            <DropDown
+                id='api-model'
+                value={localModel}
+                label='Model'
+                description='Choose which OpenAI Model you want MechaNick to use.'
+                options={modelOptions}
+                addClasses='model-selection'
+                placeholder='Model name'
+                isRequired
+                onChange={handleModelDropDownChange}
+             />
 
             <div className='button-group'>
                 <Button text='Save Settings' variant='filled' type='submit' isLoading={isSaving} />

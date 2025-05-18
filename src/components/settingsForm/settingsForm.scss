@@ -1,14 +1,14 @@
 @use '../../variables' as *;
 
 :root {
-    --apiKey-test-button-container-color-bg: var(--mn-baseColor-neutral-100);
-    --apiKey-test-success-icon-color-icon: var(--mn-baseColor-green-700);
+    --apiKey-test-button-container-color-bg: var(--mn-color-neutral-0100);
+    --apiKey-test-success-icon-color-icon: var(--mn-color-green-0700);
 }
 
 .figma-dark body,
 body.dark-mode {
-    --apiKey-test-button-container-color-bg: var(--mn-baseColor-neutral-900);
-    --apiKey-test-success-icon-color-icon: var(--mn-baseColor-green-300);
+    --apiKey-test-button-container-color-bg: var(--mn-color-neutral-0900);
+    --apiKey-test-success-icon-color-icon: var(--mn-color-green-0300);
 }
 
 .settings-form-container{
@@ -59,4 +59,8 @@ body.dark-mode {
 }
 .api-key-input.success input[type=text]{
     padding-right: 52px;
+}
+
+.model-selection{
+    margin-top: var(--mn-baseSize-0300);
 }
