@@ -1,4 +1,4 @@
-import { StateUpdater, useEffect, useMemo } from 'preact/hooks';
+import { StateUpdater, useEffect } from 'preact/hooks';
 import { getModels } from '../../openai';
 import Button from '../button/button';
 import Icon from '../icon/icon';

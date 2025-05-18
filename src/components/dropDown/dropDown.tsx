@@ -1,7 +1,6 @@
-import { ChangeEvent, ReactNode, useEffect, useRef, useState } from 'preact/compat';
+import { ReactNode, useEffect, useRef, useState } from 'preact/compat';
 import './dropDown.scss';
 import Icon from '../icon/icon';
-import { StateUpdater } from 'preact/hooks';
 
 //idea, what if you create a special interface for the options list and export it to be used in forming the array of objects.
 
@@ -76,26 +75,28 @@ export default function DropDown({id, placeholder, value, label, description = "
           aria-expanded={isOpen}
           aria-haspopup="listbox"
         >
-          {selectedOpt !== undefined ?
-              <span className="input-dropdown-selected"> {selectedOpt}</span>
-            :
-              <span className="input-dropdown-placeholder">{placeholder}</span>
-          }
-          <Icon iconName='chevron-down' addClasses='input-dropdown-chevron'/>
-          <ul className="input-dropdown-options" role="listbox">
-            {options.map(option => (
-              <li
-                key={option.id}
-                id={option.id}
-                role="option"
-                aria-selected={selectedOpt === option.value}
-                className={option.value == selectedOpt ? "selected" : ""}
-                onClick={() => handleOptionSelect(option.value)}
-              >
-                {option.text}
-              </li>
-            ))}
-          </ul>
+          {selectedOpt !== undefined ? (
+            <span className="input-dropdown-selected"> {selectedOpt}</span>
+          ) : (
+            <span className="input-dropdown-placeholder">{placeholder}</span>
+          )}
+          <Icon iconName="chevron-down" addClasses="input-dropdown-chevron" />
+          <div className="input-dropdown-optionlist">
+            <ul className="input-dropdown-options" role="listbox">
+              {options.map((option) => (
+                <li
+                  key={option.id}
+                  id={option.id}
+                  role="option"
+                  aria-selected={selectedOpt === option.value}
+                  className={option.value == selectedOpt ? "selected" : ""}
+                  onClick={() => handleOptionSelect(option.value)}
+                >
+                  {option.text}
+                </li>
+              ))}
+            </ul>
+          </div>
 
           <input
             type="hidden"
