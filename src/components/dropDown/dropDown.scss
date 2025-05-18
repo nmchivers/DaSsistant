@@ -209,8 +209,32 @@ body.dark-mode {
         border-color: var(--compSpec-dropDown-input-color-border-resting);
         border-radius: var(--compSpec-dropDown-input-radius);
         cursor: pointer;
+        transition: var(--semantic-transition-standard);
 
-        //this needs to be specified to the test string
+        &:has( .input-dropdown-selected){
+            background-color: var(--compSpec-dropDown-input-color-bg-filled);
+            border-color: var(--compSpec-dropDown-input-color-border-filled);
+        }
+
+        &:hover{
+            background-color: var(--compSpec-dropDown-input-color-bg-hover);
+            border-color: var(--compSpec-dropDown-input-color-border-hover);
+        }
+
+        &:focus{
+            background-color: var(--compSpec-dropDown-input-color-bg-focus);
+            border-color: var(--compSpec-dropDown-input-color-border-focus);
+        }
+
+        &.open{
+            background-color: var(--compSpec-dropDown-input-color-bg-active);
+            border-color: var(--compSpec-dropDown-input-color-border-active);
+
+            & .input-dropdown-chevron{
+                transform: rotate(180deg);
+            }
+        }
+
         &-placeholder{
             @include body-medium();
             color: var(--compSpec-dropDown-input-color-text-placeholder);
@@ -227,6 +251,7 @@ body.dark-mode {
             width: var(--compSpec-dropDown-chevron-size);
             height: var(--compSpec-dropDown-chevron-size);
             fill: var(--compSpec-dropDown-chevron-color-icon-resting);
+            transition: var(--semantic-transition-standard);
         }
 
         &-optionlist {
@@ -327,21 +352,5 @@ body.dark-mode {
                 }
             }
         }
-        
-      }
-      
-    //   /* Show when open */
-    //   .input-dropdown-select.open .input-dropdown-options {
-    //     display: block;
-    //   }
-      
-    //   /* Option rows */
-    //   .input-dropdown-options li {
-    //     padding: 8px 16px;
-    //     cursor: pointer;
-    //   }
-    //   .input-dropdown-options li:hover,
-    //   .input-dropdown-options li.focused {
-    //     background: #F2F7F5;
-    //   }
+    }
 }
