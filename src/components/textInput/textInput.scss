@@ -122,6 +122,7 @@ body.dark-mode {
     & .input-text-errormessage{
         @include body-small;
         margin-top: var(--compSpec-textInput-errorMessage-spacing-margin-vertical-top);
+        margin-bottom: unset;
         color: var(--compSpec-textInput-errorMessage-color-text);
         transition: var(--semantic-transition-standard);
         opacity: 0;

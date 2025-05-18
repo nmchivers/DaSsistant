@@ -54,6 +54,11 @@
     --compSpec-dropDown-chevron-color-icon-active: var(--mn-color-primary-0800);
     --compSpec-dropDown-chevron-color-icon-filled: var(--mn-color-neutral-0900);
     --compSpec-dropDown-chevron-color-icon-disabled: var(--mn-color-neutral-0400);
+    --compSpec-dropDown-chevron-color-icon-resting-error: var(--mn-color-red-0600);
+    --compSpec-dropDown-chevron-color-icon-hover-error: var(--mn-color-red-0600);
+    --compSpec-dropDown-chevron-color-icon-focus-error: var(--mn-color-red-0600);
+    --compSpec-dropDown-chevron-color-icon-active-error: var(--mn-color-red-0600);
+    --compSpec-dropDown-chevron-color-icon-filled-error: var(--mn-color-red-0600);
 
     --compSpec-dropDown-option-notSelected-color-bg-resting: var(--mn-color-transparent);
     --compSpec-dropDown-option-notSelected-color-bg-hover: var(--mn-color-primary-0200);
@@ -129,6 +134,11 @@ body.dark-mode {
     --compSpec-dropDown-chevron-color-icon-active: var(--mn-color-primary-0200);
     --compSpec-dropDown-chevron-color-icon-filled: var(--mn-color-neutral-0100);
     --compSpec-dropDown-chevron-color-icon-disabled: var(--mn-color-neutral-0600);
+    --compSpec-dropDown-chevron-color-icon-resting-error: var(--mn-color-red-0300);
+    --compSpec-dropDown-chevron-color-icon-hover-error: var(--mn-color-red-0300);
+    --compSpec-dropDown-chevron-color-icon-focus-error: var(--mn-color-red-0300);
+    --compSpec-dropDown-chevron-color-icon-active-error: var(--mn-color-red-0300);
+    --compSpec-dropDown-chevron-color-icon-filled-error: var(--mn-color-red-0300);
 
     --compSpec-dropDown-option-notSelected-color-bg-resting: var(--mn-color-transparent);
     --compSpec-dropDown-option-notSelected-color-bg-hover: var(--mn-color-primary-0800);
@@ -190,13 +200,13 @@ body.dark-mode {
         opacity: 0;
         display: none;
     
-        &.error{
-            display: block;
-            opacity: 1;
-        }
+        // &.error{
+        //     display: block;
+        //     opacity: 1;
+        // }
     }
 
-    .input-dropdown {
+    & .input-dropdown {
         position: relative;
         display: flex;
         flex-flow: row nowrap;
@@ -214,16 +224,25 @@ body.dark-mode {
         &:has( .input-dropdown-selected){
             background-color: var(--compSpec-dropDown-input-color-bg-filled);
             border-color: var(--compSpec-dropDown-input-color-border-filled);
+            & .input-dropdown-chevron{
+                fill: var(--compSpec-dropDown-chevron-color-icon-filled);
+            }
         }
 
         &:hover{
             background-color: var(--compSpec-dropDown-input-color-bg-hover);
             border-color: var(--compSpec-dropDown-input-color-border-hover);
+            & .input-dropdown-chevron{
+                fill: var(--compSpec-dropDown-chevron-color-icon-hover);
+            }
         }
 
         &:focus{
             background-color: var(--compSpec-dropDown-input-color-bg-focus);
             border-color: var(--compSpec-dropDown-input-color-border-focus);
+            & .input-dropdown-chevron{
+                fill: var(--compSpec-dropDown-chevron-color-icon-filled);
+            }
         }
 
         &.open{
@@ -231,6 +250,7 @@ body.dark-mode {
             border-color: var(--compSpec-dropDown-input-color-border-active);
 
             & .input-dropdown-chevron{
+                fill: var(--compSpec-dropDown-chevron-color-icon-active);
                 transform: rotate(180deg);
             }
         }
@@ -351,6 +371,81 @@ body.dark-mode {
                     }
                 }
             }
+        }
+    }
+
+    &.disabled {
+        opacity: .3;
+        & .input-dropdown{
+            background-color: var(--compSpec-dropDown-input-color-bg-disabled);
+            border-color: var(--compSpec-dropDown-input-color-border-disabled);
+            cursor: not-allowed;
+
+            &-placeholder{
+                color: var(--compSpec-dropDown-input-color-text-placeholder-disabled);
+            }
+
+            &-selected{
+                color: var(--compSpec-dropDown-input-color-text-disabled);
+            }
+
+            &-chevron{
+                fill: var(--compSpec-dropDown-chevron-color-icon-disabled);
+            }
+        }
+    }
+
+    &.error {
+        & .input-dropdown{
+            background-color: var(--compSpec-dropDown-input-color-bg-resting-error);
+            border-color: var(--compSpec-dropDown-input-color-border-resting-error);
+
+            &:has( .input-dropdown-selected){
+                background-color: var(--compSpec-dropDown-input-color-bg-filled-error);
+                border-color: var(--compSpec-dropDown-input-color-border-filled-error);
+                & .input-dropdown-chevron{
+                    fill: var(--compSpec-dropDown-chevron-color-icon-resting-error);
+                }
+            }
+
+            &:hover{
+                background-color: var(--compSpec-dropDown-input-color-bg-hover-error);
+                border-color: var(--compSpec-dropDown-input-color-border-hover-error);
+                & .input-dropdown-chevron{
+                    fill: var(--compSpec-dropDown-chevron-color-icon-hover-error);
+                }
+            }
+
+            &:focus{
+                background-color: var(--compSpec-dropDown-input-color-bg-focus-error);
+                border-color: var(--compSpec-dropDown-input-color-border-focus-error);
+                & .input-dropdown-chevron{
+                    fill: var(--compSpec-dropDown-chevron-color-icon-filled-error);
+                }
+            }
+
+            &.open{
+                background-color: var(--compSpec-dropDown-input-color-bg-active-error);
+                border-color: var(--compSpec-dropDown-input-color-border-active-error);
+
+                & .input-dropdown-chevron{
+                    fill: var(--compSpec-dropDown-chevron-color-icon-active-error);
+                }
+            }
+
+            &-chevron{
+                fill: var(--compSpec-dropDown-chevron-color-icon-resting-error);
+            }
+        }
+
+        & .input-dropdown-label {
+            color: var(--compSpec-dropDown-label-color-text-error);
+        }
+
+
+        & .input-dropdown-errormessage{
+            display: block;
+            opacity: 1;
         }
     }
 }

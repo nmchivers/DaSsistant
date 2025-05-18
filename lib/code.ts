@@ -68,7 +68,8 @@ figma.ui.onmessage =  async (msg) => {
 //To-D-: Add the saved model to the information returned.
 (async () => {
   //for testing clear the api key on open - remove before publishing.
-  //await figma.clientStorage.setAsync('oaiApiKey', "");
+  await figma.clientStorage.setAsync('oaiApiKey', undefined);
+  await figma.clientStorage.setAsync('oaiApiModel', undefined)
 
   //Get the variables saved in Figma
   const savedKey = await figma.clientStorage.getAsync('oaiApiKey');

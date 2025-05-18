@@ -28,16 +28,22 @@ export function App() {
     window.onmessage = (event) => {
       const msg = event.data.pluginMessage;
       if (msg.type === 'load-saved-data') {
-        setApiKey(msg.apiKey);
-        setApiModel(msg.apiModel);
         if (msg.apiKey !== '') {
+          setApiKey(msg.apiKey);
           setShowSettingsModal(false);
         } else {
           setShowSettingsModal(true);
           setIsQIDisabled(true);
         }
-        setUserName(msg.userName);
-        setDSLink(msg.dsLink);
+        if (msg.apiModel !== ''){
+          setApiModel(msg.apiModel);
+        }
+        if (msg.userName !== ''){
+          setUserName(msg.userName);
+        }
+        if (msg.dsLink !== ''){
+          setDSLink(msg.dsLink);
+        }
       }
     };
   }, []);

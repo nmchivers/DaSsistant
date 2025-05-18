@@ -24,6 +24,7 @@ export default function SettingsForm({closeFunction, apiKey, setApiKey, apiModel
     const [isValidKey, setIsValidKey] = useState(true);
     const [isLoadingTest, setIsLoadingTest] = useState(false);
     const [isSaving, setIsSaving] = useState(false);
+    const [disableModelInput, setDisableModelInput] = useState(false);
 
     //these create local stateful versions of the apikey and the apimodel so that the form can be canceled without updating the saved key and model
     const [localApiKey, setLocalApiKey] = useState(apiKey);
@@ -55,7 +56,6 @@ export default function SettingsForm({closeFunction, apiKey, setApiKey, apiModel
 
     function handleModelDropDownChange(newModel:string) {
         setLocalModal(newModel);
-        console.log("model was changed to:" + newModel);
     }
 
     async function testKey(): Promise<boolean> {
@@ -79,7 +79,9 @@ export default function SettingsForm({closeFunction, apiKey, setApiKey, apiModel
 
     async function handleTest(){
         setIsLoadingTest(true);
-        setIsValidKey(await testKey());
+        const keyIsValid = await testKey();
+        setIsValidKey(keyIsValid);
+        setDisableModelInput(!keyIsValid);
         setIsLoadingTest(false);
     }
 
@@ -106,6 +108,7 @@ export default function SettingsForm({closeFunction, apiKey, setApiKey, apiModel
             closeFunction();
         } else {
             setIsValidKey(keyIsValid);
+            setDisableModelInput(!keyIsValid);
             setIsSaving(false);
             setIsLoadingTest(false);
         }
@@ -172,6 +175,8 @@ export default function SettingsForm({closeFunction, apiKey, setApiKey, apiModel
                 placeholder='Model name'
                 isRequired
                 onChange={handleModelDropDownChange}
+                disabled={disableModelInput}
+                errorMessage='Please select a model for MechaNick to use.'
              />
 
             <div className='button-group'>

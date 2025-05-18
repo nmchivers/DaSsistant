@@ -90,6 +90,7 @@
         box-shadow: var(--compSpec-question-container-shadow-disabled);
         border-color: var(--compSpec-question-container-color-border-disabled);
         border-width: var(--compSpec-question-container-size-border-disabled);
+        opacity: .3;
     }
 
     & .question-controls-container {
