@@ -7,6 +7,7 @@ import QuestionInput from './components/questionInput/questionInput';
 import SettingsFormModal from './components/modals/settingsFormModal';
 import AppHeader from './components/appHeader/appHeader';
 import Footer from './components/footer/footer';
+import { generatePalette } from './programmaticColor';
 
 export function App() {
   const [apiKey, setApiKey] = useState('');
@@ -23,8 +24,22 @@ export function App() {
   const chatMessages:ChatMessage[] = [];
   const [convo, setConvo] = useState(chatMessages);
   
-  //this gets the API key from figma storage on initial load.
+  //this runs as soon as the plugin launches.
   useEffect(() => {
+    const appBaseColor = "#5FA29D";
+    //const appBaseColor = "#4a4af4";
+    const primaryPalette = generatePalette(appBaseColor, "--mn-color-primary", "vibrant");
+    const neutralPalette = generatePalette(appBaseColor, "--mn-color-neutral", "neutral");
+    const redPalette = generatePalette(appBaseColor, "--mn-color-red", "vibrant", "red");
+    const greenPalette = generatePalette(appBaseColor, "--mn-color-green", "vibrant", "green");
+    const newPalette = [...primaryPalette, ...neutralPalette, ...redPalette, ...greenPalette];
+
+    const root = document.documentElement;
+    for (const {prop, value} of newPalette) {
+      root.style.setProperty(prop, value);
+    }
+
+    //gets the api key, model, user name, and ds link from figma storage on start up.
     window.onmessage = (event) => {
       const msg = event.data.pluginMessage;
       if (msg.type === 'load-saved-data') {
