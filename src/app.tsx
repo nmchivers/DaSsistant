@@ -7,12 +7,13 @@ import QuestionInput from './components/questionInput/questionInput';
 import SettingsFormModal from './components/modals/settingsFormModal';
 import AppHeader from './components/appHeader/appHeader';
 import Footer from './components/footer/footer';
-import { generatePalette } from './programmaticColor';
+import { generateFullPalette } from './programmaticColor';
 
 export function App() {
   const [apiKey, setApiKey] = useState('');
   const [apiModel, setApiModel] = useState('gpt-4o-mini');
   const [userName, setUserName] = useState('anonymous');
+  const [appBaseColor, setAppBaseColor] = useState('#499590');
   const [showSettingsModal, setShowSettingsModal] = useState(false);
   //Create the loading variable for tracking loading state
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -26,18 +27,8 @@ export function App() {
   
   //this runs as soon as the plugin launches.
   useEffect(() => {
-    const appBaseColor = "#5FA29D";
-    //const appBaseColor = "#4a4af4";
-    const primaryPalette = generatePalette(appBaseColor, "--mn-color-primary", "vibrant");
-    const neutralPalette = generatePalette(appBaseColor, "--mn-color-neutral", "neutral");
-    const redPalette = generatePalette(appBaseColor, "--mn-color-red", "vibrant", "red");
-    const greenPalette = generatePalette(appBaseColor, "--mn-color-green", "vibrant", "green");
-    const newPalette = [...primaryPalette, ...neutralPalette, ...redPalette, ...greenPalette];
-
-    const root = document.documentElement;
-    for (const {prop, value} of newPalette) {
-      root.style.setProperty(prop, value);
-    }
+    //generates the initial palette for the app prior to any user adjustments.
+    generateFullPalette(appBaseColor);
 
     //gets the api key, model, user name, and ds link from figma storage on start up.
     window.onmessage = (event) => {
