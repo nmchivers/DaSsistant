@@ -5,9 +5,10 @@ import Icon from '../icon/icon';
 import TextInput from '../textInput/textInput';
 import Typeography from '../typeography/typography';
 import './settingsForm.scss';
-import {useState, ChangeEvent, FormEvent, Dispatch } from 'preact/compat';
+import {useState, FormEvent, Dispatch } from 'preact/compat';
 import { v4 as uuidv4 } from "uuid";
 import DropDown from '../dropDown/dropDown';
+import Checkbox from '../checkbox/checkbox';
 
 interface Props {
     closeFunction: () => void;
@@ -48,11 +49,6 @@ export default function SettingsForm({closeFunction, apiKey, setApiKey, apiModel
             }));
         setModelOptions(newModelOptions);
     }, modelList)
-
-    function handleAPIInputChange(event: ChangeEvent<HTMLInputElement>) {
-        const target = event.target as HTMLInputElement;
-        setLocalApiKey(target.value);
-    }
 
     function handleModelDropDownChange(newModel:string) {
         setLocalModal(newModel);
@@ -118,6 +114,9 @@ export default function SettingsForm({closeFunction, apiKey, setApiKey, apiModel
         closeFunction();
     }
 
+    //test!
+    const [checkboxTest, setCheckboxTest] = useState(true);
+
     return (
       <div className="settings-form-container">
         <form id='settingsForm' noValidate onSubmit={(e) => handleSubmit(e)} autoComplete='off'>
@@ -125,7 +124,7 @@ export default function SettingsForm({closeFunction, apiKey, setApiKey, apiModel
             <TextInput
                 id="api-key"
                 value={localApiKey}
-                onChange={handleAPIInputChange}
+                onChange={(value) => setLocalApiKey(value)}
                 placeholder="sk-###..."
                 label="OpenAI API Key"
                 description={
@@ -178,6 +177,9 @@ export default function SettingsForm({closeFunction, apiKey, setApiKey, apiModel
                 disabled={disableModelInput}
                 errorMessage='Please select a model for MechaNick to use.'
              />
+
+             <Checkbox label='This is a test' checked={checkboxTest} onChange={setCheckboxTest}/>
+             <span>{checkboxTest ? "On" : "off"}</span>
 
             <div className='button-group'>
                 <Button text='Save Settings' variant='filled' type='submit' isLoading={isSaving} />
