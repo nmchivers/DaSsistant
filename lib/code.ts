@@ -19,17 +19,74 @@ figma.ui.onmessage =  async (msg) => {
   //   // This plugin creates rectangles on the screen.
   //   const numberOfRectangles = msg.count;
 
-  //   const nodes: SceneNode[] = [];
-  //   for (let i = 0; i < numberOfRectangles; i++) {
-  //     const rect = figma.createRectangle();
-  //     rect.x = i * 150;
-  //     rect.fills = [{ type: 'SOLID', color: { r: 1, g: 0.5, b: 0 } }];
-  //     figma.currentPage.appendChild(rect);
-  //     nodes.push(rect);
-  //   }
-  //   figma.currentPage.selection = nodes;
-  //   figma.viewport.scrollAndZoomIntoView(nodes);
-  // }
+  if (msg.type === "get-frame-data") {
+    const selection = figma.currentPage.selection;
+
+    // error checks
+    if (selection.length === 0) {
+      figma.ui.postMessage({
+        type: "frame-data-error",
+        message: "Please select a frame and try again!",
+      });
+      return;
+    }
+    if (selection.length > 1) {
+      figma.ui.postMessage({
+        type: "frame-data-error",
+        message: "One frame at a time please!",
+      });
+      return;
+    }
+
+    const frame = selection[0] as FrameNode;
+    const nodes = frame.findAll();
+
+    // helper to turn a SolidPaint into rgba()
+    function paintToRGBA(paint: SolidPaint): string {
+      const { r, g, b } = paint.color;
+      const a = paint.opacity !== undefined ? paint.opacity : 1;
+      return `rgba(${Math.round(r * 255)}, ${Math.round(g * 255)}, ${Math.round(b * 255)}, ${a})`;
+    }
+
+    const extracted = nodes.map((node) => {
+      // get bounding box data
+      const box = node.absoluteBoundingBox!;
+      const fills = ('fills' in node && Array.isArray(node.fills))
+        ? (node.fills as ReadonlyArray<Paint>)
+        : [];
+
+      // collect only solid fills as CSS strings
+      const backgroundColors = fills
+        .filter((p) => p.type === "SOLID")
+        .map((p) => paintToRGBA(p as SolidPaint));
+
+      const item: any = {
+        type: node.type,
+        name: node.name,
+        position: { x: box.x, y: box.y },
+        size: { width: box.width, height: box.height },
+        fills: backgroundColors,
+      };
+
+      // text-specific props
+      if ("characters" in node) {
+        item.text = node.characters;
+        item.fontSize = node.fontSize;
+      }
+
+      // corner radius (if any)
+      if ("cornerRadius" in node) {
+        item.cornerRadius = node.cornerRadius;
+      }
+
+      return item;
+    });
+
+    figma.ui.postMessage({
+      type: "frame-data-response",
+      data: JSON.stringify(extracted),
+    });
+  }
 
   //This saves the api key from the settings form
   if (msg.type === 'save-settings') {

@@ -58,15 +58,12 @@ function getNewHue(baseHue:number, hueAdj: string) {
             if (newHue >= -10 && newHue <= 30) break;
             newHue -= 30;    
         };
-        console.log("The preadjusted red hue is " + newHue.toString());
         if (newHue < 0) {newHue += 360};
-        console.log("The adjusted red hue is " + newHue.toString());
     } else if (hueAdj == "green") {
         for (let index = 0; index < 12; index++) {
             if (newHue >= 140 && newHue <= 180) break;
             newHue -= 30;    
         };
-        console.log("The green hue is " + newHue.toString());
     }
 
     return newHue;

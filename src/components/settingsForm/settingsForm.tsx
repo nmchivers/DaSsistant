@@ -114,9 +114,6 @@ export default function SettingsForm({closeFunction, apiKey, setApiKey, apiModel
         closeFunction();
     }
 
-    //test!
-    const [checkboxTest, setCheckboxTest] = useState(true);
-
     return (
       <div className="settings-form-container">
         <form id='settingsForm' noValidate onSubmit={(e) => handleSubmit(e)} autoComplete='off'>
@@ -177,9 +174,6 @@ export default function SettingsForm({closeFunction, apiKey, setApiKey, apiModel
                 disabled={disableModelInput}
                 errorMessage='Please select a model for MechaNick to use.'
              />
-
-             <Checkbox label='This is a test' checked={checkboxTest} onChange={setCheckboxTest}/>
-             <span>{checkboxTest ? "On" : "off"}</span>
 
             <div className='button-group'>
                 <Button text='Save Settings' variant='filled' type='submit' isLoading={isSaving} />
