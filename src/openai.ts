@@ -1,10 +1,10 @@
 import OpenAI from 'openai';
-import { ChatMessage } from './models/ChatMessage';
+//import { ChatMessage } from './models/ChatMessage';
 
 
 //export async function getAccessibilityResponses({convo, context, apiKey, apiModel, user, frameIncluded, dsLink}:Props) {
 export async function getAccessibilityResponses(
-    convo: ChatMessage[], 
+    convo: {role: string, content: string}[], 
     context: string, 
     apiKey: string, 
     apiModel:string, 
@@ -78,7 +78,7 @@ export async function getAccessibilityResponses(
     }
 
     //build the convo and include the system instructions.
-    const newConvo = JSON.stringify(convo.map(({role, content}) => ({role, content})));
+    const newConvo = JSON.stringify(convo);
 
     //make the call with the info from the user and the last response id
     const response = await openai.responses.create({

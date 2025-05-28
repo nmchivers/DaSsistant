@@ -2,7 +2,7 @@
 
 :root{
     --compSpec-appHeader-color-bg-start: var(--mn-color-neutral-0050);
-    --compSpec-appHeader-color-bg-inConvo: #FDFDFDCC;
+    --compSpec-appHeader-color-bg-inConvo: oklch( from var(--semantic-color-bg-page-primary) l c h / .8);
     --compSpec-appHeader-headline-color-text: var(--mn-color-neutral-0900);
     --compSpec-appHeader-spacing-padding-horizontal: var(--mn-baseSize-0250);
     --compSpec-appHeader-spacing-padding-vertical-bottom: var(--mn-baseSize-0050);
@@ -14,7 +14,7 @@
 
 .figma-dark body, body.dark-mode{
     --compSpec-appHeader-color-bg-start: var(--mn-color-neutral-0900);
-    --compSpec-appHeader-color-bg-inConvo: #0F1C0DCC;
+    --compSpec-appHeader-color-bg-inConvo: oklch( from var(--semantic-color-bg-page-primary) l c h / .8);
     --compSpec-appHeader-headline-color-text: var(--mn-color-neutral-0100);
 }
 

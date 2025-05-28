@@ -22,25 +22,14 @@ interface Props {
 export default function QuestionInput({ isDisabled, convo, setIsDisabled, setIsLoading, setConvo, apiKey, apiModel, user}:Props) {
     const [question, setQuestion] = useState("");
     const [includeFrame, setIncludeFrame] = useState(false);
-    //const [frameData, setFrameData] = useState<string | undefined>(undefined);
     const [context, setContext] = useState("accessibility");
+    const [apiConvo, setApiConvo] = useState<{role: string, content: string}[]>([]);
     //const [errorMessage, setErrorMessage] = useState<string | undefined>(undefined);
 
     function handleOnChange(e: React.ChangeEvent<HTMLTextAreaElement>) {
         const questionInput = e.target as HTMLTextAreaElement;
         setQuestion(questionInput.value);
     }
-
-    // useEffect(() => {
-    //   window.onmessage = async (event) => {
-    //     const msg = event.data.pluginMessage;
-    //     if (msg.type === 'frame-data-response') {
-    //       setFrameData(msg.data);
-    //     } else {
-    //       console.log(msg.message);
-    //     }
-    //   }
-    // },[]);
 
     function requestFrameData(): Promise<string> {
       return new Promise((resolve, reject) => {
@@ -61,26 +50,30 @@ export default function QuestionInput({ isDisabled, convo, setIsDisabled, setIsL
     }
 
     async function handleRequest() {
-      let tempQuestion = question;
+      let tempApiQuestion = question;
+      let tempUIQuestion = question;
 
       //get the frame data from figma
       if (includeFrame ) {
         const frameData = await requestFrameData();
-        tempQuestion = tempQuestion + " And here is the data from my frame: " + frameData;
-        console.log(frameData);
+        tempApiQuestion = tempApiQuestion + " And here is the data from my frame: " + frameData;
+        tempUIQuestion = tempUIQuestion + " (Your selected frame was included.)";
+        //console.log(frameData);
       }
 
       //create the object for the user's message.
       const newUserMessage: ChatMessage = {
         id: uuidv4(),
         role: "user",
-        content: tempQuestion,
+        content: tempUIQuestion,
         responseId: null,
         timestamp: new Date().toLocaleString(),
       };
+      const newApiMessage: {role: string, content: string} = {role:"user", content: tempApiQuestion};
 
       //add the user's message from the form to the set of chats.
       setConvo((prev) => [...prev, newUserMessage]);
+      setApiConvo((prev) => [...prev, newApiMessage]);
 
       //clear the input
       setQuestion("");
@@ -91,10 +84,10 @@ export default function QuestionInput({ isDisabled, convo, setIsDisabled, setIsL
 
       //make the request to opanai in a try/catch/finally block
       try {
-        console.log('Here is the question to be asked: ' + tempQuestion);
+        //console.log('Here is the question to be asked: ' + tempQuestion);
         //make the request to open ai
         const response = await getAccessibilityResponses(
-          [...convo, newUserMessage],
+          [...apiConvo, newApiMessage],
           context,
           apiKey,
           apiModel,
@@ -113,6 +106,7 @@ export default function QuestionInput({ isDisabled, convo, setIsDisabled, setIsL
             timestamp: new Date().toLocaleString(),
           },
         ]);
+        setApiConvo((prev) => [...prev, {role: "assistant", content: response.output_text}]);
       } catch (error) {
         //log the error to the console
         console.log(error);

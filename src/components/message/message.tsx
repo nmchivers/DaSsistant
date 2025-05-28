@@ -2,6 +2,7 @@ import ReactMarkdown from "react-markdown";
 import { ChatMessage } from "../../models/ChatMessage";
 import Typeography from "../typeography/typography";
 import './message.scss';
+import remarkGfm from "remark-gfm";
 
 interface Props {
     message: ChatMessage;
@@ -24,6 +25,7 @@ export default function Message ({message}: Props){
                 <div className="message_container_assistant">
                     <div className={"message"}>
                         <ReactMarkdown
+                            remarkPlugins={[remarkGfm]}
                             components={{
                                 a: (node, ...props) => (
                                     <a {...props} target="_blank" rel="noopener noreferrer">{node.children}</a>
