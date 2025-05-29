@@ -133,7 +133,7 @@ export default function QuestionInput({ isDisabled, convo, setIsDisabled, setIsL
         </div>
         <div className="question-controls-container">
             {/* <ContextSwitch context={context} setContext={setContext} isToggle={false}/> */}
-            <Checkbox label='Include selected frame' onChange={setIncludeFrame} checked={includeFrame} />
+            <Checkbox label='Include selected frame' onChange={setIncludeFrame} checked={includeFrame} className={"add-frame-checkbox"} />
             <Button text='Ask MechaNick' variant='filled' onClick={handleRequest} disabled={isDisabled || question === ""} iconOnly icon='sendQuestion'/>
         </div>
       </div>

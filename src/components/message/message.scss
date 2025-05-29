@@ -11,6 +11,13 @@
     --compSpec-message-assistant-color-text: var(--semantic-color-text-default);
     --compSpec-message-assistant-image-size-width: var(--mn-baseSize-0400);
     --compSpec-message-assistant-image-size-height: var(--mn-baseSize-0400);
+
+    --compSpec-message-assistant-tableHead-color-bg: var(--mn-color-primary-0200);
+    --compSpec-message-assistant-tableHead-color-text: var(--semantic-color-text-default);
+    --compSpec-message-assistant-tableHead-radius: var(--mn-baseSize-0150);
+
+    --compSpec-message-assistant-tableBody-color-text: var(--semantic-color-text-default);
+    --compSpec-message-assistant-tableBody-color-border: var(--mn-color-primary-0200);
 }
 
 .figma-dark body, body.dark-mode{
@@ -18,6 +25,12 @@
     --compSpec-message-assistant-color-bg: var(--mn-color-primary-0900);
     --compSpec-message-user-color-text: var(--semantic-color-text-default);
     --compSpec-message-assistant-color-text: var(--semantic-color-text-default);
+
+    --compSpec-message-assistant-tableHead-color-bg: var(--mn-color-primary-0800);
+    --compSpec-message-assistant-tableHead-color-text: var(--semantic-color-text-default);
+
+    --compSpec-message-assistant-tableBody-color-text: var(--semantic-color-text-default);
+    --compSpec-message-assistant-tableBody-color-border: var(--mn-color-primary-0800);
 }
 
 .messageRow{
@@ -146,5 +159,37 @@
     & hr{
         margin-top: 24px;
         margin-bottom: unset;
+    }
+
+    & table{
+        margin-top: 12px;
+
+        & thead > tr > th{
+            @include body-medium-highImp;
+            background-color: var(--compSpec-message-assistant-tableHead-color-bg);
+            color: var(--compSpec-message-assistant-tableHead-color-text);
+            text-align: left;
+            padding: 8px;
+
+            &:first-child{
+                border-top-left-radius: var(--compSpec-message-assistant-tableHead-radius);
+            }
+            &:last-child{
+                border-top-right-radius: var(--compSpec-message-assistant-tableHead-radius);
+            }
+        }
+
+        & tbody > tr {
+            @include body-medium;
+
+            & strong {
+                @include body-medium-highImp;
+            }
+
+            &:not(:last-child) > td{
+                padding: 8px;
+                border-bottom: 1px solid var( --compSpec-message-assistant-tableBody-color-border);
+            }
+        }
     }
 }

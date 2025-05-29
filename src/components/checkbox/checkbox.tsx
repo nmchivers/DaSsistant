@@ -1,5 +1,7 @@
 import { ChangeEvent, InputHTMLAttributes } from "preact/compat";
 import { v4 as uuidv4 } from "uuid";
+import './checkbox.scss';
+import Icon from "../icon/icon";
 
 interface Props extends InputHTMLAttributes<HTMLInputElement> {
   label: string;
@@ -15,6 +17,7 @@ export default function Checkbox({
   description,
   onChange,
   disabled,
+  className,
   ...props
 }: Props) {
 
@@ -25,21 +28,25 @@ export default function Checkbox({
   }
 
   return (
-    <div className="">
-      <div className="">
+    <div className={"input-checkbox-container" + (!!className ? " " + className : "")}>
+      <div className="input-checkbox-input-label-container">
         <input
         id={inputID}
           type="checkbox"
           checked={props.checked}
           onChange={handleChange}
           disabled={disabled}
+          className="input-checkbox-input"
           {...props}
         />
-        <label for={inputID}>{label}</label>
+        <div className={"input-checkbox-box" + (props.checked ? " selected" : "")}>
+          <Icon iconName="check" addClasses="input-checkbox-check" />
+        </div>
+        <label for={inputID} className="input-checkbox-label">{label}</label>
       </div>
       {!!description ? (
-        <div className="">
-          <span className=""></span>
+        <div className="input-checkbox-description-container">
+          <span className="input-checkbox-description">{description}</span>
         </div>
       ) : (
         <></>

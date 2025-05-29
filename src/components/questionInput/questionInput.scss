@@ -102,6 +102,10 @@
         padding-left: var(--compSpec-question-controls-container-spacing-horizontal);
         padding-right: var(--compSpec-question-controls-container-spacing-horizontal);
         padding-bottom:  var(--compSpec-question-controls-container-spacing-vertical-bottom);
+
+        & .add-frame-checkbox{
+            margin-left: 12px;
+        }
     }
 
     & .question-input{

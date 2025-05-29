@@ -1,0 +1,250 @@
+@use '../../variables' as *;
+
+:root {
+    --compSpec-checkBox-box-notSelected-color-bg-resting: var(--mn-color-neutral-0100);
+    --compSpec-checkBox-box-notSelected-color-bg-hover: var(--mn-color-neutral-0100);
+    --compSpec-checkBox-box-notSelected-color-bg-focus: var(--mn-color-neutral-0100);
+    --compSpec-checkBox-box-notSelected-color-bg-active: var(--mn-color-neutral-0100);
+    --compSpec-checkBox-box-notSelected-color-bg-disabled: var(--mn-color-neutral-0100);
+    --compSpec-checkBox-box-selected-color-bg-resting: var(--mn-color-neutral-0100);
+    --compSpec-checkBox-box-selected-color-bg-hover: var(--mn-color-neutral-0100);
+    --compSpec-checkBox-box-selected-color-bg-focus: var(--mn-color-neutral-0100);
+    --compSpec-checkBox-box-selected-color-bg-active: var(--mn-color-neutral-0100);
+    --compSpec-checkBox-box-selected-color-bg-disabled: var(--mn-color-neutral-0100);
+    --compSpec-checkBox-box-notSelected-color-border-resting: var(--mn-color-primary-0700);
+    --compSpec-checkBox-box-notSelected-color-border-hover: var(--mn-color-primary-0800);
+    --compSpec-checkBox-box-notSelected-color-border-focus: var(--mn-color-primary-0800);
+    --compSpec-checkBox-box-notSelected-color-border-active: var(--mn-color-primary-0700);
+    --compSpec-checkBox-box-notSelected-color-border-disabled: var(--mn-color-neutral-0300);
+    --compSpec-checkBox-box-selected-color-border-resting: var(--mn-color-primary-0700);
+    --compSpec-checkBox-box-selected-color-border-hover: var(--mn-color-primary-0800);
+    --compSpec-checkBox-box-selected-color-border-focus: var(--mn-color-primary-0800);
+    --compSpec-checkBox-box-selected-color-border-active: var(--mn-color-primary-0700);
+    --compSpec-checkBox-box-selected-color-border-disabled: var(--mn-color-neutral-0300);
+    --compSpec-checkBox-box-notSelected-color-outline-resting: var(--mn-color-primary-0200);
+    --compSpec-checkBox-box-notSelected-color-outline-hover: var(--mn-color-primary-0200);
+    --compSpec-checkBox-box-notSelected-color-outline-focus: var(--mn-color-primary-0200);
+    --compSpec-checkBox-box-notSelected-color-outline-active: var(--mn-color-primary-0200);
+    --compSpec-checkBox-box-notSelected-color-outline-disabled: var(--mn-color-primary-0200);
+    --compSpec-checkBox-box-selected-color-outline-resting: var(--mn-color-primary-0200);
+    --compSpec-checkBox-box-selected-color-outline-hover: var(--mn-color-primary-0200);
+    --compSpec-checkBox-box-selected-color-outline-focus: var(--mn-color-primary-0200);
+    --compSpec-checkBox-box-selected-color-outline-active: var(--mn-color-primary-0200);
+    --compSpec-checkBox-box-selected-color-outline-disabled: var(--mn-color-primary-0200);
+    --compSpec-checkBox-box-size-width: var(--mn-baseSize-0200);
+    --compSpec-checkBox-box-size-height: var(--mn-baseSize-0200);
+    --compSpec-checkBox-box-size-border: var(--mn-baseSize-0013);
+    --compSpec-checkBox-box-size-outline-resting: var(--mn-baseSize-0000);
+    --compSpec-checkBox-box-size-outline-hover: var(--mn-baseSize-0024);
+    --compSpec-checkBox-box-size-outline-focus: var(--mn-baseSize-0024);
+    --compSpec-checkBox-box-size-outline-active: var(--mn-baseSize-0000);
+    --compSpec-checkBox-box-size-outline-disabled: var(--mn-baseSize-0000);
+    --compSpec-checkBox-box-radius: var(--mn-baseSize-0050);
+
+
+    --compSpec-checkBox-check-notSelected-color-icon-resting: var(--mn-color-transparent);
+    --compSpec-checkBox-check-notSelected-color-icon-hover: var(--mn-color-primary-0100);
+    --compSpec-checkBox-check-notSelected-color-icon-focus: var(--mn-color-primary-0100);
+    --compSpec-checkBox-check-notSelected-color-icon-active: var(--mn-color-primary-0700);
+    --compSpec-checkBox-check-notSelected-color-icon-disabled: var(--mn-color-transparent);
+    --compSpec-checkBox-check-selected-color-icon-resting: var(--mn-color-primary-0700);
+    --compSpec-checkBox-check-selected-color-icon-hover: var(--mn-color-primary-0800);
+    --compSpec-checkBox-check-selected-color-icon-focus: var(--mn-color-primary-0800);
+    --compSpec-checkBox-check-selected-color-icon-active: var(--mn-color-transparent);
+    --compSpec-checkBox-check-selected-color-icon-disabled: var(--mn-color-neutral-0300);
+    --compSpec-checkBox-check-size-width: var(--mn-baseSize-0175);
+    --compSpec-checkBox-check-size-height: var(--mn-baseSize-0175);
+    --compSpec-checkBox-tappable-spacing-padding-y: var(--mn-baseSize-0150);
+    --compSpec-checkBox-tappable-spacing-gap: var(--mn-baseSize-0100);
+    --compSpec-checkBox-explanation-spacing-padding-left: var(--mn-baseSize-0300);
+    --compSpec-checkBox-spacing-gap-y: var(--mn-baseSize-0050);
+}
+
+.figma-dark body, body.dark-mode{
+    --compSpec-checkBox-box-notSelected-color-bg-resting: var(--mn-color-neutral-0900);
+    --compSpec-checkBox-box-notSelected-color-bg-hover: var(--mn-color-neutral-0900);
+    --compSpec-checkBox-box-notSelected-color-bg-focus: var(--mn-color-neutral-0900);
+    --compSpec-checkBox-box-notSelected-color-bg-active: var(--mn-color-neutral-0900);
+    --compSpec-checkBox-box-notSelected-color-bg-disabled: var(--mn-color-neutral-0900);
+    --compSpec-checkBox-box-selected-color-bg-resting: var(--mn-color-neutral-0900);
+    --compSpec-checkBox-box-selected-color-bg-hover: var(--mn-color-neutral-0900);
+    --compSpec-checkBox-box-selected-color-bg-focus: var(--mn-color-neutral-0900);
+    --compSpec-checkBox-box-selected-color-bg-active: var(--mn-color-neutral-0900);
+    --compSpec-checkBox-box-selected-color-bg-disabled: var(--mn-color-neutral-0900);
+    --compSpec-checkBox-box-notSelected-color-border-resting: var(--mn-color-primary-0400);
+    --compSpec-checkBox-box-notSelected-color-border-hover: var(--mn-color-primary-0300);
+    --compSpec-checkBox-box-notSelected-color-border-focus: var(--mn-color-primary-0300);
+    --compSpec-checkBox-box-notSelected-color-border-active: var(--mn-color-primary-0400);
+    --compSpec-checkBox-box-notSelected-color-border-disabled: var(--mn-color-neutral-0600);
+    --compSpec-checkBox-box-selected-color-border-resting: var(--mn-color-primary-0400);
+    --compSpec-checkBox-box-selected-color-border-hover: var(--mn-color-primary-0300);
+    --compSpec-checkBox-box-selected-color-border-focus: var(--mn-color-primary-0300);
+    --compSpec-checkBox-box-selected-color-border-active: var(--mn-color-primary-0400);
+    --compSpec-checkBox-box-selected-color-border-disabled: var(--mn-color-neutral-0600);
+    --compSpec-checkBox-box-notSelected-color-outline-resting: var(--mn-color-primary-0800);
+    --compSpec-checkBox-box-notSelected-color-outline-hover: var(--mn-color-primary-0800);
+    --compSpec-checkBox-box-notSelected-color-outline-focus: var(--mn-color-primary-0800);
+    --compSpec-checkBox-box-notSelected-color-outline-active: var(--mn-color-primary-0800);
+    --compSpec-checkBox-box-notSelected-color-outline-disabled: var(--mn-color-primary-0800);
+    --compSpec-checkBox-box-selected-color-outline-resting: var(--mn-color-primary-0800);
+    --compSpec-checkBox-box-selected-color-outline-hover: var(--mn-color-primary-0800);
+    --compSpec-checkBox-box-selected-color-outline-focus: var(--mn-color-primary-0800);
+    --compSpec-checkBox-box-selected-color-outline-active: var(--mn-color-primary-0800);
+    --compSpec-checkBox-box-selected-color-outline-disabled: var(--mn-color-primary-0800);
+
+    --compSpec-checkBox-check-notSelected-color-icon-resting: var(--mn-color-transparent);
+    --compSpec-checkBox-check-notSelected-color-icon-hover: var(--mn-color-primary-0900);
+    --compSpec-checkBox-check-notSelected-color-icon-focus: var(--mn-color-primary-0900);
+    --compSpec-checkBox-check-notSelected-color-icon-active: var(--mn-color-primary-0400);
+    --compSpec-checkBox-check-notSelected-color-icon-disabled: var(--mn-color-transparent);
+    --compSpec-checkBox-check-selected-color-icon-resting: var(--mn-color-primary-0400);
+    --compSpec-checkBox-check-selected-color-icon-hover: var(--mn-color-primary-0300);
+    --compSpec-checkBox-check-selected-color-icon-focus: var(--mn-color-primary-0300);
+    --compSpec-checkBox-check-selected-color-icon-active: var(--mn-color-transparent);
+    --compSpec-checkBox-check-selected-color-icon-disabled: var(--mn-color-neutral-0600);
+}
+
+.input-checkbox{
+    &-container{
+        display: flex;
+        flex-flow: column;
+        gap: var(--compSpec-checkBox-spacing-gap-y);
+        
+        & .input-checkbox-input-label-container{
+            display: flex;
+            flex-flow: row nowrap;
+            align-items: center;
+            gap: var(--compSpec-checkBox-tappable-spacing-gap);
+
+            &:has( input.input-checkbox-input:hover){
+                & .input-checkbox-box{
+                    outline-width: var(--compSpec-checkBox-box-size-outline-hover);
+
+                    &:not(.selected){
+                        background-color: var(--compSpec-checkBox-box-notSelected-color-bg-hover);
+                        border-color: var(--compSpec-checkBox-box-notSelected-color-border-hover);
+                        outline-color: var(--compSpec-checkBox-box-notSelected-color-outline-hover);
+
+                        & .input-checkbox-check {
+                            fill: var(--compSpec-checkBox-check-notSelected-color-icon-hover);
+                        }
+                    }
+
+                    &.selected{
+                        background-color: var(--compSpec-checkBox-box-selected-color-bg-hover);
+                        border-color: var(--compSpec-checkBox-box-selected-color-border-hover);
+                        outline-color: var(--compSpec-checkBox-box-selected-color-outline-hover);
+
+                        & .input-checkbox-check {
+                            fill: var(--compSpec-checkBox-check-selected-color-icon-hover);
+                        }
+                    }
+                }
+            }
+            &:has( input.input-checkbox-input:focus-visible){
+                & .input-checkbox-box{
+                    outline-width: var(--compSpec-checkBox-box-size-outline-focus);
+
+                    &:not(.selected){
+                        background-color: var(--compSpec-checkBox-box-notSelected-color-bg-focus);
+                        border-color: var(--compSpec-checkBox-box-notSelected-color-border-focus);
+                        outline-color: var(--compSpec-checkBox-box-notSelected-color-outline-focus);
+
+                        & .input-checkbox-check {
+                            fill: var(--compSpec-checkBox-check-notSelected-color-icon-focus);
+                        }
+                    }
+
+                    &.selected{
+                        background-color: var(--compSpec-checkBox-box-selected-color-bg-focus);
+                        border-color: var(--compSpec-checkBox-box-selected-color-border-focus);
+                        outline-color: var(--compSpec-checkBox-box-selected-color-outline-focus);
+
+                        & .input-checkbox-check {
+                            fill: var(--compSpec-checkBox-check-selected-color-icon-focus);
+                        }
+                    }
+                }
+            }
+            &:has( input.input-checkbox-input:active){
+                & .input-checkbox-box{
+                    outline-width: var(--compSpec-checkBox-box-size-outline-active);
+
+                    &:not(.selected){
+                        background-color: var(--compSpec-checkBox-box-notSelected-color-bg-active);
+                        border-color: var(--compSpec-checkBox-box-notSelected-color-border-active);
+                        outline-color: var(--compSpec-checkBox-box-notSelected-color-outline-active);
+
+                        & .input-checkbox-check {
+                            fill: var(--compSpec-checkBox-check-notSelected-color-icon-active);
+                        }
+                    }
+
+                    &.selected{
+                        background-color: var(--compSpec-checkBox-box-selected-color-bg-active);
+                        border-color: var(--compSpec-checkBox-box-selected-color-border-active);
+                        outline-color: var(--compSpec-checkBox-box-selected-color-outline-active);
+
+                        & .input-checkbox-check {
+                            fill: var(--compSpec-checkBox-check-selected-color-icon-active);
+                        }
+                    }
+                }
+            }
+
+            & input.input-checkbox-input {
+                opacity: 0;
+                margin: 0 -24px 0 0;
+                width: var(--compSpec-checkBox-box-size-width);
+                height: var(--compSpec-checkBox-box-size-height);
+            }
+
+            & .input-checkbox-box{
+                display: flex;
+                flex-flow: column nowrap;
+                justify-content: center;
+                align-items: center;
+                width: var(--compSpec-checkBox-box-size-width);
+                height: var(--compSpec-checkBox-box-size-height);
+                border-radius: var(--compSpec-checkBox-box-radius);
+                border-style: solid;
+                border-width: var(--compSpec-checkBox-box-size-border);
+                outline-style: solid;
+                outline-width: var(--compSpec-checkBox-box-size-outline-resting);
+                transition: var(--semantic-transition-standard);
+
+                & .input-checkbox-check {
+                    width: var(--compSpec-checkBox-check-size-width);
+                    height: var(--compSpec-checkBox-check-size-height);
+                    transition: var(--semantic-transition-standard);
+                }
+
+                &:not(.selected){
+                    background-color: var(--compSpec-checkBox-box-notSelected-color-bg-resting);
+                    border-color: var(--compSpec-checkBox-box-notSelected-color-border-resting);
+                    outline-color: var(--compSpec-checkBox-box-notSelected-color-outline-resting);
+
+                    & .input-checkbox-check {
+                        fill: var(--compSpec-checkBox-check-notSelected-color-icon-resting);
+                    }
+                }
+                &.selected{
+                    background-color: var(--compSpec-checkBox-box-selected-color-bg-resting);
+                    border-color: var(--compSpec-checkBox-box-selected-color-border-resting);
+                    outline-color: var(--compSpec-checkBox-box-selected-color-outline-resting);
+
+                    & .input-checkbox-check {
+                        fill: var(--compSpec-checkBox-check-selected-color-icon-resting);
+                    }
+                }
+            }
+
+            & .input-checkbox-label{
+                @include body-medium-highImp;
+                padding: var(--compSpec-checkBox-tappable-spacing-padding-y) 0 var(--compSpec-checkBox-tappable-spacing-padding-y) 24px;
+                margin-left: -24px;
+
+            }
+        }
+    }
+}
