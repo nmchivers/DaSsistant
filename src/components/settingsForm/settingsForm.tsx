@@ -5,7 +5,7 @@ import Icon from '../icon/icon';
 import TextInput from '../textInput/textInput';
 import Typeography from '../typeography/typography';
 import './settingsForm.scss';
-import {useState, FormEvent, Dispatch } from 'preact/compat';
+import {useState, FormEvent, Dispatch, ChangeEvent } from 'preact/compat';
 import { v4 as uuidv4 } from "uuid";
 import DropDown from '../dropDown/dropDown';
 
@@ -34,6 +34,7 @@ export default function SettingsForm({
 }:Props) {
     const [modelList, setModelList] = useState<{id: string}[]>([]);
     const [modelOptions, setModelOptions] = useState<{id: string, text:string, value:string}[]>([]);
+    const [keyIsTested, setKeyIsTested] = useState<boolean>(false);
     const [isValidKey, setIsValidKey] = useState(true);
     const [isLoadingTest, setIsLoadingTest] = useState(false);
     const [isSaving, setIsSaving] = useState(false);
@@ -47,7 +48,7 @@ export default function SettingsForm({
 
     useEffect(() => {
         if (apiKey !== undefined || "") {
-            handleTest();
+            handleTest(true);
         }
     },[])
     
@@ -87,12 +88,26 @@ export default function SettingsForm({
         }
     }
 
-    async function handleTest(){
-        setIsLoadingTest(true);
-        const keyIsValid = await testKey();
-        setIsValidKey(keyIsValid);
-        setDisableModelInput(!keyIsValid);
-        setIsLoadingTest(false);
+    async function handleTest(isFirstLoad:boolean){
+        if (isFirstLoad) {
+            if (localApiKey !== '') {
+                setIsLoadingTest(true);
+                const keyIsValid = await testKey();
+                setIsValidKey(keyIsValid);
+                setDisableModelInput(!keyIsValid);
+                setIsLoadingTest(false);
+                setKeyIsTested(true);
+            } else {
+               setDisableModelInput(true); 
+            }
+        } else {
+            setIsLoadingTest(true);
+            const keyIsValid = await testKey();
+            setIsValidKey(keyIsValid);
+            setDisableModelInput(!keyIsValid);
+            setIsLoadingTest(false);
+            setKeyIsTested(true);
+        }
     }
 
     async function handleSubmit(event: FormEvent<HTMLFormElement>) {
@@ -127,6 +142,12 @@ export default function SettingsForm({
         }
     }
 
+    function handleKeyChange(value:string) {
+        setLocalApiKey(value);
+        setKeyIsTested(false);
+        //do more to affect the change throughout
+    }
+
     function handleCancel() {
         closeFunction();
     }
@@ -138,7 +159,7 @@ export default function SettingsForm({
             <TextInput
                 id="api-key"
                 value={localApiKey}
-                onChange={(value) => setLocalApiKey(value)}
+                onChange={(value) => handleKeyChange(value)}
                 placeholder="sk-###..."
                 label="OpenAI API Key"
                 description={
@@ -158,24 +179,26 @@ export default function SettingsForm({
                 isRequired
                 isInvalid={!isValidKey}
                 errorMessage="Please provide a valid Open AI API Key."
-                addClasses={modelList.length > 0 ? "api-key-input success" : "api-key-input"}
+                addClasses={(keyIsTested && isValidKey) ? "api-key-input success" : "api-key-input"}
             />
             {/* Need to improve this to handle changing the key and then retesting. */}
-            {modelList.length < 1 ? (
+            {(keyIsTested && isValidKey) ? (
+                    <div className="api-key-test-successIcon-container">
+                        <Icon iconName="circleCheck" />
+                    </div>
+                )
+                :
+                (
                 <div className="api-key-test-button-container">
                     <Button
                     text="Test"
                     variant="outline"
-                    onClick={() => handleTest()}
+                    onClick={() => handleTest(false)}
                     disabled={localApiKey == ""}
                     addClasses="api-key-test-button"
                     isLoading={isLoadingTest}
                     />
                 </div>
-                ) : (
-                    <div className="api-key-test-successIcon-container">
-                        <Icon iconName="circleCheck" />
-                    </div>
                 )}
             </div>
             <DropDown
