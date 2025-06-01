@@ -8,7 +8,7 @@ import SettingsFormModal from './components/modals/settingsFormModal';
 import AppHeader from './components/appHeader/appHeader';
 import Footer from './components/footer/footer';
 import { generateFullPalette } from './programmaticColor';
-import Loader from './components/loader/loader';
+//import Loader from './components/loader/loader';
 
 export function App() {
   const [apiKey, setApiKey] = useState('');
@@ -38,6 +38,7 @@ export function App() {
     //gets the api key, model, user name, and ds link from figma storage on start up.
     window.onmessage = (event) => {
       const msg = event.data.pluginMessage;
+      console.log('The message received from the controller: ', msg)
       switch (msg.type) {
         case 'load-saved-data':
           if (msg.hasApiKey  && msg.apiKey !== '') {
@@ -64,6 +65,10 @@ export function App() {
       }
     };
   }, []);
+
+  useEffect(()=>{
+    generateFullPalette(primaryColor);
+  },[primaryColor])
 
   //disable the question input if the api key is missing
   useEffect(() => {

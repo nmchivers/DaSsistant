@@ -103,13 +103,16 @@ export default function SettingsForm({
         if (keyIsValid) {
             setApiKey(localApiKey);
             setApiModel(localModel);
+            setPrimaryColor(localPrimaryColor);
+            setDSLink(localDsLink);
             parent.postMessage(
                 {
                 pluginMessage: {
                     type: 'save-settings',
                     apiKey: localApiKey,
                     apiModel: localModel,
-                    //add more here when DS Link are ready but match code.ts
+                    primaryColor: localPrimaryColor,
+                    dsLink: localDsLink,
                 },
                 },
                 '*'
@@ -187,8 +190,28 @@ export default function SettingsForm({
                 onChange={handleModelDropDownChange}
                 disabled={disableModelInput}
                 errorMessage='Please select a model for MechaNick to use.'
-             />
+            />
 
+            <TextInput
+                id="ds=link-input"
+                value={localDsLink}
+                onChange={(value) => setLocalDsLink(value)}
+                placeholder="https://..."
+                label="Design System Docs"
+                description={"Provide the publicly available link to your team’s design system docs for MechaNick to research when answering design system questions."}
+                addClasses='ds-link-input'
+            />
+
+            <TextInput
+                id="primary-color-input"
+                value={localPrimaryColor}
+                onChange={(value) => setLocalPrimaryColor(value)}
+                placeholder="#------"
+                label="Primary Color"
+                description={"Customize MechaNick with your own primary color."}
+                addClasses='primary-color-input'
+            />
+            
             <div className='button-group'>
                 <Button text='Save Settings' variant='filled' type='submit' isLoading={isSaving} />
                 <Button text='Cancel' variant='outline' type='button' onClick={() => handleCancel()} />

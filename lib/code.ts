@@ -156,7 +156,7 @@ figma.ui.onmessage =  async (msg) => {
       await figma.clientStorage.setAsync('mn-oaiApiKey', msg.apiKey);
       await figma.clientStorage.setAsync('mn-oaiApiModel', msg.apiModel);
       await figma.clientStorage.setAsync('mn-primaryColor', msg.primaryColor);
-      await figma.clientStorage.setAsync('dsLink', msg.dsLink);
+      await figma.clientStorage.setAsync('mn-dsLink', msg.dsLink);
 
     } catch (err) {
       console.error("Storage error:", err);
@@ -173,5 +173,5 @@ async function ClearTestData() {
   await figma.clientStorage.deleteAsync("mn-oaiApiKey");
   await figma.clientStorage.deleteAsync("mn-oaiApiModel");
   await figma.clientStorage.deleteAsync("mn-primaryColor");
-  await figma.clientStorage.deleteAsync("dsLink");
+  await figma.clientStorage.deleteAsync("mn-dsLink");
 }
