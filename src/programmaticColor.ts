@@ -1,44 +1,50 @@
 import { oklch, formatHex, inGamut } from 'culori';
 
-function generateSinglePalette(baseHex: string, tokenPrefix: string, type: "vibrant" | "neutral") {
+function generateSinglePalette(baseHex: string, tokenPrefix: string, type: "vibrant" | "vibrant-adjusted" | "neutral") {
     const gamutCheck = inGamut('rgb');
 
-    const { l: baseL, c: BaseC, h: baseH } = oklch(baseHex)!;
+    const { l: baseL, c: baseC, h: baseH } = oklch(baseHex)!;
 
     function idealChroma(level: number) {
-      if (type == "vibrant") {
-        // return 0.5 * (1 - Math.pow(2 * Math.abs(l - 0.5), 2));
-        const diff = level - baseL;
-        // if you’re darker than the anchor, use σ_dark:
-        const sigmaDark = baseL / 2;
-        // if you’re lighter, use σ_light:
-        const sigmaLight = (1 - baseL) / 2;
-        const sigma = diff < 0 ? sigmaDark : sigmaLight;
-        // if σ is zero (edge cases), just return 0 or c₀ if diff=0
-        if (sigma === 0) return diff === 0 ? BaseC : 0;
-        // Gaussian
-        return Math.max(0, BaseC * Math.exp(-(diff * diff) / (2 * sigma * sigma)));
-      } else {
-        const peak = .09; //adjusts how saturated the mids can get.
-        const expDark = 1.25; //larger number means less saturation in the darks
-        const expLight = 1.25; //larger number means less saturation in the lights
-        return Math.max(0, peak * Math.pow(level, expDark) * Math.pow(1-level, expLight));
-      }
+      const diff = level - baseL; 
+      const sigmaDark = baseL / 2; // if you’re darker than the anchor, use σ_dark:
+      const sigmaLight = (1 - baseL) / 2; // if you’re lighter, use σ_light:
+      const sigma = diff < 0 ? sigmaDark : sigmaLight;
+      if (sigma === 0) return diff === 0 ? baseC : 0; // if σ is zero (edge cases), just return 0 or c₀ if diff=0
+      // Gaussian
+      return Math.max(
+        0,
+        baseC * Math.exp(-(diff * diff) / (2 * sigma * sigma)),
+      );
     }
     function newLightness(level: number) {
         return (level * -0.0819333 + 100) / 100;
     }
 
     let palette: {prop:string, value:string}[] = [];
+    const maxBaseC = findMaxChroma(baseL, baseH || 0);
+    const baseRelC = baseC/maxBaseC;
 
-    for (let step = 0; step < 1001; step += 50) {
-        let c = idealChroma(step/1000);
+
+    for (let step = 0; step < 1000; step += 50) {
         const l = newLightness(step);
+        let c = 0;
+
+        if (type === 'vibrant') {
+            c = findMaxChroma(l, baseH || 0) * baseRelC;
+        } else if (type === 'vibrant-adjusted') {
+            c = idealChroma(step/1000);
+        } else {
+            const peak = .09; //Adjusts how saturated the mids can get.
+            const expDark = 1.25; //Larger values will make the darks less saturated.
+            const expLight = 1.25; //Larger values will make the lights less saturdated.
+            c = Math.max(0, peak * Math.pow(step/1000, expDark) * Math.pow(1-(step/1000), expLight));
+        }
 
         while (c >= 0) {
             const color = oklch({ mode: 'oklch', l, c, h: baseH });
 
-            if (gamutCheck(color)) {
+            if (c === 0 || gamutCheck(color)) {
                 palette.push({prop: tokenPrefix + "-" + String(step).padStart(4, "0"), value: formatHex({ mode: 'oklch', l, c, h: baseH })});
                 break;
             } else {
@@ -99,7 +105,7 @@ export function generateFullPalette (baseHex: string) {
     const redHex = formatHex({mode: "oklch", l: baseL, c: redMaxC*(BaseC/baseMaxC), h: redHue});
     const greenHex = formatHex({mode: "oklch", l: baseL, c: greenMaxC*(BaseC/baseMaxC), h: greenHue});
 
-    const primaryPalette = generateSinglePalette(baseHex, "--mn-color-primary", "vibrant");
+    const primaryPalette = generateSinglePalette(baseHex, "--mn-color-primary", "vibrant-adjusted");
     const neutralPalette = generateSinglePalette(baseHex, "--mn-color-neutral", "neutral");
     const redPalette = generateSinglePalette(redHex, "--mn-color-red", "vibrant");
     const greenPalette = generateSinglePalette(greenHex, "--mn-color-green", "vibrant");

@@ -1,10 +1,10 @@
 @use '../../variables' as *;
 
 :root {
-    --compSpec-question-container-color-bg-resting: var(--mn-color-neutral-0100);
+    --compSpec-question-container-color-bg-resting: var(--mn-color-neutral-0050);
     --compSpec-question-container-color-bg-hover: var(--mn-color-primary-0100);
     --compSpec-question-container-color-bg-focus: var(--mn-color-primary-0100);
-    --compSpec-question-container-color-bg-active: var(--mn-color-neutral-0100);
+    --compSpec-question-container-color-bg-active: var(--mn-color-neutral-0050);
     --compSpec-question-container-color-bg-disabled: var(--mn-color-neutral-0200);
     --compSpec-question-container-color-border-resting: var(--mn-color-neutral-0600);
     --compSpec-question-container-color-border-hover: var(--mn-color-primary-0800);

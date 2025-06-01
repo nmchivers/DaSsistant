@@ -5,7 +5,7 @@ import Icon from '../icon/icon';
 import TextInput from '../textInput/textInput';
 import Typeography from '../typeography/typography';
 import './settingsForm.scss';
-import {useState, FormEvent, Dispatch, ChangeEvent } from 'preact/compat';
+import {useState, FormEvent, Dispatch } from 'preact/compat';
 import { v4 as uuidv4 } from "uuid";
 import DropDown from '../dropDown/dropDown';
 
@@ -145,7 +145,6 @@ export default function SettingsForm({
     function handleKeyChange(value:string) {
         setLocalApiKey(value);
         setKeyIsTested(false);
-        //do more to affect the change throughout
     }
 
     function handleCancel() {
@@ -181,7 +180,6 @@ export default function SettingsForm({
                 errorMessage="Please provide a valid Open AI API Key."
                 addClasses={(keyIsTested && isValidKey) ? "api-key-input success" : "api-key-input"}
             />
-            {/* Need to improve this to handle changing the key and then retesting. */}
             {(keyIsTested && isValidKey) ? (
                     <div className="api-key-test-successIcon-container">
                         <Icon iconName="circleCheck" />
@@ -234,6 +232,7 @@ export default function SettingsForm({
                 description={"Customize MechaNick with your own primary color."}
                 addClasses='primary-color-input'
             />
+            {/* Add a checkbox here to enable the user to decide if they want to desaturate the tints and shades of their color */}
             
             <div className='button-group'>
                 <Button text='Save Settings' variant='filled' type='submit' isLoading={isSaving} />
