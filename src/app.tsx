@@ -8,15 +8,17 @@ import SettingsFormModal from './components/modals/settingsFormModal';
 import AppHeader from './components/appHeader/appHeader';
 import Footer from './components/footer/footer';
 import { generateFullPalette } from './programmaticColor';
+import Loader from './components/loader/loader';
 
 export function App() {
   const [apiKey, setApiKey] = useState('');
   const [apiModel, setApiModel] = useState('gpt-4o-mini');
   const [userName, setUserName] = useState('anonymous');
-  const [appBaseColor, setAppBaseColor] = useState('#499590');
-  const [showSettingsModal, setShowSettingsModal] = useState(false);
+  const [primaryColor, setPrimaryColor] = useState('#499590');
+  const [showSettingsModal, setShowSettingsModal] = useState(true);
   //Create the loading variable for tracking loading state
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [isAppLoading, setIsAppLoading] = useState<boolean>(true);
   //Create the disabled variable for tracking if the question should be disabled
   const [isQIDisabled, setIsQIDisabled] = useState<boolean>(false);
   const [dsLink, setDSLink] = useState('');
@@ -28,28 +30,37 @@ export function App() {
   //this runs as soon as the plugin launches.
   useEffect(() => {
     //generates the initial palette for the app prior to any user adjustments.
-    generateFullPalette(appBaseColor);
+    generateFullPalette(primaryColor);
+
+    //tell the controller to give the UI the saved data.
+    parent.postMessage({pluginMessage:{type: 'request-saved-data'}}, '*');
 
     //gets the api key, model, user name, and ds link from figma storage on start up.
     window.onmessage = (event) => {
       const msg = event.data.pluginMessage;
-      if (msg.type === 'load-saved-data') {
-        if (msg.apiKey !== '') {
-          setApiKey(msg.apiKey);
-          setShowSettingsModal(false);
-        } else {
-          setShowSettingsModal(true);
-          setIsQIDisabled(true);
-        }
-        if (msg.apiModel !== ''){
-          setApiModel(msg.apiModel);
-        }
-        if (msg.userName !== ''){
-          setUserName(msg.userName);
-        }
-        if (msg.dsLink !== ''){
-          setDSLink(msg.dsLink);
-        }
+      switch (msg.type) {
+        case 'load-saved-data':
+          if (msg.hasApiKey  && msg.apiKey !== '') {
+            setApiKey(msg.apiKey);
+            setShowSettingsModal(false);
+          }
+          if (msg.hasApiModel && msg.apiModel !== '') {
+            setApiModel(msg.apiModel);
+          }
+          if (msg.hasDsLink && msg.dsLink !== '') {
+            setDSLink(msg.dsLink);
+          }
+          if (msg.hasPrimaryColor && msg.primaryColor !== '') {
+            setPrimaryColor(msg.primaryColor);
+          }
+          setUserName(msg.user);
+          setIsAppLoading(false);
+          break;
+      
+        case 'load-error':
+          setIsAppLoading(false);
+          console.log("There was an issue with loading data from Figma Client Storage.")
+          break;
       }
     };
   }, []);
@@ -90,33 +101,59 @@ export function App() {
 
     
   return (
-    <>
-      <AppHeader botName='MechaNick' version='v0.1' convoStarted={convo.length > 0} openSettingsModalFunction={setShowSettingsModal}/>
-      <Conversation convo={convo} isLoading={isLoading} />
-      <div className={"footer"}>
-        {convo.length < 1 ? (
-          <div className="bot-intro-container">
-            <BotIntro isDSEnabled={isDSEnabled} openSettingsModalFunction={setShowSettingsModal} variant={apiKey == '' ? "no-key" : "has-key"} />
+    (isAppLoading ?
+      <p>Loading...</p>
+    :
+      <>
+        <AppHeader
+          botName="MechaNick"
+          version="v0.1"
+          convoStarted={convo.length > 0}
+          openSettingsModalFunction={setShowSettingsModal}
+        />
+        <Conversation convo={convo} isLoading={isLoading} />
+        <div className={"footer"}>
+          {convo.length < 1 ? (
+            <div className="bot-intro-container">
+              <BotIntro
+                isDSEnabled={isDSEnabled}
+                openSettingsModalFunction={setShowSettingsModal}
+                variant={apiKey == "" ? "no-key" : "has-key"}
+              />
+            </div>
+          ) : (
+            <></>
+          )}
+
+          <div className="footer-content">
+            <QuestionInput
+              setConvo={setConvo}
+              convo={convo}
+              isDisabled={isQIDisabled}
+              setIsLoading={setIsLoading}
+              setIsDisabled={setIsQIDisabled}
+              apiKey={apiKey}
+              apiModel={apiModel}
+              user={userName}
+            />
+            <Footer />
           </div>
+        </div>
+        {showSettingsModal ? (
+          <SettingsFormModal
+            apiKey={apiKey}
+            setApiKey={setApiKey}
+            setShowSettingsModal={setShowSettingsModal}
+            dsLink={dsLink}
+            setDSLink={setDSLink}
+            apiModel={apiModel}
+            setApiModel={setApiModel}
+            primaryColor={primaryColor}
+            setPrimaryColor={setPrimaryColor}
+          />
         ) : (
           <></>
         )}
-
-        <div className="footer-content">
-          <QuestionInput
-            setConvo={setConvo}
-            convo={convo}
-            isDisabled={isQIDisabled}
-            setIsLoading={setIsLoading}
-            setIsDisabled={setIsQIDisabled}
-            apiKey={apiKey}
-            apiModel={apiModel}
-            user={userName}
-          />
-          <Footer />
-        </div>
-      </div>
-      {showSettingsModal ? <SettingsFormModal apiKey={apiKey} setApiKey={setApiKey} setShowSettingsModal={setShowSettingsModal} setDSLink={setDSLink} apiModel={apiModel} setApiModel={setApiModel} /> : <></>}
-    </>
+      </>)
   );
 }

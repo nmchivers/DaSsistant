@@ -18,6 +18,68 @@ figma.ui.onmessage =  async (msg) => {
   // if (msg.type === 'create-shapes') {
   //   // This plugin creates rectangles on the screen.
   //   const numberOfRectangles = msg.count;
+  if(msg.type === 'request-saved-data') {
+    //FOR TESTING:
+    //ClearTestData();
+
+    try {
+      // 1. Fetch all four keys in parallel
+      const [
+        rawApiKey,
+        rawModel,
+        rawDsLink,
+        rawPrimaryColor,
+      ] = await Promise.all([
+        figma.clientStorage.getAsync('mn-oaiApiKey'),
+        figma.clientStorage.getAsync('mn-oaiApiModel'),
+        figma.clientStorage.getAsync('mn-dsLink'),
+        figma.clientStorage.getAsync('mn-primaryColor'),
+      ]);
+
+      // 2. Figure out “is there actually something stored?” for each key
+      const hasApiKey = rawApiKey !== undefined;
+      const hasApiModel = rawModel !== undefined;
+      const hasDsLink = rawDsLink !== undefined;
+      const hasPrimaryColor = rawPrimaryColor !== undefined;
+
+      // 3. If you want a single flag for “any data at all”
+      const hasAnyData =
+        hasApiKey || hasApiModel || hasDsLink || hasPrimaryColor;
+
+      // 4. Normalize undefined → null (or leave undefined) so the UI can tell:
+      const savedKey = hasApiKey ? (rawApiKey as string) : null;
+      const savedModel = hasApiModel ? (rawModel as string) : null;
+      const savedDsLink = hasDsLink ? (rawDsLink as string) : null;
+      const savedPrimaryColor = hasPrimaryColor
+        ? (rawPrimaryColor as string)
+        : null;
+
+      const userName = (figma.currentUser !== null ? figma.currentUser.name : 'Anonymous');
+
+      // 5. Send everything—including “hasX” flags—back to the UI
+      figma.ui.postMessage({
+        type: 'load-saved-data',
+        apiKey: savedKey,
+        apiModel: savedModel,
+        dsLink: savedDsLink,
+        primaryColor: savedPrimaryColor,
+        user: userName,
+        // you can consume individual flags in the UI or use a single “hasAnyData”
+        hasApiKey,
+        hasApiModel,
+        hasDsLink,
+        hasPrimaryColor,
+        hasAnyData,
+      });
+    } catch (err) {
+      // 6. If something goes wrong, report it so the UI can show an error state
+      figma.ui.postMessage({
+        type: 'load-error',
+        message: err instanceof Error ? err.message : String(err),
+      });
+    }
+  }
+
 
   if (msg.type === "get-frame-data") {
     const selection = figma.currentPage.selection;
@@ -91,29 +153,15 @@ figma.ui.onmessage =  async (msg) => {
   //This saves the api key from the settings form
   if (msg.type === 'save-settings') {
     try {
-      await figma.clientStorage.setAsync('oaiApiKey', msg.apiKey);
-      await figma.clientStorage.setAsync('oaiApiModel', msg.apiModel);
-      
-      //The below is just used for testing.
-      //const saved = await figma.clientStorage.getAsync('oaiApiKey');
-      //console.log("Saved key:", saved);
-    } catch (err) {
-      console.error("Storage error:", err);
-    }
-  }
-  //This saves the DS Link from the settings form
-  if (msg.type === 'save-ds-link') {
-    try {
+      await figma.clientStorage.setAsync('mn-oaiApiKey', msg.apiKey);
+      await figma.clientStorage.setAsync('mn-oaiApiModel', msg.apiModel);
+      await figma.clientStorage.setAsync('mn-primaryColor', msg.primaryColor);
       await figma.clientStorage.setAsync('dsLink', msg.dsLink);
-      
-      //The below is just used for testing.
-      //const saved = await figma.clientStorage.getAsync('oaiApiKey');
-      //console.log("Saved key:", saved);
+
     } catch (err) {
       console.error("Storage error:", err);
     }
   }
-  //To-Do: Add a save-model section here to save the selected model from the settings form.
   
   //This closes the plugin - Not currently used.
   if (msg.type === 'close') {
@@ -121,29 +169,9 @@ figma.ui.onmessage =  async (msg) => {
   }
 };
 
-//this gets the api key, userName, and DS link when the plugin starts up.
-//To-D-: Add the saved model to the information returned.
-(async () => {
-  //for testing clear the api key on open - remove before publishing.
-  // await figma.clientStorage.setAsync('oaiApiKey', undefined);
-  // await figma.clientStorage.setAsync('oaiApiModel', undefined);
-
-  //Get the variables saved in Figma
-  const savedKey = await figma.clientStorage.getAsync('oaiApiKey');
-  const savedModel = await figma.clientStorage.getAsync('oaiApiModel');
-  const savedDSLink = await figma.clientStorage.getAsync('dsLink');
-  const userName = (figma.currentUser !== null ? figma.currentUser.name : 'Anonymous');
-
-  // Send the saved key to the UI after loading
-  figma.ui.postMessage({
-    type: 'load-saved-data',
-    apiKey: savedKey || '',
-    apiModel: savedModel || '',
-    dsLink: savedDSLink || '',
-    user: userName,
-  });
-  // console.log("saved key: " + savedKey);
-  // console.log("saved model: " + savedModel);
-  // console.log("saved ds link: " + savedDSLink);
-  // console.log("user name: " + userName);
-})();
+async function ClearTestData() {
+  await figma.clientStorage.deleteAsync("mn-oaiApiKey");
+  await figma.clientStorage.deleteAsync("mn-oaiApiModel");
+  await figma.clientStorage.deleteAsync("mn-primaryColor");
+  await figma.clientStorage.deleteAsync("dsLink");
+}

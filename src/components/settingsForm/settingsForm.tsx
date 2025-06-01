@@ -8,18 +8,30 @@ import './settingsForm.scss';
 import {useState, FormEvent, Dispatch } from 'preact/compat';
 import { v4 as uuidv4 } from "uuid";
 import DropDown from '../dropDown/dropDown';
-import Checkbox from '../checkbox/checkbox';
 
 interface Props {
     closeFunction: () => void;
     apiKey: string;
     setApiKey: Dispatch<StateUpdater<string>>;
+    dsLink: string;
     setDSLink: Dispatch<StateUpdater<string>>;
     apiModel: string;
     setApiModel: Dispatch<StateUpdater<string>>;
+    primaryColor: string;
+    setPrimaryColor: (newcolor:string) => void;
 }
 
-export default function SettingsForm({closeFunction, apiKey, setApiKey, apiModel, setApiModel}:Props) {
+export default function SettingsForm({
+    closeFunction, 
+    apiKey, 
+    setApiKey, 
+    apiModel, 
+    setApiModel,
+    dsLink,
+    setDSLink,
+    primaryColor,
+    setPrimaryColor
+}:Props) {
     const [modelList, setModelList] = useState<{id: string}[]>([]);
     const [modelOptions, setModelOptions] = useState<{id: string, text:string, value:string}[]>([]);
     const [isValidKey, setIsValidKey] = useState(true);
@@ -30,6 +42,8 @@ export default function SettingsForm({closeFunction, apiKey, setApiKey, apiModel
     //these create local stateful versions of the apikey and the apimodel so that the form can be canceled without updating the saved key and model
     const [localApiKey, setLocalApiKey] = useState(apiKey);
     const [localModel, setLocalModal] = useState(apiModel);
+    const [localDsLink, setLocalDsLink] = useState(dsLink);
+    const [localPrimaryColor, setLocalPrimaryColor] = useState(primaryColor);
 
     useEffect(() => {
         if (apiKey !== undefined || "") {
