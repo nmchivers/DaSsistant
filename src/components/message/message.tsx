@@ -27,8 +27,8 @@ export default function Message ({message}: Props){
                         <ReactMarkdown
                             remarkPlugins={[remarkGfm]}
                             components={{
-                                a: (node, ...props) => (
-                                    <a {...props} target="_blank" rel="noopener noreferrer">{node.children}</a>
+                                a: ({href, children, ...props}) => (
+                                    <a href={href} {...props} target="_blank" rel="noopener noreferrer">{children}</a>
                                 ),
                             }}
                         >{message.content.toString()}</ReactMarkdown>

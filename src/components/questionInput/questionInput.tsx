@@ -17,9 +17,10 @@ interface Props {
     apiKey: string,
     apiModel: string,
     user: string,
+    dsLink: string;
 }
 
-export default function QuestionInput({ isDisabled, convo, setIsDisabled, setIsLoading, setConvo, apiKey, apiModel, user}:Props) {
+export default function QuestionInput({ isDisabled, convo, setIsDisabled, setIsLoading, setConvo, apiKey, apiModel, user, dsLink}:Props) {
     const [question, setQuestion] = useState("");
     const [includeFrame, setIncludeFrame] = useState(false);
     const [context, setContext] = useState("accessibility");
@@ -93,6 +94,7 @@ export default function QuestionInput({ isDisabled, convo, setIsDisabled, setIsL
           apiModel,
           user,
           includeFrame,
+          dsLink,
         );
 
         //add the response from open ai to the set of chats.

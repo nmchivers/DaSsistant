@@ -112,7 +112,7 @@ export function App() {
       <>
         <AppHeader
           botName="MechaNick"
-          version="v0.1"
+          version="v0.5"
           convoStarted={convo.length > 0}
           openSettingsModalFunction={setShowSettingsModal}
         />
@@ -140,6 +140,7 @@ export function App() {
               apiKey={apiKey}
               apiModel={apiModel}
               user={userName}
+              dsLink={dsLink}
             />
             <Footer />
           </div>
