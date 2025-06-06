@@ -101,7 +101,7 @@ figma.ui.onmessage =  async (msg) => {
     }
 
     const frame = selection[0] as FrameNode;
-    const nodes = frame.findAll();
+    const nodes = [...frame.findAll(), frame as SceneNode];
 
     // helper to turn a SolidPaint into rgba()
     function paintToRGBA(paint: SolidPaint): string {

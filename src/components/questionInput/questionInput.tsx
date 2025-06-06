@@ -81,7 +81,7 @@ export default function QuestionInput({
       console.log(JSON.parse(frameData.data));
 
       //for testing
-      //return;
+      return;
     }
 
     //create the object for the user's message.
