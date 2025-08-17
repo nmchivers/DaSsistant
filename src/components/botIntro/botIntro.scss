@@ -1,4 +1,5 @@
 @use '../../variables' as *;
+@use '../../botImage.scss' as *;
 
 :root{
     --compSpec-botIntro-container-color-bg: var(--mn-color-primary-0100);
@@ -12,11 +13,13 @@
     --compSpec-botIntro-image-radius: var(--mn-baseSize-0600);
     --compSpec-botIntro-image-size-width: var(--mn-baseSize-1150);
     --compSpec-botIntro-image-size-height: var(--mn-baseSize-1150);
+    --compSpec-botIntro-image-bg-color: var(--mn-color-primary-0500);
 }
 
 .figma-dark body, body.dark-mode{
     --compSpec-botIntro-container-color-bg: var(--mn-color-primary-0800);
     --compSpec-botIntro-container-color-text: var(--semantic-color-text-default);
+    --compSpec-botIntro-image-bg-color: var(--mn-color-primary-0500);
 }
 
 .bot-intro{
@@ -58,11 +61,44 @@
     }
 
     & .image{
+        position: relative;
         height: var(--compSpec-botIntro-image-size-height);
         width: var(--compSpec-botIntro-image-size-width);
         min-height: var(--compSpec-botIntro-image-size-height);
         min-width: var(--compSpec-botIntro-image-size-width);
         border-radius: var(--compSpec-botIntro-image-radius);
-        background: var(--compSpec-bot-image);
+        //background: var(--compSpec-bot-image);
+        // background-color: var(--compSpec-botIntro-image-bg-color);
+        @include bot-background;
+        background-size: contain;
+        background-repeat: no-repeat;
+        overflow: hidden;
+
+        &::before {
+            content: '';
+            height: var(--compSpec-botIntro-image-size-height);
+            width: var(--compSpec-botIntro-image-size-width);
+            min-height: var(--compSpec-botIntro-image-size-height);
+            min-width: var(--compSpec-botIntro-image-size-width);
+            background-color: var(--compSpec-botIntro-image-bg-color);
+            mix-blend-mode: hue;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        &::after {
+            
+            content: '';
+            height: var(--compSpec-botIntro-image-size-height);
+            width: var(--compSpec-botIntro-image-size-width);
+            min-height: var(--compSpec-botIntro-image-size-height);
+            min-width: var(--compSpec-botIntro-image-size-width);
+            @include bot-avatar;
+            background-size: contain;
+            background-repeat: no-repeat;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
     }
 }

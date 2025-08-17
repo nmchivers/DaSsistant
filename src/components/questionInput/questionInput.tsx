@@ -30,7 +30,7 @@ export default function QuestionInput({
   user,
   dsLink,
 }: Props) {
-  const [question, setQuestion] = useState("");
+  const [question, setQuestion] = useState("Test");
   const [includeFrame, setIncludeFrame] = useState(false);
   const [apiConvo, setApiConvo] = useState<{ role: string; content: string }[]>(
     [],
@@ -42,28 +42,56 @@ export default function QuestionInput({
     setQuestion(questionInput.value);
   }
 
-  function requestFrameData(): Promise<{
-    type: string;
-    data: string;
-    name: string;
-  }> {
-    return new Promise((resolve, reject) => {
-      function handler(event: MessageEvent) {
-        const msg = (event.data as any).pluginMessage;
-        if (msg.type === "frame-data-response") {
-          window.removeEventListener("message", handler);
-          console.log("made it back to the UI with a success");
-          resolve(msg);
-        }
-        if (msg.type === "frame-data-error") {
-          window.removeEventListener("message", handler);
-          console.log("made it back to the UI with an error");
-          reject(new Error(msg.message));
-        }
-      }
-      window.addEventListener("message", handler);
-      parent.postMessage({ pluginMessage: { type: "get-frame-data" } }, "*");
-    });
+  // function requestFrameData(): Promise<{
+  //   type: string;
+  //   data: string;
+  //   name: string;
+  // }> {
+  //   return new Promise((resolve, reject) => {
+  //     function handler(event: MessageEvent) {
+  //       const msg = (event.data as any).pluginMessage;
+  //       if (msg.type === "frame-data-response") {
+  //         window.removeEventListener("message", handler);
+  //         resolve(msg);
+  //       }
+  //       if (msg.type === "frame-data-error") {
+  //         window.removeEventListener("message", handler);
+  //         reject(new Error(msg.message));
+  //       }
+  //     }
+  //     window.addEventListener("message", handler);
+  //     parent.postMessage({ pluginMessage: { type: "get-frame-data" } }, "*");
+  //   });
+  // }
+
+  function getFrameData(timeout = 10000): Promise<{data:string, name:string}> {
+      return new Promise((resolve, reject) => {
+          function handler(event: MessageEvent) {
+              const pluginMsg = (event.data as any)?.pluginMessage
+              if(!pluginMsg) return;
+
+              const {type, data, name, message} = pluginMsg;
+              if (type === 'frame-data-response') {
+                  cleanup();
+                  resolve({data, name})
+              } else if (type === 'frame-data-error') {
+                  cleanup();
+                  reject(new Error(message));
+              }
+          }
+          function cleanup() {
+              window.removeEventListener("message", handler);
+              clearTimeout(timer);
+          }
+
+          const timer = window.setTimeout(() => {
+              cleanup();
+              reject(new Error('Timed out waiting for frame-data.'));
+          }, timeout)
+
+          window.addEventListener("message", handler);
+          window.parent.postMessage({ pluginMessage: { type: "get-frame-data" } }, "*");
+      });
   }
 
   async function handleRequest() {
@@ -73,14 +101,22 @@ export default function QuestionInput({
 
     //get the frame data from figma
     if (includeFrame) {
-      const frameData = await requestFrameData();
+      //FOR TESTING
+      console.log("User selected to include the frame.");
+      //END FOR TESTING
+
+      //To-Do: Make this a try catch
+      const frameData = await getFrameData();
       tempApiQuestion =
         tempApiQuestion + " And here is my Figma frame data: " + frameData.data;
       tempUIQuestion =
         tempUIQuestion + " (" + frameData.name + " was included.)";
-      console.log(JSON.parse(frameData.data));
+      
 
-      //for testing
+      //FOR TESTING
+      console.log(JSON.parse(frameData.data));
+      //END FOR TESTING
+      
       return;
     }
 
@@ -111,13 +147,17 @@ export default function QuestionInput({
     //make the request to opanai in a try/catch/finally block
     try {
       //make the request to open ai
-      const response = await getAccessibilityResponses(
-        [...apiConvo, newApiMessage],
-        apiKey,
-        apiModel,
-        user,
-        dsLink,
-      );
+      // const response = await getAccessibilityResponses(
+      //   [...apiConvo, newApiMessage],
+      //   apiKey,
+      //   apiModel,
+      //   user,
+      //   dsLink,
+      // );
+
+      //FOR TESTING
+      const response: any = "##This is a test response.";
+      //END FOR TESTING
 
       //Check if the response is an error and post the error message.
       if (response instanceof Error) {

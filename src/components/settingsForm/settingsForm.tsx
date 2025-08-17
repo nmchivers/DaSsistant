@@ -118,7 +118,14 @@ export default function SettingsForm({
         if (keyIsValid) {
             setApiKey(localApiKey);
             setApiModel(localModel);
-            setPrimaryColor(localPrimaryColor);
+
+            if ((localPrimaryColor !== "" || undefined) && localPrimaryColor.length === 7) {
+                setPrimaryColor(localPrimaryColor);
+            } else {
+                setPrimaryColor("#499590");
+                setLocalPrimaryColor("#499590");
+            }
+            
             setDSLink(localDsLink);
             parent.postMessage(
                 {
